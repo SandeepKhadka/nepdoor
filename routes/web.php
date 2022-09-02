@@ -20,3 +20,17 @@ Route::get('/', function () {
 Route::get('/subscribe', function () {
     return view('subscribe');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+
+});
+
+Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], function(){
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'customer'])->name('customer');
+
+});
