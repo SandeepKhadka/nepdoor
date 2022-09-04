@@ -18,7 +18,7 @@ class PackageCategories extends Model
     public function getRules(){
         $rules = [
             'title' => 'required|string',
-            'key'=> 'required|string',
+            // 'key'=> 'required|string',
             'status' => 'required|in:Active,Inactive',
         ];
 
