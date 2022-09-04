@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Package_Category extends Model
+class PackageCategories extends Model
 {
     use HasFactory;
 
@@ -25,4 +25,3 @@ class Package_Category extends Model
         return $rules;
     }
 }
-
