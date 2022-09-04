@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('package__categories', function (Blueprint $table) {
+        Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('key')->nullable();
-            $table->enum('status',['Active','Inactive'])->default('Inactive');
+            $table->string('name');
+            $table->integer('price');
+            $table->enum('status', ['Active', 'Inactive'])->default('Inactive');
+            $table->unsignedBigInteger('cat_id')->nullable();
+            $table->foreign('cat_id')->references('id')->on('package_categories')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -29,6 +31,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('package__categories');
+        Schema::dropIfExists('packages');
     }
 };
+
