@@ -37,7 +37,24 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
     {{-- Datatables --}}
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+
+    <script>
+        $(function () {
+          $("#searching")
+            .DataTable({
+              responsive: true,
+              lengthChange: false,
+              autoWidth: false,
+            })
+            .container()
+            .appendTo("#searching_wrapper .col-md-6:eq(0)");
+        });
+      </script>
     @yield('scripts')
+
+    
 
 </body>
 

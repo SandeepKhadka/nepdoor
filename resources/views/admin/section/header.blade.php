@@ -34,6 +34,9 @@
     {{-- <script src="https://kit.fontawesome.com/ea7812b9f8.js" crossorigin="anonymous"></script> --}}
     {{-- Datatables --}}
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"> --}}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
+
     @yield('styles')
 
     {{-- @notifyCss
