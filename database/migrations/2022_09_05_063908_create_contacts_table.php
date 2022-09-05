@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->text('subject');
             $table->longText('message');
-            $table->enum('status',['Active', 'Inactive'])->default('Inactive');
+            $table->enum('status',['Active', 'Inactive'])->default('Active');
             $table->timestamps();
         });
     }
