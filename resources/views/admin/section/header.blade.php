@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
+<<<<<<< HEAD
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -37,17 +38,10 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
 
+=======
+    @vite(['resources/css/admin.css', 'resources/js/admin.js'])
+>>>>>>> 3cb92db360b48259a48f2e10768d3b30adc5abfd
     @yield('styles')
-
-    {{-- @notifyCss
-    @notifyJs --}}
-
-    <style>
-        .dropdown-item:hover {
-            background-color: gray;
-            color: gray;
-        }
-    </style>
 
 </head>
 
