@@ -21,13 +21,6 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-Route::get('/contact', function () {
-    return view('admin.contact.contactList');
-});
-
-Route::get('/contactView', function () {
-    return view('admin.contact.contactView');
-});
 Route::get('/digitalMarketing', function () {
     return view('digitalMarketing');
 });
