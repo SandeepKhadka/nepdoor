@@ -1,5 +1,5 @@
 
-<<<<<<< HEAD
+
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -53,8 +53,7 @@
             .appendTo("#searching_wrapper .col-md-6:eq(0)");
         });
       </script>
-=======
->>>>>>> 3cb92db360b48259a48f2e10768d3b30adc5abfd
+
     @yield('scripts')
 
     
