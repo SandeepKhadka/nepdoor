@@ -41,6 +41,115 @@ Route::get('/basic', function () {
     return view('basic');
 });
 
+Route::get('/packageList', function () {
+    return view('admin.Packages.package.packageList');
+});
+
+Route::get('/packageForm', function () {
+    return view('admin.Packages.package.packageForm');
+});
+
+Route::get('/packageView', function () {
+    return view('admin.Packages.package.packageView');
+});
+
+
+Route::get('/categoryList', function () {
+    return view('admin.Packages.category.categoryList');
+});
+
+Route::get('/categoryForm', function () {
+    return view('admin.Packages.category.categoryForm');
+});
+
+Route::get('/categoryView', function () {
+    return view('admin.Packages.category.categoryView');
+});
+
+
+Route::get('/activityList', function () {
+    return view('admin.Activity.activityList');
+});
+
+Route::get('/activityForm', function () {
+    return view('admin.Activity.activityForm');
+});
+
+Route::get('/activityView', function () {
+    return view('admin.Activity.activityView');
+});
+
+
+Route::get('/billingList', function () {
+    return view('admin.Billing.billingList');
+});
+
+Route::get('/billingForm', function () {
+    return view('admin.Billing.billingForm');
+});
+
+Route::get('/billingView', function () {
+    return view('admin.Billing.billingView');
+});
+
+
+Route::get('/subscriptionList', function () {
+    return view('admin.Subscription.subscriptionList');
+});
+
+Route::get('/subscriptionView', function () {
+    return view('admin.Subscription.subscriptionView');
+});
+
+Route::get('/subscriptionForm', function () {
+    return view('admin.Subscription.subscriptionForm');
+});
+
+
+Route::get('/ticketList', function () {
+    return view('admin.Tickets.Ticket.ticketList');
+});
+
+Route::get('/ticketView', function () {
+    return view('admin.Tickets.Ticket.ticketView');
+});
+
+Route::get('/ticketForm', function () {
+    return view('admin.Tickets.Ticket.ticketForm');
+});
+
+
+Route::get('/replyList', function () {
+    return view('admin.Tickets.TicketReply.replyList');
+});
+
+Route::get('/replyForm', function () {
+    return view('admin.Tickets.TicketReply.replyForm');
+});
+
+Route::get('/replyView', function () {
+    return view('admin.Tickets.TicketReply.replyView');
+});
+
+
+Route::get('/contactList', function () {
+    return view('admin.Contact.contactList');
+});
+
+Route::get('/contactView', function () {
+    return view('admin.Contact.contactView');
+});
+
+
+Route::get('/userList', function () {
+    return view('admin.User.userList');
+});
+
+Route::get('/userView', function () {
+    return view('admin.User.userView');
+});
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
