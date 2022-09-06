@@ -9,30 +9,31 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Title</label>
-                                    <input type="text" id="inputName" class="form-control" disabled>
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" name="title" class="form-control" disabled>
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Key</label>
-                                    <input type="number" id="inputName" class="form-control" disabled>
+                                    <label for="key">Key</label>
+                                    <input type="number" id="key" name="key" class="form-control" disabled>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class=" form-group col-md-12">
-                                    <label for="status ">Status</label>
-                                    <select type="text" class="form-control form-control-sm" id="status" disabled
-                                        name="status" required>
+                                    <label for="status" id="status" name="status">Status</label>
+                                    <select class="form-control form-control-sm" id="status" disabled name="status"
+                                        required>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
-                            <a href="{{ url('categoryList') }}"><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
+                            <a href="{{ url('categoryList') }}"><button type="submit" class="btn btn-primary float-right"
+                                    style="margin-right: 10px" value="Back">Back</button></a>
                         </div>
 
                     </div>

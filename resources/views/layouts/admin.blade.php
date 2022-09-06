@@ -19,7 +19,7 @@
 
     @include('admin.section.footer')
 
-</div>
-<!-- ./wrapper -->
-
-@include('admin.section.scripts')
+    <!-- ./wrapper -->
+    
+    @include('admin.section.scripts')
+  </div>

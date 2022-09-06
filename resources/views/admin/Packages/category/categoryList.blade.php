@@ -18,7 +18,7 @@
                         <table id="searching" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 10px">P.N.</th>
+                                    <th style="width: 10px">S.N.</th>
                                     <th>Title</th>
                                     <th>Key</th>
                                     <th style="width: 90px">Status</th>

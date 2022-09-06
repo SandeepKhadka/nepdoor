@@ -1,6 +1,17 @@
 
-import './bootstrap';
+// $(function () {
+//     $("#searching")
+//     .DataTable({
+//         responsive: true,
+//         lengthChange: false,
+//         autoWidth: false,
+//     })
+//     .container()
+//     .appendTo("#searching_wrapper .col-md-6:eq(0)");
+// });
+
 import "../assets/plugins/jquery/jquery.min.js";
+import './bootstrap';
 import "../assets/dist/js/adminlte.js";
 
 import "../assets/plugins/bootstrap/js/bootstrap.bundle.min.js";
@@ -19,5 +30,9 @@ import "../assets/plugins/summernote/summernote-bs4.min.js";
 
 import "../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js";
 
-
 import "../assets/dist/js/pages/dashboard.js";
+ 
+import "../assets/plugins/datatables/jquery.dataTables.min.js";
+
+import "../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js";
+
