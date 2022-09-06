@@ -37,7 +37,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="#" class="nav-link">
+                         <a href="" class="nav-link">
                              <i class="nav-icon far fa-envelope"></i>
                              <p>
                                  Package
@@ -46,13 +46,13 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="../mailbox/mailbox.html" class="nav-link">
+                                 <a href="{{url('packageList')}}" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Packages</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="../mailbox/compose.html" class="nav-link">
+                                 <a href="{{url('categoryList')}}" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Package Category</p>
                                  </a>
@@ -61,7 +61,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="../widgets.html" class="nav-link">
+                         <a href="{{url('subscriptionList')}}" class="nav-link">
                              <i class="nav-icon fas fa-th"></i>
                              <p>
                                  Subscriptions
@@ -96,7 +96,7 @@
                          </a>
                      </li> --}}
                      <li class="nav-item">
-                         <a href="../kanban.html" class="nav-link">
+                         <a href="{{url('activityList')}}" class="nav-link">
                              <i class="nav-icon fas fa-columns"></i>
                              <p>
                                  Activity
@@ -105,7 +105,7 @@
                      </li>
                      
                      <li class="nav-item">
-                         <a href="assets/iframe.html" class="nav-link">
+                         <a href="{{url('billingList')}}" class="nav-link">
                              <i class="nav-icon fas fa-ellipsis-h"></i>
                              <p>Billings</p>
                          </a>
@@ -120,13 +120,13 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="../mailbox/mailbox.html" class="nav-link">
+                                 <a href="{{url('ticketList')}}" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Tickets</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="../mailbox/compose.html" class="nav-link">
+                                 <a href="{{url('replyList')}}" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Tickets Reply</p>
                                  </a>
@@ -135,7 +135,7 @@
                      </li>
                      
                      <li class="nav-item">
-                      <a href="../kanban.html" class="nav-link">
+                      <a href="{{ url('userList') }}" class="nav-link">
                           <i class="nav-icon fas fa-users"></i>
                           <p>
                               Users
