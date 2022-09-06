@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -157,12 +158,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 
+    Route::resource('package',PackageController::class);
+
 });
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'customer'])->name('customer');
 
 });
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
