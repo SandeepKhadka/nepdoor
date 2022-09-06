@@ -25,8 +25,6 @@
              <nav class="mt-2">
                  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                      data-accordion="false">
-                     <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
                      <li class="nav-item">
                          <a href="#" class="nav-link">
                              <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -37,7 +35,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="" class="nav-link">
+                         <a href="#" class="nav-link">
                              <i class="nav-icon far fa-envelope"></i>
                              <p>
                                  Package
@@ -46,13 +44,13 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="{{url('packageList')}}" class="nav-link">
+                                 <a href="../mailbox/mailbox.html" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Packages</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="{{url('categoryList')}}" class="nav-link">
+                                 <a href="../mailbox/compose.html" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Package Category</p>
                                  </a>
@@ -61,51 +59,26 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="{{url('subscriptionList')}}" class="nav-link">
+                         <a href="../widgets.html" class="nav-link">
                              <i class="nav-icon fas fa-th"></i>
                              <p>
                                  Subscriptions
                              </p>
                          </a>
                      </li>
-                     {{-- <li class="nav-item">
-                         <a href="../widgets.html" class="nav-link">
-                             <i class="nav-icon fas fa-th"></i>
-                             <p>
-                                 SEO
-                             </p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="#" class="nav-link">
-                             <i class="nav-icon fas fa-chart-pie"></i>
-                             <p>
-                                 Training
-                             </p>
-                         </a>
-                     </li> --}}
-
 
                      <li class="nav-header">System</li>
-                     {{-- <li class="nav-item">
-                         <a href="../gallery.html" class="nav-link">
-                             <i class="nav-icon far fa-image"></i>
-                             <p>
-                                 Projects
-                             </p>
-                         </a>
-                     </li> --}}
                      <li class="nav-item">
-                         <a href="{{url('activityList')}}" class="nav-link">
+                         <a href="../kanban.html" class="nav-link">
                              <i class="nav-icon fas fa-columns"></i>
                              <p>
                                  Activity
                              </p>
                          </a>
                      </li>
-                     
+
                      <li class="nav-item">
-                         <a href="{{url('billingList')}}" class="nav-link">
+                         <a href="assets/iframe.html" class="nav-link">
                              <i class="nav-icon fas fa-ellipsis-h"></i>
                              <p>Billings</p>
                          </a>
@@ -120,28 +93,28 @@
                          </a>
                          <ul class="nav nav-treeview">
                              <li class="nav-item">
-                                 <a href="{{url('ticketList')}}" class="nav-link">
+                                 <a href="../mailbox/mailbox.html" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Tickets</p>
                                  </a>
                              </li>
                              <li class="nav-item">
-                                 <a href="{{url('replyList')}}" class="nav-link">
+                                 <a href="../mailbox/compose.html" class="nav-link">
                                      <i class="far fa-circle nav-icon"></i>
                                      <p>Tickets Reply</p>
                                  </a>
                              </li>
                          </ul>
                      </li>
-                     
+
                      <li class="nav-item">
-                      <a href="{{ url('userList') }}" class="nav-link">
-                          <i class="nav-icon fas fa-users"></i>
-                          <p>
-                              Users
-                          </p>
-                      </a>
-                  </li>
+                         <a href="../kanban.html" class="nav-link">
+                             <i class="nav-icon fas fa-users"></i>
+                             <p>
+                                 Users
+                             </p>
+                         </a>
+                     </li>
                      <li class="nav-item">
                          <a href="../kanban.html" class="nav-link">
                              <i class="nav-icon fas fa-columns"></i>
@@ -150,32 +123,9 @@
                              </p>
                          </a>
                      </li>
-                     
-                  
-                     {{-- <li class="nav-header">Other</li>
-                     <li class="nav-item">
-                         <a href="assets/iframe.html" class="nav-link">
-                             <i class="nav-icon fas fa-ellipsis-h"></i>
-                             <p>Refer & Earn</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="assets/iframe.html" class="nav-link">
-                             <i class="nav-icon fas fa-ellipsis-h"></i>
-                             <p>Regional Partners</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="assets/iframe.html" class="nav-link">
-                             <i class="nav-icon fas fa-ellipsis-h"></i>
-                             <p>Affiliate Marketers</p>
-                         </a>
-                     </li>
-                 </ul>
-             </nav> --}}
-             <!-- /.sidebar-menu -->
+             </nav>
+             <!-- sidebar -->
          </div>
-         <!-- /.sidebar -->
+         <!-- sidebar -->
      </div>
-     <!-- /.sidebar -->
  </aside>
