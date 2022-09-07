@@ -12,14 +12,15 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper container">
-        @yield('main-content')
+      @yield('main-content')
     </div>
-
+    
     <!-- /.content-wrapper -->
 
     @include('admin.section.footer')
 
     <!-- ./wrapper -->
+    
     
     @include('admin.section.scripts')
   </div>

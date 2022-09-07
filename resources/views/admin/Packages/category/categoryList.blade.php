@@ -6,9 +6,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="margin-top: 8px">category</h3>
-                        <a href="{{ url('categoryForm') }}" class="btn btn-primary" style="margin-left:949px;";>
-                            Add
+                        <h3 class="card-title" style="margin-top: 8px; font-weight:bold">Category</h3>
+                        <a href="{{ url('categoryForm') }}" class="btn btn-success float-right" style="margin-left:0px"><i
+                                class="fa fa-plus" style="font-size: 12px">Add Category</i>
+
                         </a>
                         {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}
                     </div>
@@ -22,25 +23,37 @@
                                     <th>Title</th>
                                     <th>Key</th>
                                     <th style="width: 90px">Status</th>
-                                    <th style="width: 150px">Action</th>
+                                    <th style="width: 190px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
+                                @if (isset($packageCategories_data))
+                                    @foreach ($packageCategories_data as $packageCategories)
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{ $packageCategories->title }}</td>
 
-                                    <td><span class="badge bg-danger">55%</span></td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td><a href="#"><button class="btn btn-danger" style="margin-right: 10px"><i
-                                                    class="fa fa-trash"></button></i></a>
-                                        <a href="{{ url('cstegoryView') }}"><button class="btn btn-primary"
-                                                style="margin-right: 10px"><i class="fa fa-eye"></button></i></a>
-                                        <a href="{{ ('categoryForm') }}"><button class="btn btn-success"style="margin-right: 10px"><i
-                                                    class="fa fa-pencil"></button></i></a>
-                                    </td>
-                                </tr>
-
+                                            <td>{{ $packageCategories->key }}</td>
+                                            <td><span
+                                                    class="{{ @$packageCategories->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $packageCategories->status }}</span>
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('category.show', $packageCategories->id) }}"><button
+                                                        class="btn btn-primary"><i class="fa fa-eye"></button></i></a>
+                                                <a href="{{ route('category.edit', $packageCategories->id) }}"><button
+                                                        class="btn btn-success"><i class="fa fa-pencil"></button></i></a>
+                                                <form action="{{ route('category.destroy', $packageCategories->id) }}"
+                                                    method="post" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger"
+                                                        onclick="return confirm('Do you want to delete this package?');"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
