@@ -51,7 +51,7 @@ class BillingController extends Controller
         $data = $request->except(['_token', 'voucher']);
         if ($request->has('voucher')) {
             $voucher = $request->voucher;
-            $file_name = uploadvoucher($voucher, 'billing', '125x125');
+            $file_name = uploadImage($voucher, 'billing', '125x125');
             if ($file_name) {
                 $data['voucher'] = $file_name;
             }
