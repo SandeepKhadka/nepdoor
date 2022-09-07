@@ -69,7 +69,7 @@
 
                      <li class="nav-header">System</li>
                      <li class="nav-item">
-                         <a href="../kanban.html" class="nav-link">
+                         <a href="{{ route('activity.index') }}" class="nav-link">
                              <i class="nav-icon fas fa-columns"></i>
                              <p>
                                  Activity
@@ -108,7 +108,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="../kanban.html" class="nav-link">
+                         <a href="{{ route('user.index') }}" class="nav-link">
                              <i class="nav-icon fas fa-users"></i>
                              <p>
                                  Users
@@ -116,7 +116,7 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="../kanban.html" class="nav-link">
+                         <a href="{{ route('helpCenter.index') }}" class="nav-link">
                              <i class="nav-icon fas fa-columns"></i>
                              <p>
                                  Help Center

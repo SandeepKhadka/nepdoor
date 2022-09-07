@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HelpCenterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,19 +45,6 @@ Route::get('/basic', function () {
     return view('basic');
 });
 
-Route::get('/packageList', function () {
-    return view('admin.Packages.package.packageList');
-});
-
-Route::get('/packageForm', function () {
-    return view('admin.Packages.package.packageForm');
-});
-
-Route::get('/packageView', function () {
-    return view('admin.Packages.package.packageView');
-});
-
-
 Route::get('/categoryList', function () {
     return view('admin.Packages.category.categoryList');
 });
@@ -66,20 +56,6 @@ Route::get('/categoryForm', function () {
 Route::get('/categoryView', function () {
     return view('admin.Packages.category.categoryView');
 });
-
-
-Route::get('/activityList', function () {
-    return view('admin.Activity.activityList');
-});
-
-Route::get('/activityForm', function () {
-    return view('admin.Activity.activityForm');
-});
-
-Route::get('/activityView', function () {
-    return view('admin.Activity.activityView');
-});
-
 
 Route::get('/billingList', function () {
     return view('admin.Billing.billingList');
@@ -159,10 +135,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 
     Route::resource('package',PackageController::class);
+    Route::resource('activity',ActivityController::class);
+    Route::resource('user',UserController::class);
+    Route::resource('helpCenter',HelpCenterController::class);
 
 });
 
 Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'customer'])->name('customer');
+    
 
 });

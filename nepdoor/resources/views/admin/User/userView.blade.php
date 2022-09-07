@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success float-right" value="Submit">Submit</button>
-                            <a href="{{ url('userList') }}"><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
+                            <a href=""><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
                         
                         </div>
                     </div>

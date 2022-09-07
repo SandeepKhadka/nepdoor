@@ -41,7 +41,7 @@
                                     <td><span class="badge bg-success">Active</span></td>
                                     <td><a href="#"><button class="btn btn-danger" style="margin-right: 10px"><i
                                                     class="fa fa-trash"></button></i></a>
-                                        <a href="{{ url('userView') }}"><button class="btn btn-primary"
+                                        <a href=""><button class="btn btn-primary"
                                                 style="margin-right: 10px"><i class="fa fa-eye"></button></i></a>
                                         {{-- <a href="#"><button class="btn btn-success"style="margin-right: 10px"><i
                                                     class="fa fa-pencil"></button></i></a> --}}
