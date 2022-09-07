@@ -42,7 +42,7 @@
                                                 {{-- {{($package->category_info['title']) == null ? '' : $package->category_info['title']}} --}}
                                             </td>
                                             <td>${{ $package->price }}</td>
-                                            <td>{{ ucfirst($package->status) }}</td>
+                                            <td><span class="badge bg-success">{{ ucfirst($package->status) }}</span></td>
                                             <td>
                                                 <a href="{{ route('package.show', $package->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye">

@@ -1,6 +1,5 @@
 
-    @yield('scripts')
+        @yield('scripts')
+    </body>
 
-</body>
-
-</html>
+    </html>

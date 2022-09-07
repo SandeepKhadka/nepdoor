@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PackageCategoryController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Route;
 
@@ -159,6 +160,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
 
     Route::resource('package',PackageController::class);
+    Route::resource('category',PackageCategoryController::class);
 
 });
 
