@@ -16,7 +16,7 @@ class Package extends Model
             'name' => 'required|string',
             'price' => 'required|integer',
             'cat_id' => 'nullable|exists:package_categories,id',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }
