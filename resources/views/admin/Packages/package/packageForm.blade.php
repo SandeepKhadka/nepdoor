@@ -4,12 +4,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Package Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Package {{ isset($package_data) ? 'Update' : 'Add' }}</small></h4>
                     <div class="card">
                         <div class="card-body">
+                            @if ($errors->any())
+                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                            @endif
                             @if (isset($package_data))
-                                <form action="{{ route('package.update', @$category_data->id) }}" method="post"
-                                    class="form" enctype="multipart/form-data">
+                                <form action="{{ route('package.update', @$package_data->id) }}" method="post" class="form"
+                                    enctype="multipart/form-data">
                                     @method('put')
                                     @csrf
                                 @else
@@ -20,14 +23,21 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" class="form-control" required>
+                                    <input type="text" id="name" name="name" value="{{ @$package_data->name }}"
+                                        class="form-control" required>
+                                    @error('name')
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="price">Price</label>
-                                    <input type="number" id="price" name="price" class="form-control" required>
+                                    <input type="number" id="price" name="price" value="{{ @$package_data->price }}"
+                                        class="form-control" required>
+                                    @error('price')
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -38,7 +48,7 @@
                                             @if (isset($category_data))
                                                 @foreach (@$category_data as $category => $data)
                                                     <option value="{{ @$category != null ? @$category : '' }}"
-                                                        {{ @$gallery_data->cat_id == $category ? 'selected' : '' }}>
+                                                        {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
                                                 @error('cat_id')
@@ -46,20 +56,29 @@
                                                 @enderror
                                             @endif
                                         </select>
+                                        @error('cat_id')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class=" form-group col-md-12">
-                                    <label for="status ">Status</label>
-                                    <select type="text" class="form-control form-control-sm" id="status"
-                                        name="status" required>
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
+                            @if (isset($package_data))
+                                <div class="row">
+                                    <div class=" form-group col-md-12">
+                                        <label for="status ">Status</label>
+                                        <select name="status" id="status" class="form-control form-control-sm">
+                                            <option {{ @$package_data->status == 'Active' ? 'selected' : '' }}>Active
+                                            </option>
+                                            <option {{ @$package_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                            </option>
+                                        </select>
+                                        @error('status')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
                             <a href="{{ route('package.index') }}" class="btn btn-primary float-right"
                                 style="margin-right: 10px" value="Back">Back
