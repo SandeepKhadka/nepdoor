@@ -16,7 +16,7 @@ class Activity extends Model
             'title' => 'required|string',
             'content' => 'nullable|string',
             'user_id' => 'nullable|exists:users,id',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }

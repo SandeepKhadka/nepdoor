@@ -6,10 +6,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="margin-top: 8px; font-weight:bold;">Activity</h3>
-                        <a href="{{ route('activity.create') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
-                                class="fa fa-plus" style="font-size: 12px">
-                                Add Activity
+                        <h3 class="card-title" style="margin-top: 8px; font-weight:bold;">Help Center</h3>
+                        <a href="{{ route('helpCenter.create') }}" class="btn btn-success float-right"
+                            style="margin-bottom: 0px"><i class="fa fa-plus" style="font-size: 12px;">
+                                Add Help Post
                             </i>
                         </a>
                         {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}
@@ -21,37 +21,37 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
-                                    <th style="width: 90px">User</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
+                                    <th >Title</th>
+                                    <th>Link</th>
+                                    <th style="width: 90px">Order ID</th>
                                     <th style="width: 90px">Status</th>
                                     <th style="width: 190px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (isset($activity_data))
-                                    @foreach ($activity_data as $activity)
+                                @if (isset($helpCenter_data))
+                                    @foreach ($helpCenter_data as $helpCenter)
                                         <tr>
                                             <td>1</td>
-                                            <td>{{ $activity->user_id }}</td>
-                                            <td>{{ $activity->title }}</td>
-                                            <td>{{ $activity->content }}</td>
-                                            <td><span class="{{@$activity->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $activity->status }}</span></td>
+                                            <td>{{ $helpCenter->title }}</td>
+                                            <td>{{ $helpCenter->link }}</td>
+                                            <td>{{ $helpCenter->order_id }}</td>
+                                            <td><span class="{{@$helpCenter->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $helpCenter->status }}</span></td>
                                             <td>
-                                                <a href="{{ route('activity.show', $activity->id) }}"
+                                                <a href="{{ route('helpCenter.show', $helpCenter->id) }}"
                                                     class="btn btn-primary">
                                                     <i class="fa fa-eye"></button>
 
                                                     </i>
                                                 </a>
-                                                <a href="{{ route('activity.edit', $activity->id) }}"
+                                                <a href="{{ route('helpCenter.edit', $helpCenter->id) }}"
                                                     class="btn btn-success">
                                                     <i class="fa fa-pen">
 
                                                     </i>
                                                 </a>
-                                                <form action="{{ route('activity.destroy', $activity->id) }}" method="post"
-                                                    class="d-inline">
+                                                <form action="{{ route('helpCenter.destroy', $helpCenter->id) }}"
+                                                    method="post" class="d-inline">
                                                     @method('delete')
                                                     @csrf
                                                     <button class="btn btn-danger"
