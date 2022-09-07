@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight: bold">Packages</h3>
-                        <a href="{{ url('packageForm') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
+                        <a href="{{ route('package.create') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
                                 class="fa fa-plus" style="font-size: 12px">
                                 Add Package
                             </i>
@@ -42,7 +42,7 @@
                                                 {{-- {{($package->category_info['title']) == null ? '' : $package->category_info['title']}} --}}
                                             </td>
                                             <td>${{ $package->price }}</td>
-                                            <td><span class="badge bg-success">{{ ucfirst($package->status) }}</span></td>
+                                            <td><span class="{{ @$package->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $package->status }}</span></td>
                                             <td>
                                                 <a href="{{ route('package.show', $package->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye">

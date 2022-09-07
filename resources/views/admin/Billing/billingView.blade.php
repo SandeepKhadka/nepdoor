@@ -9,38 +9,46 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Name</label>
-                                    <input type="text" id="inputName" class="form-control" disabled>
+                                    <label for="amount">Amount</label>
+                                    <input type="number" id="amount" name="amount" class="form-control" value="{{ @$billing_data->amount }}" disabled>
                                 </div>
-
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputName">Price</label>
-                                    <input type="number" id="inputName" class="form-control" disabled>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="inputName">Category ID</label>
-                                    <input type="number" id="inputName" class="form-control" disabled>
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-3" for="voucher">Voucher:</label>
+                                    <div class="col-md-4">
+                                        <img src={{ asset('uploads/billing/Thumb-' . @$billing_data->voucher) }} alt=""
+                                            class="img img-fluid img-responsive" style="max-width: 10rem">
+                                    </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class=" form-group col-md-12">
+                                    <label for="payment_status ">Payment status</label>
+                                    <select name="payment_status" id="payment_status" class="form-control form-control-sm" disabled>
+                                        <option {{ @$billing_data->payment_status == 'Paid' ? 'selected' : '' }}>Paid
+                                        </option>
+                                        <option {{ @$billing_data->payment_status == 'Unpaid' ? 'selected' : '' }}>Unpaid
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class=" form-group col-md-12">
                                     <label for="status ">Status</label>
-                                    <select type="text" class="form-control form-control-sm" id="status" disabled
-                                        name="status" required>
-                                        <option>Active</option>
-                                        <option>Inactive</option>
+                                    <select name="status" id="status" class="form-control form-control-sm" disabled>
+                                        <option {{ @$billing_data->status == 'Active' ? 'selected' : '' }}>Active</option>
+                                        <option {{ @$billing_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
-                            <a href="{{ url('billingList') }}"><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
+                            <a href="{{ route('billing.index') }}" class="btn btn-primary float-right"
+                                style="margin-right: 10px" value="Back">Back
+                            </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

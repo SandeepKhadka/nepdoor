@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight:bold">Category</h3>
-                        <a href="{{ url('categoryForm') }}" class="btn btn-success float-right" style="margin-left:0px"><i
+                        <a href="{{ route('category.create') }}" class="btn btn-success float-right" style="margin-left:0px"><i
                                 class="fa fa-plus" style="font-size: 12px">Add Category</i>
 
                         </a>
