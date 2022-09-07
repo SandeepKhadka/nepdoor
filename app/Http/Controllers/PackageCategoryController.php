@@ -34,7 +34,7 @@ class PackageCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.packages.category.categoryForm');
     }
 
     /**

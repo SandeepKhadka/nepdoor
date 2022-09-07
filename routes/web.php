@@ -43,30 +43,6 @@ Route::get('/basic', function () {
     return view('basic');
 });
 
-Route::get('/packageList', function () {
-    return view('admin.Packages.package.packageList');
-});
-
-Route::get('/packageForm', function () {
-    return view('admin.Packages.package.packageForm');
-});
-
-Route::get('/packageView', function () {
-    return view('admin.Packages.package.packageView');
-});
-
-
-Route::get('/categoryList', function () {
-    return view('admin.Packages.category.categoryList');
-});
-
-Route::get('/categoryForm', function () {
-    return view('admin.Packages.category.categoryForm');
-});
-
-Route::get('/categoryView', function () {
-    return view('admin.Packages.category.categoryView');
-});
 
 
 Route::get('/activityList', function () {
