@@ -30,9 +30,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($activity_data))
-                                    @foreach ($activity_data as $activity)
+                                    @foreach ($activity_data as $activities => $activity)
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $activities + 1 }}</td>
                                             <td>{{ $activity->user_id }}</td>
                                             <td>{{ $activity->title }}</td>
                                             <td>{{ $activity->content }}</td>

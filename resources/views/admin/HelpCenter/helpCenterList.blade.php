@@ -30,9 +30,10 @@
                             </thead>
                             <tbody>
                                 @if (isset($helpCenter_data))
-                                    @foreach ($helpCenter_data as $helpCenter)
+                                    @foreach ($helpCenter_data as $helpCenters => $helpCenter)
+                                    {{-- {{ dd($helpCenter) }} --}}
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $helpCenters + 1 }}</td>
                                             <td>{{ $helpCenter->title }}</td>
                                             <td>{{ $helpCenter->link }}</td>
                                             <td>{{ $helpCenter->order_id }}</td>
