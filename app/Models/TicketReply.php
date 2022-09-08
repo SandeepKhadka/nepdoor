@@ -16,7 +16,7 @@ class TicketReply extends Model
             'title' => 'required|string',
             'message' => 'required|string',
             'ticket_id' => 'nullable|exists:tickets,id',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }

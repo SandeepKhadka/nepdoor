@@ -18,7 +18,7 @@ class Contact extends Model
             'phone' => 'required|numeric|min:10',
             'subject' => 'required|string',
             'message' => 'required|string',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }

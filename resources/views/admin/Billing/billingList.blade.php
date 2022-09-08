@@ -29,6 +29,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @if (isset($billing_data))
                                     @foreach ($billing_data as $billing)
                                         <tr>
@@ -67,6 +68,7 @@
                                         </tr>
                                     @endforeach
                                 @endif
+
                             </tbody>
                         </table>
                     </div>

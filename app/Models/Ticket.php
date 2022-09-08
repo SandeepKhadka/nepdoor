@@ -19,7 +19,7 @@ class Ticket extends Model
             'subs_id' => 'nullable|exists:users,id',
             'ticket_status' => 'required|in:Opened,Closed',
             'priority' => 'required|in:Normal,Urgent',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }
