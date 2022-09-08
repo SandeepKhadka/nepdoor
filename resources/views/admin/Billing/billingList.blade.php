@@ -29,17 +29,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    @if (isset($billing_data))
-                                        @foreach ($billing_data as $billing)
+                                @if (isset($billing_data))
+                                    @foreach ($billing_data as $billing)
+                                        <tr>
                                             <td>1.</td>
                                             <td>{{ $billing->amount }}</td>
                                             <td>
                                                 <img src="{{ asset('uploads/billing/Thumb-' . $billing->voucher) }}"
                                                     alt="" class="img img-responsive">
                                             </td>
-                                            <td><span class="{{ @$billing->payment_status == 'Paid' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $billing->payment_status }}</span></td>
-                                            <td><span class="{{ @$billing->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $billing->status }}</span></td>
+                                            <td><span
+                                                    class="{{ @$billing->payment_status == 'Paid' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $billing->payment_status }}</span>
+                                            </td>
+                                            <td><span
+                                                    class="{{ @$billing->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $billing->status }}</span>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('billing.show', $billing->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye">
@@ -60,9 +64,9 @@
                                                             class="fa fa-trash"></i></button>
                                                 </form>
                                             </td>
-                                        @endforeach
-                                    @endif
-                                </tr>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

@@ -21,7 +21,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="user_id">User</label>
                                     <input type="text" id="user_id" name="user_id" class="form-control"
-                                        value="{{ @$activity_data->user_id }}"required>
+                                        value="{{ @$activity_data->user_id }}" required>
                                     @error('user_id')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror
