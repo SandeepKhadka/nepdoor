@@ -9,7 +9,27 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','package_id', 'billing_id', 'message','status', 'start_date', 'end_date'];
+    protected $fillable = [
+        'user_id',
+        'package_id',
+        'billing_id',
+        'message',
+        'status', 
+        'start_date',
+        'end_date'
+    ];
+
+    public function user_info(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function package_info(){
+        return $this->hasOne(Package::class, 'id', 'package_id');
+    }
+
+    public function billing_info(){
+        return $this->hasOne(Billing::class, 'id', 'billing_id');
+    }
 
     public function getRules(){
         return [
@@ -17,7 +37,7 @@ class Subscription extends Model
             'user_id' => 'nullable|exists:users,id',
             'package_id' => 'nullable|exists:packages,id',
             'billing_id' => 'nullable|exists:billings,id',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }

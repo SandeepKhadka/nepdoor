@@ -67,6 +67,10 @@
                                         </tr>
                                     @endforeach
                                 @endif
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0521dba75886ef161cf0aa2577433a5abc22de82
                             </tbody>
                         </table>
                     </div>

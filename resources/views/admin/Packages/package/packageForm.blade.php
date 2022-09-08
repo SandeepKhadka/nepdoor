@@ -8,9 +8,9 @@
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Package {{ isset($package_data) ? 'Update' : 'Add' }}</small></h4>
                     <div class="card">
                         <div class="card-body">
-                            @if ($errors->any())
+                            {{-- @if ($errors->any())
                                 {{ implode('', $errors->all('<div>:message</div>')) }}
-                            @endif
+                            @endif --}}
                             @if (isset($package_data))
                                 <form action="{{ route('package.update', @$package_data->id) }}" method="post" class="form"
                                     enctype="multipart/form-data">

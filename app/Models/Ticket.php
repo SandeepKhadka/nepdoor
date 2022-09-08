@@ -18,7 +18,6 @@ class Ticket extends Model
             'message' => 'required|string',
             'subs_id' => 'nullable|exists:users,id',
             'priority' => 'required|in:Normal,Urgent',
-
         ];
     }
 }

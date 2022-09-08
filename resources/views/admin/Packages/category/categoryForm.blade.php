@@ -4,8 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Category
-                        {{ isset($packageCategories_data) ? 'Update' : 'Add' }} </small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Category {{ isset($packageCategories_data) ? 'Update' : 'Add' }} </small></h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($packageCategories_data))
@@ -23,8 +22,8 @@
                                 <div class="form-group col-md-12">
                                     <label for="title">Title</label>
                                     <input type="text" id="title" name="title" class="form-control"
-                                        value="{{ @$packageCategories_data->title }}">
-                                    @error('title')
+                                        value="{{ @$packageCategories_data->title }}" required>
+                                        @error('title')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -35,7 +34,7 @@
                                     <label for="key">Key</label>
                                     <input type="text" id="key" name="key" class="form-control"
                                         value="{{ @$packageCategories_data->key }}">
-                                    @error('key')
+                                        @error('key')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -53,8 +52,8 @@
                                                 Inactive</option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
-                                        @enderror
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                     </div>
                                 </div>
                             @endif
