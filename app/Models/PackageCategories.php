@@ -19,7 +19,7 @@ class PackageCategories extends Model
         $rules = [
             'title' => 'required|string',
             // 'key'=> 'required|string',
-            'status' => 'required|in:Active,Inactive',
+            // 'status' => 'required|in:Active,Inactive',
         ];
 
         return $rules;

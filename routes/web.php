@@ -5,6 +5,7 @@ use App\Http\Controllers\PackageCategoryController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\HelpCenterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +88,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('category',PackageCategoryController::class);
     Route::resource('activity',ActivityController::class);
     Route::resource('helpCenter',HelpCenterController::class);
+    Route::resource('user',UserController::class);
 
 });
 
