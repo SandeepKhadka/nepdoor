@@ -6,51 +6,64 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="margin-top: 8px">Ticket Form</h3>
-                        <a href="{{ url('ticketForm') }}" class="btn btn-primary" style="margin-left:930px;";>
-                            Add
+                        <h3 class="card-title" style="margin-top: 8px; font-weight: bold;">Ticket Form</h3>
+                        <a href="{{ route('ticket.create') }}" class="btn btn-success float-right"
+                            style="margin-bottom: 0px"><i class="fa fa-plus" style="font-size: 12px">
+                                Add Activity
+                            </i>
                         </a>
                         {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}
                     </div>
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id= "searching" class="table table-bordered">
+                        <table id="searching" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 10px">P.N.</th>
-                                    <th>Token(id)</th>
-                                    <th>Subscription(id)</th>
+                                    <th style="width: 10px">S.N.</th>
+                                    <th>Token</th>
+                                    <th>Subscription ID</th>
                                     <th>Title</th>
                                     <th>Priority</th>
                                     <th>Ticket Status</th>
                                     <th style="width: 90px">Status</th>
-                                    <th style="width: 150px">Action</th>
+                                    <th style="width: 190px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>
-                                        <div class="progress progress-xs">
-                                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td><span class="badge bg-danger">55%</span></td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td><a href="#"><button class="btn btn-danger" style="margin-right: 10px"><i
-                                                    class="fa fa-trash"></button></i></a>
-                                        <a href="{{ url('ticketView') }}"><button class="btn btn-primary" style="margin-right: 10px"><i
-                                                    class="fa fa-eye"></button></i></a>
-                                        <a href="{{ url('ticketForm') }}"><button class="btn btn-success"style="margin-right: 10px"><i
-                                                    class="fa fa-pencil"></button></i></a>
-                                    </td>
-                                </tr>
+                                @if (isset($ticket_data))
+                                    @foreach ($ticket_data as $ticket)
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>{{ $ticket->token_id }}</td>
+                                            <td>{{ $ticket->subs_id }}</td>
+                                            <td>{{ $ticket->title }}</td>
+                                            <td>{{ $ticket->priority }}</td>
+                                            <td><span class="{{@$ticket->ticket_status == 'Opened' ? 'badge bg-success': 'badge bg-danger'}}">{{ $ticket->ticket_status }}</td>
+                                            <td><span class="{{@$ticket->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $ticket->status }}</td>
+                                            <td>
+                                                <a href="{{ route('ticket.show', $ticket->id) }}" class="btn btn-primary">
+                                                    <i class="fa fa-eye"></button>
+
+                                                    </i>
+                                                </a>
+                                                <a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-success">
+                                                    <i class="fa fa-pen">
+
+                                                    </i>
+                                                </a>
+                                                <form action="{{ route('ticket.destroy', $ticket->id) }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger"
+                                                        onclick="return confirm('Do you want to delete this ticket?');"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                             </tbody>
                         </table>

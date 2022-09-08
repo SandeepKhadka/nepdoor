@@ -17,9 +17,7 @@ class Ticket extends Model
             'token_id' => 'required|string',
             'message' => 'required|string',
             'subs_id' => 'nullable|exists:users,id',
-            'ticket_status' => 'required|in:Opened,Closed',
             'priority' => 'required|in:Normal,Urgent',
-            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }
