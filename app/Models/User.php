@@ -47,4 +47,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRules($act = 'add')
+    {
+        $rules = [
+            'full_name' => 'required|string',
+            'username' => 'required|string',
+            'phone' => 'nullable|string',
+            'address' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string',
+            'photo' => 'nullable|image|max:5120'
+            // 'role' => 'required|in:admin,customer',
+            // 'status' => 'required|in:Active,Inactive'
+        ];
+
+        if ($act == 'update') {
+            $rules['voucher'] = 'sometimes|image|max:5120';
+        }
+
+        return $rules;
+    }
 }

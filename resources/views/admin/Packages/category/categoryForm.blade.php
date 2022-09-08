@@ -7,9 +7,6 @@
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Category {{ isset($packageCategories_data) ? 'Update' : 'Add' }} </small></h4>
                     <div class="card">
                         <div class="card-body">
-                            @if ($errors->any())
-                            {{ implode('', $errors->all('<div>:message</div>')) }}
-                        @endif
                             @if (isset($packageCategories_data))
                                 <form action="{{ route('category.update', @$packageCategories_data->id) }}" method="post"
                                     class="form" enctype="multipart/form-data">
