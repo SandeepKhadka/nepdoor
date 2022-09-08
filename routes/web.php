@@ -3,6 +3,7 @@
 use App\Http\Controllers\PackageCategoryController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,6 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('package',PackageController::class);
     Route::resource('billing',BillingController::class);
     Route::resource('category',PackageCategoryController::class);
+    Route::resource('subscription',SubscriptionController::class);
 
 });
 

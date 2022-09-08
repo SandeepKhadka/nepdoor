@@ -12,7 +12,7 @@ class PackageCategoryController extends Controller
     public function __construct(PackageCategories $packageCategories)
     {
         // $this->middleware('auth');
-        $this->packageCategories = $packageCategories;   
+        $this->packageCategories = $packageCategories;  
     }
 
     /**

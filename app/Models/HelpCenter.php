@@ -16,7 +16,7 @@ class HelpCenter extends Model
             'title' => 'required|string',
             'link' => 'required|string',
             'order_id' => 'required|integer',
-            'status' => 'required|in:Active,Inactive'
+            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }
