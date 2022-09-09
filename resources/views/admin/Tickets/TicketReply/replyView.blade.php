@@ -4,20 +4,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply View
+                        </small></h4>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Ticket ID</label>
-                                    <input type="text" id="inputName" class="form-control" disabled>
+                                    <label for="ticket_id">Ticket ID</label>
+                                    <input type="text" id="ticket_id" name="ticket_id" disabled class="form-control"
+                                        value="{{ @$reply_data->ticket_id }}">
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Message</label>
-                                    <textarea type="number" id="inputName" class="form-control" rows="5" disabled>
+                                    <label for="message">Message</label>
+                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none;" rows="5"
+                                        disabled>{{ @$reply_data->message }}
                                     </textarea>
                                 </div>
                             </div>
@@ -25,18 +28,18 @@
                             <div class="row">
                                 <div class=" form-group col-md-12">
                                     <label for="status ">Status</label>
-                                    <select type="text" class="form-control form-control-sm" id="status" disabled
-                                        name="status" ; required>
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
+                                    <input type="text" id="status" name="status" disabled class="form-control"
+                                        value="{{ @$reply_data->status }}">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success float-right" value="Submit">Submit</button>
-                            <a href="{{ url('replyList') }}"><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
-                        
+                            <a href="{{ route('reply.index') }}" class="btn btn-primary float-right"
+                                style="margin-right: 10px" value="Back">Back
+                            </a>
+                            </form>
+                            </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

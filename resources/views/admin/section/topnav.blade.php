@@ -14,7 +14,7 @@
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{url('contact')}}" class="nav-link">Contact</a>
+            <a href="{{route('contact.index')}}" class="nav-link">Contact</a>
         </li>
     </ul>
 

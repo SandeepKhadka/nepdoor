@@ -4,36 +4,66 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply
+                        {{ isset($reply_data) ? 'Update' : 'Add' }}</small></h4>
                     <div class="card">
                         <div class="card-body">
+                            @if (isset($reply_data))
+                                <form action="{{ route('reply.update', @$reply_data->id) }}" method="post" class="form"
+                                    enctype="multipart/form-data">
+                                    @method('put')
+                                    @csrf
+                                @else
+                                    <form action="{{ route('reply.store') }}" method="post" class="form"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                            @endif
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Ticket ID</label>
-                                    <input type="text" id="inputName" class="form-control">
+                                    <label for="ticket_id">Ticket ID</label>
+                                    <input type="text" id="ticket_id" name="ticket_id" class="form-control"
+                                        value="{{ @$reply_data->ticket_id }}">
+                                    @error('ticket_id')
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label for="inputName">Message</label>
-                                    <textarea type="number" id="inputName" class="form-control" rows="5">
+                                    <label for="message">Message</label>
+                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none;" rows="5"
+                                        required>{{ @$reply_data->message }}
                                     </textarea>
+                                    @error('message')
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class=" form-group col-md-12">
-                                    <label for="status ">Status</label>
-                                    <select type="text" class="form-control form-control-sm" id="status"
-                                        name="status" ; required>
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
+                            @if (isset($reply_data))
+                                <div class="row">
+                                    <div class=" form-group col-md-12">
+                                        <label for="status ">Status</label>
+                                        <select type="text" class="form-control form-control-sm" id="status"
+                                            name="status">
+                                            <option {{ @$reply_data->status == 'Active' ? 'selected' : '' }}>Active
+                                            </option>
+                                            <option {{ @$reply_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                            </option>
+                                        </select>
+                                        @error('status')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <button type="submit" class="btn btn-success float-right" value="Submit">Submit</button>
-                            <a href="{{ url('replyList') }}"><button type="submit" class="btn btn-primary float-right" style="margin-right: 10px" value="Back">Back</button></a>
+                            @endif
+                            <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
+                            <a href="{{ route('reply.index') }}" class="btn btn-primary float-right"
+                                style="margin-right: 10px" value="Back">Back
+                            </a>
+                            </form>
+                            </form>
                         </div>
                     </div>
 
