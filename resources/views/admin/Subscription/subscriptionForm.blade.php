@@ -52,7 +52,7 @@
                                             <option value="" disabled selected hidden>Select package</option>
                                             @if (isset($package_info))
                                                 @foreach (@$package_info as $package => $data)
-                                                    <option value="{{ @$package != null ? @$package : ''  }}"
+                                                    <option value="{{ @$package != null ? @$package : '' }}"
                                                         {{ @$subscription_data->package_id == $package ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
@@ -96,8 +96,7 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="message">Message</label>
-                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none"
-                                         rows="5">{{ @$subscription_data->message }}</textarea>
+                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none" rows="5">{{ @$subscription_data->message }}</textarea>
                                     @error('message')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror

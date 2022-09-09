@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TicketReply;
 use Illuminate\Http\Request;
-use App\Models\Ticket;
-class TicketController extends Controller
+
+class ReplyController extends Controller
 {
-    protected $ticket = null;
-    public function __construct(Ticket $ticket)
+    protected $reply = null;
+    public function __construct(TicketReply $reply)
     {
-       $this->ticket = $ticket;
+        // $this->middleware('auth');
+        $this->reply = $reply;
     }
     /**
      * Display a listing of the resource.
@@ -18,8 +20,8 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::orderBy('id','DESC')->get();
-        return view('admin.tickets.ticket.ticketList')->with('ticket_data',$tickets);
+        $replies = TicketReply::orderBy('id','DESC')->get();
+        return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies);
     }
 
     /**
@@ -29,7 +31,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('admin.tickets.ticket.ticketForm');
+        return view('admin.tickets.ticketReply.replyForm');
     }
 
     /**
@@ -40,12 +42,12 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = $this->ticket->getRules();
+        $rules = $this->reply->getRules();
         $request->validate($rules);
         $data = $request->all();
-        $this->ticket->fill($data);
-        $status = $this->ticket->save();
-        return redirect()->route('ticket.index');
+        $this->reply->fill($data);
+        $status = $this->reply->save();
+        return redirect()->route('reply.index');
     }
 
     /**
@@ -56,11 +58,11 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        $this->ticket= $this->ticket->find($id);
-        if (!$this->ticket) {
-            return redirect()->route('ticket.index');
+        $this->reply = $this->reply->find($id);
+        if (!$this->reply) {
+            return redirect()->route('reply.index');
         }
-        return view('admin.tickets.ticket.ticketView')->with('ticket_data', $this->ticket);
+        return view('admin.tickets.ticketReply.replyView')->with('reply_data', $this->reply);
     }
 
     /**
@@ -71,11 +73,12 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        $this->ticket = $this->ticket->find($id);
-     if (!$this->ticket) {
-            return redirect()->route('ticket.index');
+        $this->reply = $this->reply->find($id);
+        if (!$this->reply) {
+            return redirect()->route('reply.index');
         }
-        return view('admin.tickets.ticket.ticketForm')->with('ticket_data', $this->ticket);
+
+        return view('admin.tickets.ticketReply.replyForm')->with('reply_data', $this->reply);
     }
 
     /**
@@ -87,17 +90,17 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->ticket= $this->ticket->find($id);
-    if (!$this->ticket) {
+        $this->reply = $this->reply->find($id);
+        if (!$this->reply) {
 
-        return redirect()->route('ticket.index');
+            return redirect()->route('reply.index');
         }
-        $rules = $this->ticket->getRules();
+        $rules = $this->reply->getRules();
         $request->validate($rules);
         $data = $request->all();
-        $this->ticket->fill($data);
-        $status = $this->ticket->save();
-        return redirect()->route('ticket.index');
+        $this->reply->fill($data);
+        $status = $this->reply->save();
+        return redirect()->route('reply.index');
     }
 
     /**
@@ -108,8 +111,8 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        $this->ticket = $this->ticket->find($id);
-        $del = $this->ticket->delete();
-        return redirect()->route('ticket.index');
+        $this->reply = $this->reply->find($id);
+        $del = $this->reply->delete();
+        return redirect()->route('reply.index');
     }
 }

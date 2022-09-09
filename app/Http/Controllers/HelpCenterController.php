@@ -18,7 +18,7 @@ class HelpCenterController extends Controller
      */
     public function index()
     {
-        $helpCenters = HelpCenter::orderBy('id')->get();
+        $helpCenters = HelpCenter::orderBy('id','DESC')->get();
         return view('admin.helpCenter.helpCenterList')->with('helpCenter_data',$helpCenters);
     }
 

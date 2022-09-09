@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
@@ -10,8 +11,8 @@ class ActivityController extends Controller
     protected $activity = null;
     public function __construct(Activity $activity)
     {
-       // $this->middleware('auth');
-       $this->activity = $activity;
+        // $this->middleware('auth');
+        $this->activity = $activity;
     }
     /**
      * Display a listing of the resource.
@@ -20,8 +21,8 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::orderBy('id')->get();
-        return view('admin.activity.activityList')->with('activity_data',$activities);
+        $activities = Activity::orderBy('id','DESC')->get();
+        return view('admin.activity.activityList')->with('activity_data', $activities);
         // $this->package = $this->package->where('status' , 'Active')->get();
         // return view('admin.packages.package.packageList')->with('package_data' , $this->package);
     }
@@ -60,7 +61,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-     $this->activity= $this->activity->find($id);
+        $this->activity = $this->activity->find($id);
         if (!$this->activity) {
             return redirect()->route('activity.index');
         }
@@ -75,8 +76,8 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-    $this->activity= $this->activity->find($id);
-     if (!$this->activity) {
+        $this->activity = $this->activity->find($id);
+        if (!$this->activity) {
             return redirect()->route('activity.index');
         }
 
@@ -92,10 +93,10 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $this->activity= $this->activity->find($id);
-    if (!$this->activity) {
+        $this->activity = $this->activity->find($id);
+        if (!$this->activity) {
 
-        return redirect()->route('activity.index');
+            return redirect()->route('activity.index');
         }
         $rules = $this->activity->getRules();
         $request->validate($rules);
@@ -113,8 +114,8 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-     $this->activity = $this->activity->find($id);
-    $del = $this->activity->delete();
-    return redirect()->route('activity.index');
+        $this->activity = $this->activity->find($id);
+        $del = $this->activity->delete();
+        return redirect()->route('activity.index');
     }
 }

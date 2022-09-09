@@ -6,39 +6,60 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="margin-top: 8px">Reply List</h3>
-                        <a href="{{ url('replyForm') }}" class="btn btn-primary" style="margin-left:947px;";>
-                            Add
+                        <h3 class="card-title" style="margin-top: 8px; font-weight: bold">Ticket Reply</h3>
+                        <a href="{{ route('reply.create') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
+                                class="fa fa-plus" style="font-size: 12px">
+                                Add Ticket Reply
+                            </i>
                         </a>
                         {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}
                     </div>
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id= "searching" class="table table-bordered">
+                        <table id="searching" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th style="width: 10px">P.N.</th>
-                                    <th>Ticket(id)</th>
+                                    <th style="width: 10px">S.N.</th>
+                                    <th style="width: 150px">Ticket ID</th>
                                     <th>Message</th>
-                                    <th style="width: 90px">Status</th>
-                                    <th style="width: 150px">Action</th>
+                                    <th style="width: 150px">Status</th>
+                                    <th style="width: 190px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1.</td>
-                                    <td>Update software</td>
-                                    <td>{{ Str::limit('Dummy data Dummy data Dummy data Dummy data Dummy data Dummy data Dummy data', 20) }}</td>
-                                    <td><span class="badge bg-success">Active</span></td>
-                                    <td><a href="#"><button class="btn btn-danger" style="margin-right: 10px"><i
-                                                    class="fa fa-trash"></button></i></a>
-                                        <a href="{{ url('replyView') }}"><button class="btn btn-primary" style="margin-right: 10px"><i
-                                                    class="fa fa-eye"></button></i></a>
-                                        <a href="{{ url('replyForm') }}"><button class="btn btn-success"style="margin-right: 10px"><i
-                                                    class="fa fa-pencil"></button></i></a>
-                                    </td>
-                                </tr>
+                                @if (isset($reply_data))
+                                    @foreach ($reply_data as $reply)
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>{{ $reply->ticket_id }}</td>
+                                            <td>{{ Str::limit($reply->message, 30) }}</td>
+                                            <td><span
+                                                    class="{{ @$reply->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $reply->status }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('reply.show', $reply->id) }}" class="btn btn-primary">
+                                                    <i class="fa fa-eye">
+
+                                                    </i>
+                                                </a>
+                                                <a href="{{ route('reply.edit', $reply->id) }}" class="btn btn-success">
+                                                    <i class="fa fa-pen">
+
+                                                    </i>
+                                                </a>
+                                                <form action="{{ route('reply.destroy', $reply->id) }}" method="post"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="btn btn-danger"
+                                                        onclick="return confirm('Do you want to delete this reply?');"><i
+                                                            class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
 
                             </tbody>
                         </table>
