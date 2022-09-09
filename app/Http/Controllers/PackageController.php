@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Package;
 use App\Models\PackageCategories;
 use Illuminate\Http\Request;

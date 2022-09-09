@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,8 +12,8 @@ class ActivityController extends Controller
     protected $activity = null;
     public function __construct(Activity $activity)
     {
-       // $this->middleware('auth');
-       $this->activity = $activity;
+        // $this->middleware('auth');
+        $this->activity = $activity;
     }
     /**
      * Display a listing of the resource.
@@ -62,7 +63,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-     $this->activity= $this->activit->find($id);
+     $this->activity= $this->activity->find($id);
      $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
             return redirect()->route('activity.index');
@@ -100,7 +101,7 @@ class ActivityController extends Controller
     $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
     if (!$this->activity) {
 
-        return redirect()->route('activity.index');
+            return redirect()->route('activity.index');
         }
         $rules = $this->activity->getRules();
         $request->validate($rules);
@@ -118,8 +119,8 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-     $this->activity = $this->activity->find($id);
-    $del = $this->activity->delete();
-    return redirect()->route('activity.index');
+        $this->activity = $this->activity->find($id);
+        $del = $this->activity->delete();
+        return redirect()->route('activity.index');
     }
 }

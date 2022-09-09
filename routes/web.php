@@ -8,6 +8,8 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\HelpCenterController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('helpCenter',HelpCenterController::class);
     Route::resource('ticket',TicketController::class);
     Route::resource('user',UserController::class);
+    Route::resource('reply',ReplyController::class);
+    Route::resource('contact',ContactController::class);
 
 });
 
