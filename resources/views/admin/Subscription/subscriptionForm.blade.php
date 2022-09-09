@@ -34,13 +34,10 @@
                                                         {{ @$subscription_data->user_id == $user ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('user_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('user_id')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -56,13 +53,10 @@
                                                         {{ @$subscription_data->package_id == $package ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('package_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('package_id')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -80,13 +74,10 @@
                                                         {{ @$subscription_data->billing_id == $billing ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('billing_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('billing_id')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -99,7 +90,7 @@
                                     <textarea type="text" id="message" name="message" class="form-control" style="resize: none"
                                          rows="5">{{ @$subscription_data->message }}</textarea>
                                     @error('message')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -117,7 +108,7 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

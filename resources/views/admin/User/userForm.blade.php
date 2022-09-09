@@ -24,7 +24,7 @@
                                     <input type="text" id="full_name" name="full_name" class="form-control"
                                         value="{{ @$user_data->full_name }}" required>
                                     @error('full_name')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     <input type="text" id="username" name="username" class="form-control"
                                         value="{{ @$user_data->username }}" required>
                                     @error('username')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <label for="name">Password</label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        value="{{ @$user_data->username }}" required placeholder="Password">
+                                        value="{{ @$user_data->password }}" required placeholder="Password">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-lock"></span>
@@ -63,7 +63,7 @@
                                     <input type="text" id="email" name="email" class="form-control"
                                         value="{{ @$user_data->email }}" required>
                                     @error('email')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                                         </option>
                                     </select>
                                     @error('role')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -88,9 +88,9 @@
                                 <div class="form-group col-md-12">
                                     <label for="address">Address</label>
                                     <input type="text" id="address" name="address" class="form-control"
-                                        value="{{ @$user_data->address }}" required>
+                                        value="{{ @$user_data->address }}">
                                     @error('address')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -99,9 +99,9 @@
                                 <div class="form-group col-md-12">
                                     <label for="phone">Phone</label>
                                     <input type="number" id="phone" name="phone" class="form-control"
-                                        value="{{ @$user_data->phone }}" required>
+                                        value="{{ @$user_data->phone }}">
                                     @error('phone')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -110,15 +110,14 @@
                                 <div class="form-group col-md-12">
                                     <label class="col-md-3" for="photo">Profile:</label>
                                     <div class="col-md-4">
-                                        <input type="file" name="photo" id="photo"
-                                            {{ isset($user_data) ? '' : 'required' }}>
+                                        <input type="file" name="photo" id="photo">
                                     </div>
                                     <div class="col-md-4">
                                         <img src={{ asset('uploads/user/Thumb-' . @$user_data->photo) }} alt=""
                                             class="img img-fluid img-responsive" style="max-width: 10rem">
                                     </div>
                                     @error('photo')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -135,7 +134,7 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

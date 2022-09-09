@@ -49,34 +49,6 @@ Route::get('/basic', function () {
     return view('basic');
 });
 
-Route::get('/replyList', function () {
-    return view('admin.Tickets.TicketReply.replyList');
-});
-
-Route::get('/replyForm', function () {
-    return view('admin.Tickets.TicketReply.replyForm');
-});
-
-Route::get('/replyView', function () {
-    return view('admin.Tickets.TicketReply.replyView');
-});
-
-Route::get('/contactList', function () {
-    return view('admin.Contact.contactList');
-});
-
-Route::get('/contactView', function () {
-    return view('admin.Contact.contactView');
-});
-
-Route::get('/userList', function () {
-    return view('admin.User.userList');
-});
-
-Route::get('/userView', function () {
-    return view('admin.User.userView');
-});
-
 
 Auth::routes();
 

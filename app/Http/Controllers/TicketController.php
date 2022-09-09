@@ -18,7 +18,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::orderBy('id')->get();
+        $tickets = Ticket::orderBy('id' , 'DESC')->get();
         return view('admin.tickets.ticket.ticketList')->with('ticket_data',$tickets);
     }
 

@@ -27,7 +27,7 @@
                                     <input type="text" id="name" name="name" value="{{ @$package_data->name }}"
                                         class="form-control" required>
                                     @error('name')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <input type="number" id="price" name="price" value="{{ @$package_data->price }}"
                                         class="form-control" required>
                                     @error('price')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
 
@@ -52,13 +52,10 @@
                                                         {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('cat_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('cat_id')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
@@ -75,7 +72,7 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

@@ -4,7 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Billing {{ isset($billing_data) ? 'Update' : 'Add' }}</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Billing
+                        {{ isset($billing_data) ? 'Update' : 'Add' }}</small></h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($billing_data))
@@ -20,9 +21,12 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="amount">Amount</label>
-                                    <input type="number" id="amount" name="amount" class="form-control" value="{{ @$billing_data->amount }}" required>
+                                    <input type="number" id="amount" name="amount" class="form-control"
+                                        value="{{ @$billing_data->amount }}" required>
                                     @error('amount')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -33,11 +37,13 @@
                                         <input type="file" name="voucher" {{ isset($billing_data) ? '' : 'required' }}>
                                     </div>
                                     <div class="col-md-4">
-                                        <img src={{ asset('uploads/billing/Thumb-' . @$billing_data->voucher) }} alt=""
-                                            class="img img-fluid img-responsive" style="max-width: 10rem">
+                                        <img src={{ asset('uploads/billing/Thumb-' . @$billing_data->voucher) }}
+                                            alt="" class="img img-fluid img-responsive" style="max-width: 10rem">
                                     </div>
                                     @error('voucher')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -51,7 +57,9 @@
                                         </option>
                                     </select>
                                     @error('payment_status')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -64,7 +72,9 @@
                                         </option>
                                     </select>
                                     @error('status')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>

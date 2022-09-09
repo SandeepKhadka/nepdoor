@@ -20,7 +20,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::orderBy('id')->get();
+        $activities = Activity::orderBy('id' , 'DESC')->get();
         return view('admin.activity.activityList')->with('activity_data',$activities);
         // $this->package = $this->package->where('status' , 'Active')->get();
         // return view('admin.packages.package.packageList')->with('package_data' , $this->package);

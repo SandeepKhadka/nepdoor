@@ -37,9 +37,6 @@
                                                         {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('cat_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('cat_id')

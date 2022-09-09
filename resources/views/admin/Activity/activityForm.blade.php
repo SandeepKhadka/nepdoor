@@ -23,7 +23,9 @@
                                     <input type="text" id="user_id" name="user_id" class="form-control"
                                         value="{{ @$activity_data->user_id }}" required>
                                     @error('user_id')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
 
@@ -34,7 +36,9 @@
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$activity_data->title }}" required>
                                     @error('title')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -45,7 +49,9 @@
                                     <textarea type="text" id="content" name="content" class="form-control" rows="5" required>{{ @$activity_data->content }} 
                                     </textarea>
                                     @error('content')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
@@ -61,7 +67,9 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>

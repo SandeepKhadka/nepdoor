@@ -24,7 +24,7 @@
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$packageCategories_data->title }}" required>
                                         @error('title')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     <input type="text" id="key" name="key" class="form-control"
                                         value="{{ @$packageCategories_data->key }}">
                                         @error('key')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                                 Inactive</option>
                                         </select>
                                         @error('status')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                     </div>
                                 </div>
