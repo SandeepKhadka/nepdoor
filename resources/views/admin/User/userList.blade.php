@@ -30,9 +30,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($user_data))
-                                    @foreach ($user_data as $user)
+                                    @foreach ($user_data as $users => $user)
                                         <tr>
-                                            <td>1.</td>
+                                            <td>{{ $users + 1 }}</td>
                                             <td>{{ $user->full_name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ ucfirst($user->role) }}</td>

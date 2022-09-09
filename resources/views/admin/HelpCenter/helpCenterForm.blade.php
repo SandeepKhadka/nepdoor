@@ -31,26 +31,26 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="link">Link</label>
-                                    <input type="text" id="link" name="link" class="form-control"
+                                    <input type="link" id="link" name="link" class="form-control"
                                         value="{{ @$helpCenter_data->link }}" required>
                                     @error('link')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="order_id">Order ID</label>
-                                    <input type="number" id="order_id" name="order_id" class="form-control" rows="5"
-                                        value="{{ @$helpCenter_data->order_id }}" required>
-                                    @error('order_id')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
+                            
                             @if (isset($helpCenter_data))
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="order_id">Order ID</label>
+                                        <input type="number" id="order_id" name="order_id" class="form-control"
+                                            rows="5" value="{{ @$helpCenter_data->order_id }}">
+                                        @error('order_id')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class=" form-group col-md-12">
                                         <label for="status ">Status</label>

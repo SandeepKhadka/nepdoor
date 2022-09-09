@@ -29,9 +29,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($package_data))
-                                    @foreach ($package_data as $package)
+                                    @foreach ($package_data as $packages => $package)
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $packages + 1 }}</td>
                                             <td>{{ $package->name }}</td>
                                             <td>
                                                 @if (isset($package->cat_info['title']))

@@ -28,21 +28,21 @@
                             </thead>
                             <tbody>
                                 @if (isset($packageCategories_data))
-                                    @foreach ($packageCategories_data as $packageCategories)
+                                    @foreach ($packageCategories_data as $packageCategories => $packageCategory)
                                         <tr>
-                                            <td>1</td>
-                                            <td>{{ $packageCategories->title }}</td>
+                                            <td>{{ $packageCategories + 1 }}</td>
+                                            <td>{{ $packageCategory->title }}</td>
 
-                                            <td>{{ $packageCategories->key }}</td>
+                                            <td>{{ $packageCategory->key }}</td>
                                             <td><span
-                                                    class="{{ @$packageCategories->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $packageCategories->status }}</span>
+                                                    class="{{ @$packageCategory->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $packageCategory->status }}</span>
                                             </td>
                                             <td>
-                                                <a href="{{ route('category.show', $packageCategories->id) }}"><button
+                                                <a href="{{ route('category.show', $packageCategory->id) }}"><button
                                                         class="btn btn-primary"><i class="fa fa-eye"></button></i></a>
-                                                <a href="{{ route('category.edit', $packageCategories->id) }}"><button
+                                                <a href="{{ route('category.edit', $packageCategory->id) }}"><button
                                                         class="btn btn-success"><i class="fa fa-pencil"></button></i></a>
-                                                <form action="{{ route('category.destroy', $packageCategories->id) }}"
+                                                <form action="{{ route('category.destroy', $packageCategory->id) }}"
                                                     method="post" class="d-inline">
                                                     @method('delete')
                                                     @csrf
