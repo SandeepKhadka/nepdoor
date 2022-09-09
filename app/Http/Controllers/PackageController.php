@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\PackageCategories;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -34,7 +35,8 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('admin.packages.package.packageForm');
+        $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
+        return view('admin.packages.package.packageForm')->with('cat_info', $cat_info);
     }
 
     /**
@@ -49,14 +51,14 @@ class PackageController extends Controller
         $request->validate($rules);
         $data = $request->except(['_token']);
         $this->package->fill($data);
-
+        
         $status = $this->package->save();
         if($status){
             // notify()->success('package added successfully');
         }else{
             // notify()->error('Sorry! There was problem in adding package');
         }
-
+        
         return redirect()->route('package.index');
     }
 
@@ -69,6 +71,7 @@ class PackageController extends Controller
     public function show($id)
     {
         $this->package = $this->package->find($id);
+        $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
             //message
             // notify()->error('This package doesnot exists');
@@ -77,7 +80,7 @@ class PackageController extends Controller
 
         // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.packages.package.packageView')
-            ->with('package_data', $this->package);
+            ->with('package_data', $this->package)->with('cat_info', $cat_info);
             // ->with('category_data', $this->category);
     }
 
@@ -90,6 +93,7 @@ class PackageController extends Controller
     public function edit($id)
     {
         $this->package = $this->package->find($id);
+        $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
             //message
             // notify()->error('This package doesnot exists');
@@ -98,7 +102,7 @@ class PackageController extends Controller
 
         // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.packages.package.packageForm')
-            ->with('package_data', $this->package);
+            ->with('package_data', $this->package)->with('cat_info', $cat_info);
             // ->with('category_data', $this->category);
     }
 
@@ -112,6 +116,7 @@ class PackageController extends Controller
     public function update(Request $request, $id)
     {
         $this->package = $this->package->find($id);
+        $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
             // notify()->error('This package doesnot exists');
             redirect()->route('package.index');
@@ -130,7 +135,7 @@ class PackageController extends Controller
         //     notify()->error('Sorry! There was problem in updating package');
         // }
 
-        return redirect()->route('package.index');
+        return redirect()->route('package.index')->with('cat_info', $cat_info);
     }
 
     /**

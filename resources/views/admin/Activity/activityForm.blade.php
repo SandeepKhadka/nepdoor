@@ -17,17 +17,32 @@
                                         enctype="multipart/form-data">
                                         @csrf
                             @endif
+
                             <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="user_id">User</label>
-                                    <input type="text" id="user_id" name="user_id" class="form-control"
-                                        value="{{ @$activity_data->user_id }}" required>
-                                    @error('user_id')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-group col-md-6">
+                                    <label>User</label>
+                                    <div>
+                                        <select name="user_id" id="user_id" class="form-control">
+                                            <option value="" disabled selected hidden>Select user</option>
+                                            @if (isset($user_info))
+                                                @foreach (@$user_info as $user => $data)
+                                                    <option value="{{ @$user != null ? @$user : '' }}"
+                                                        {{ @$activity_data->user_id == $user ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                                @error('user_id')
+                                                    <span class="alert-danger">{{ $message }}</span>
+                                                @enderror
+                                            @endif
+                                        </select>
+                                        @error('user_id')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
 
                             </div>
+                            
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="title">Title</label>

@@ -21,8 +21,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
-                                    <th style="width: 90px">User</th>
-                                    <th>Title</th>
+                                    <th style="width: 200px">User</th>
+                                    <th style="width: 180px">Title</th>
                                     <th>Content</th>
                                     <th style="width: 90px">Status</th>
                                     <th style="width: 190px">Action</th>
@@ -33,7 +33,13 @@
                                     @foreach ($activity_data as $activity)
                                         <tr>
                                             <td>1</td>
-                                            <td>{{ $activity->user_id }}</td>
+                                            <td>
+                                                @if (isset($activity->user_info['full_name']))
+                                                    {{ $activity->user_info['full_name'] }}
+                                                @else
+                                                    --
+                                                @endif
+                                            </td>
                                             <td>{{ $activity->title }}</td>
                                             <td>{{ $activity->content }}</td>
                                             <td><span class="{{@$activity->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $activity->status }}</span></td>

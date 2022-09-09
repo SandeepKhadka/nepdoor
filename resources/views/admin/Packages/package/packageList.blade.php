@@ -34,8 +34,8 @@
                                             <td>1</td>
                                             <td>{{ $package->name }}</td>
                                             <td>
-                                                @if (isset($package->category_info['title']))
-                                                    {{ $package->category_info['title'] }}
+                                                @if (isset($package->cat_info['title']))
+                                                    {{ $package->cat_info['title'] }}
                                                 @else
                                                     --
                                                 @endif
