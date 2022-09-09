@@ -31,15 +31,12 @@
                                     <div>
                                         <select name="cat_id" id="cat_id" class="form-control" disabled>
                                             <option value="" disabled selected hidden>Select package category</option>
-                                            @if (isset($category_data))
-                                                @foreach (@$category_data as $category => $data)
+                                            @if (isset($cat_info))
+                                                @foreach (@$cat_info as $category => $data)
                                                     <option value="{{ @$category != null ? @$category : '' }}"
                                                         {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('cat_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('cat_id')

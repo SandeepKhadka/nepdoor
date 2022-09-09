@@ -32,9 +32,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($subscription_data))
-                                    @foreach ($subscription_data as $subscription)
+                                    @foreach ($subscription_data as $subscriptions => $subscription)
                                         <tr>
-                                            <td>1.</td>
+                                            <td>{{ $subscriptions + 1 }}</td>
                                             <td>
                                                 @if (isset($subscription->user_info['full_name']))
                                                     {{ $subscription->user_info['full_name'] }}

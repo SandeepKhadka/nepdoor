@@ -18,7 +18,7 @@ class HelpCenterController extends Controller
      */
     public function index()
     {
-        $helpCenters = HelpCenter::orderBy('id','DESC')->get();
+        $helpCenters = HelpCenter::orderBy('order_id' , 'ASC')->get();
         return view('admin.helpCenter.helpCenterList')->with('helpCenter_data',$helpCenters);
     }
 
@@ -43,6 +43,9 @@ class HelpCenterController extends Controller
         $rules = $this->helpCenter->getRules();
         $request->validate($rules);
         $data = $request->all();
+        $order_id = $this->helpCenter->all();
+        // dd($order_id);
+        $data['order_id'] = getOrderId($order_id);
         $this->helpCenter->fill($data);
         $status = $this->helpCenter->save();
         return redirect()->route('helpCenter.index');

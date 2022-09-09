@@ -21,3 +21,21 @@ function uploadImage($file, $upload_dir, $thumb=null){
         }
     }
 }
+
+function getOrderId($array){
+    $order_id = 0;
+
+    $length = count($array);
+    
+    foreach ($array as $value ){
+
+        if($value['order_id'] > $order_id ){
+            $order_id = $value['order_id'];
+        }
+    }
+
+    $order_id += 1;
+    
+    return $order_id;
+
+}

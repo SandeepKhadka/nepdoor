@@ -31,9 +31,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($ticket_data))
-                                    @foreach ($ticket_data as $ticket)
+                                    @foreach ($ticket_data as $tickets => $ticket)
                                         <tr>
-                                            <td>1.</td>
+                                            <td>{{ $tickets + 1 }}</td>
                                             <td>{{ $ticket->title }}</td>
                                             <td>{{ $ticket->subs_id }}</td>
                                             <td>{{ $ticket->priority }}</td>

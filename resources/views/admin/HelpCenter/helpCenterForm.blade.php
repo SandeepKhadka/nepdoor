@@ -4,7 +4,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Help Centre Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Help Centre
+                        {{ isset($helpCenter_data) ? 'Update' : 'Add' }}</small></h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($helpCenter_data))
@@ -23,7 +24,9 @@
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$helpCenter_data->title }}"required>
                                     @error('title')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
 
@@ -31,26 +34,30 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="link">Link</label>
-                                    <input type="text" id="link" name="link" class="form-control"
+                                    <input type="link" id="link" name="link" class="form-control"
                                         value="{{ @$helpCenter_data->link }}" required>
                                     @error('link')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="order_id">Order ID</label>
-                                    <input type="number" id="order_id" name="order_id" class="form-control" rows="5"
-                                        value="{{ @$helpCenter_data->order_id }}" required>
-                                    @error('order_id')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
 
                             @if (isset($helpCenter_data))
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="order_id">Order ID</label>
+                                        <input type="number" id="order_id" name="order_id" class="form-control"
+                                            rows="5" value="{{ @$helpCenter_data->order_id }}">
+                                        @error('order_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class=" form-group col-md-12">
                                         <label for="status ">Status</label>
@@ -58,11 +65,14 @@
                                             name="status">
                                             <option {{ @$helpCenter_data->status == 'Active' ? 'selected' : '' }}>Active
                                             </option>
-                                            <option {{ @$helpCenter_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                            <option {{ @$helpCenter_data->status == 'Inactive' ? 'selected' : '' }}>
+                                                Inactive
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
                                         @enderror
                                     </div>
                                 </div>

@@ -24,7 +24,7 @@
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$ticket_data->title }}" required>
                                     @error('title')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                         <option></option>
                                     </select>
                                     @error('subs_id')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
@@ -44,7 +44,7 @@
                                     <input type="text" id="token_id" name="token_id" class="form-control"
                                         value="{{ @$ticket_data->token_id }}" required>
                                     @error('token_id')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
 
@@ -61,7 +61,7 @@
                                         </option>
                                     </select>
                                     @error('priority')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                     <textarea type="text" id="message" name="message" class="form-control" rows="5" required
                                         style="resize: none;">{{ @$ticket_data->message }}</textarea>
                                     @error('message')
-                                        <span class="alert-danger">{{ $message }}</span>
+                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                             </option>
                                         </select>
                                         @error('ticket_status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                           <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -104,7 +104,7 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                            <span class="alert-danger">{{ $message }}</span>
+                                           <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

@@ -11,6 +11,10 @@ class Activity extends Model
 
     protected $fillable = ['user_id','title','content','status'];
 
+    public function user_info(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
     public function getRules(){
         return [
             'title' => 'required|string',

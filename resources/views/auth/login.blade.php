@@ -6,7 +6,8 @@
             <div class="col-md-3">
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href=""><b>NepDoor</b></a>
+                        <a href="#"><b><span style="color: #2151A1; font-weight: bold ">Nep</span><span style="color: #EB1933; font-weight: bold">Door</span></b></a>
+                        
                     </div>
                     <div class="card">
                         <div class="card-body login-card-body">
@@ -17,8 +18,7 @@
                                 <div class="input-group mb-3">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus
-                                        placeholder="Email" />
+                                        value="{{ old('email') }}" required placeholder="Email" />
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span class="fas fa-envelope"></span>
@@ -86,8 +86,9 @@
                             </p>
                             <p class="mb-0">
                                 @if (Route::has('register'))
-                                    <a class="text-center" href="{{ route('register') }}">{{ __('Register a new Membership') }}</a>
-                            @endif
+                                    <a class="text-center"
+                                        href="{{ route('register') }}">{{ __('Register a new Membership') }}</a>
+                                @endif
                             </p>
                         </div>
                     </div>

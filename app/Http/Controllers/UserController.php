@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->user = $this->user->orderBy('id' , 'DESC')->get();
+        $this->user = $this->user->orderBy('id', 'DESC')->get();
         return view('admin.user.userList')->with('user_data', $this->user);
     }
 
@@ -57,6 +58,7 @@ class UserController extends Controller
             }
         }
 
+        $data['password'] = Hash::make($data['password']);
         $this->user->fill($data);
         $status = $this->user->save();
         // if($status){
@@ -105,7 +107,7 @@ class UserController extends Controller
         // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.user.userForm')
             ->with('user_data', $this->user);
-            // ->with('category_data', $this->category);
+        // ->with('category_data', $this->category);
     }
 
     /**
@@ -136,6 +138,11 @@ class UserController extends Controller
                 }
                 $data['photo'] = $file_name;
             }
+        }
+
+        if ($data['password'] != $request->password) {
+
+            $data['password'] = Hash::make($request->password);
         }
 
         $this->user->fill($data);
@@ -171,8 +178,7 @@ class UserController extends Controller
                 unlink(public_path() . '/uploads/user/Thumb-' . $photo);
                 //message
                 // notify()->success('user deleted successfully');
-            }
-            else {
+            } else {
                 //message
                 // notify()->error('Sorry! there was problem in deleting data');
             }

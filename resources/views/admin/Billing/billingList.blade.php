@@ -30,9 +30,9 @@
                             </thead>
                             <tbody>
                                 @if (isset($billing_data))
-                                    @foreach ($billing_data as $billing)
+                                    @foreach ($billing_data as $billings => $billing)
                                         <tr>
-                                            <td>1.</td>
+                                            <td>{{ $billings + 1 }}</td>
                                             <td>{{ $billing->amount }}</td>
                                             <td>
                                                 <img src="{{ asset('uploads/billing/Thumb-' . $billing->voucher) }}"

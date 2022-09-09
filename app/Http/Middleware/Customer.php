@@ -16,9 +16,9 @@ class Customer
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role == 'customer'){
+        if ($request->user()->role == 'customer') {
             return $next($request);
-        }else{
+        } else {
             return redirect()->route($request->user()->role);
         }
     }

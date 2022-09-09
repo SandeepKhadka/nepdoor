@@ -96,6 +96,21 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="created_at">Created at</label>
+                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
+                                        value="{{ @$ticket_data->created_at }}" disabled>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="updated_at">Updated at</label>
+                                    <input type="datetime-local" id="updated_at" name="updated_at" class="form-control"
+                                        rows="5" value="{{ @$ticket_data->updated_at }}" disabled>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
                             <a href="{{ route('ticket.index') }}" class="btn btn-primary float-right"
                                 style="margin-right: 10px" value="Back">Back
