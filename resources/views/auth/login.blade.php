@@ -6,7 +6,8 @@
             <div class="col-md-3">
                 <div class="login-box">
                     <div class="login-logo">
-                        <a href=""><b>NepDoor</b></a>
+                        <a href="#"><b><span style="color: #2151A1; font-weight: bold ">Nep</span><span style="color: #EB1933; font-weight: bold">Door</span></b></a>
+                        
                     </div>
                     <div class="card">
                         <div class="card-body login-card-body">

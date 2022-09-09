@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Activity;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -33,7 +34,8 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('admin.activity.activityForm');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        return view('admin.activity.activityForm')->with('user_info', $user_info);
     }
 
     /**
@@ -60,11 +62,12 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-     $this->activity= $this->activity->find($id);
+     $this->activity= $this->activit->find($id);
+     $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
             return redirect()->route('activity.index');
         }
-        return view('admin.activity.activityView')->with('activity_data', $this->activity);
+        return view('admin.activity.activityView')->with('activity_data', $this->activity)->with('user_info', $user_info);
     }
 
     /**
@@ -76,11 +79,12 @@ class ActivityController extends Controller
     public function edit($id)
     {
     $this->activity= $this->activity->find($id);
+    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
      if (!$this->activity) {
             return redirect()->route('activity.index');
         }
 
-        return view('admin.activity.activityForm')->with('activity_data', $this->activity);
+        return view('admin.activity.activityForm')->with('activity_data', $this->activity)->with('user_info', $user_info);
     }
 
     /**
@@ -93,6 +97,7 @@ class ActivityController extends Controller
     public function update(Request $request, $id)
     {
     $this->activity= $this->activity->find($id);
+    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
     if (!$this->activity) {
 
         return redirect()->route('activity.index');
@@ -102,7 +107,7 @@ class ActivityController extends Controller
         $data = $request->all();
         $this->activity->fill($data);
         $status = $this->activity->save();
-        return redirect()->route('activity.index');
+        return redirect()->route('activity.index')->with('user_info', $user_info);
     }
 
     /**

@@ -11,6 +11,10 @@ class Package extends Model
 
     protected $fillable = ['cat_id','name','price','status'];
 
+    public function cat_info(){
+        return $this->hasOne(PackageCategories::class, 'id', 'cat_id');
+    }
+
     public function getRules(){
         return [
             'name' => 'required|string',
