@@ -36,7 +36,7 @@ class SubscriptionController extends Controller
      */
     public function create()
     {
-        $user_info = User::orderBy('id', 'Desc')->pluck('full_name', 'id');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         return view('admin.subscription.subscriptionForm')->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
@@ -75,13 +75,16 @@ class SubscriptionController extends Controller
      */
     public function show($id)
     {
-        $this->subscription = $this->subscription->find($id);
+        $this->subscription = $this->subscription->find($id); 
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
+        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
             # code...
             // notify()->error('This task doesnot exists');
             return redirect()->route('subscription.index');
         }
-        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription);
+        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
     }
 
     /**
@@ -93,7 +96,7 @@ class SubscriptionController extends Controller
     public function edit($id)
     {
         $this->subscription = $this->subscription->find($id);
-        $user_info = User::orderBy('id', 'Desc')->pluck('full_name', 'id');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
@@ -114,7 +117,7 @@ class SubscriptionController extends Controller
     public function update(Request $request, $id)
     {
         $this->subscription = $this->subscription->find($id);
-        $user_info = User::orderBy('id', 'Desc')->pluck('full_name', 'id');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {

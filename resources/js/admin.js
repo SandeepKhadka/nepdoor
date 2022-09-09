@@ -23,6 +23,7 @@ import "../assets/plugins/summernote/summernote-bs4.min.js";
 import "../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js";
 
 import "../assets/dist/js/pages/dashboard.js";
+
  
 
 

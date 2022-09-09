@@ -33,13 +33,13 @@
                                 <div class="form-group col-md-6">
                                     <label for="created_at">Created at</label>
                                     <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
-                                        value="{{ @$papckageCategories_data->created_at }}" disabled>
+                                        value="{{ @$packageCategories_data->created_at }}" disabled>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="updated_at">Updated at</label>
                                     <input type="datetime-local" id="updated_at" name="updated_at" class="form-control"
-                                        rows="5" value="{{ @$papckageCategories_data->updated_at }}" disabled>
+                                        rows="5" value="{{ @$packageCategories_data->updated_at }}" disabled>
                                 </div>
                             </div>
 
