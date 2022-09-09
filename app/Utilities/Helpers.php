@@ -26,11 +26,7 @@ function getOrderId($array){
     $order_id = 1;
 
     $length = count($array);
-
-    // echo "<pre>";
-    // print_r($array);
-    // echo "</pre>";
-
+    
     foreach ($array as $value ){
 
         if($value['order_id'] > $order_id ){
