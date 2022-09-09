@@ -62,7 +62,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-     $this->activity= $this->activit->find($id);
+     $this->activity= $this->activity->find($id);
      $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
             return redirect()->route('activity.index');
