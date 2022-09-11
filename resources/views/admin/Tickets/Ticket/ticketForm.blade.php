@@ -52,15 +52,6 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="form-group col-md-6">
-                                    <label for="token_id">Token ID</label>
-                                    <input type="text" id="token_id" name="token_id" class="form-control"
-                                        value="{{ 'tok-' . rand(0,999) }}" disabled>
-                                    @error('token_id')  
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                    @enderror
-                                </div> --}}
-
                             </div>
 
                             <div class="row">
