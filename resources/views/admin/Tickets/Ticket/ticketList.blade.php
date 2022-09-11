@@ -22,8 +22,9 @@
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
                                     <th>Title</th>
-                                    <th>Subscription</th>
+                                    <th>User</th>
                                     <th>Priority</th>
+                                    <th>Token number</th>
                                     <th>Ticket Status</th>
                                     <th style="width: 90px">Status</th>
                                     <th style="width: 190px">Action</th>
@@ -35,10 +36,21 @@
                                         <tr>
                                             <td>{{ $tickets + 1 }}</td>
                                             <td>{{ $ticket->title }}</td>
-                                            <td>{{ $ticket->subs_id }}</td>
+                                            <td>
+                                                @if (isset($ticket->user_info['full_name']))
+                                                    {{ $ticket->user_info['full_name'] }}
+                                                @else
+                                                    --
+                                                @endif
+                                            </td>
                                             <td>{{ $ticket->priority }}</td>
-                                            <td><span class="{{@$ticket->ticket_status == 'Opened' ? 'badge bg-success': 'badge bg-danger'}}">{{ $ticket->ticket_status }}</td>
-                                            <td><span class="{{@$ticket->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $ticket->status }}</td>
+                                            <td>{{ $ticket->token_id }}</td>
+                                            <td><span
+                                                    class="{{ @$ticket->ticket_status == 'Opened' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $ticket->ticket_status }}
+                                            </td>
+                                            <td><span
+                                                    class="{{ @$ticket->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $ticket->status }}
+                                            </td>
                                             <td>
                                                 <a href="{{ route('ticket.show', $ticket->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-eye"></button>
