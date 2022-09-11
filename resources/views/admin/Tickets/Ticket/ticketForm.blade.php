@@ -6,6 +6,9 @@
                 <div class="col-lg-12">
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket
                         {{ isset($ticket_data) ? 'Update' : 'Add' }}</small></h4>
+                         @if ($errors->any())
+                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                            @endif
                     <div class="card">
                         <div class="card-body">
                             @if (isset($ticket_data))
@@ -24,29 +27,39 @@
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$ticket_data->title }}" required>
                                     @error('title')
-                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <label for="subs_id">Subscription</label>
-                                    <select type="text" class="form-control form-control-sm" id="subs_id"
-                                        name="subs_id" >
-                                        <option></option>
-                                    </select>
-                                    @error('subs_id')
-                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                    @enderror
+                                    <label>User</label>
+                                    <div>
+                                        <select name="user_id" id="user_id" class="form-control">
+                                            <option value="" disabled selected hidden>Select user</option>
+                                            @if (isset($user_info))
+                                                @foreach (@$user_info as $user => $data)
+                                                    <option value="{{ @$user != null ? @$user : '' }}"
+                                                        {{ @$ticket_data->user_id == $user ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('user_id')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
+
+                                {{-- <div class="form-group col-md-6">
                                     <label for="token_id">Token ID</label>
                                     <input type="text" id="token_id" name="token_id" class="form-control"
-                                        value="{{ @$ticket_data->token_id }}" required>
-                                    @error('token_id')
-                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        value="{{ 'tok-' . rand(0,999) }}" disabled>
+                                    @error('token_id')  
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
 
@@ -61,7 +74,7 @@
                                         </option>
                                     </select>
                                     @error('priority')
-                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -73,7 +86,7 @@
                                     <textarea type="text" id="message" name="message" class="form-control" rows="5" required
                                         style="resize: none;">{{ @$ticket_data->message }}</textarea>
                                     @error('message')
-                                       <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
@@ -90,7 +103,7 @@
                                             </option>
                                         </select>
                                         @error('ticket_status')
-                                           <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
 
@@ -104,7 +117,7 @@
                                             </option>
                                         </select>
                                         @error('status')
-                                           <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>

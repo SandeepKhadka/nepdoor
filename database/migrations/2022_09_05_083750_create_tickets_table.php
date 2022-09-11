@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('token_id');
-            $table->unsignedBigInteger('subs_id')->nullable();
+            $table->string('token_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->text('title');
             $table->enum('priority', ['Normal' , 'Urgent'])->default('Normal');
             $table->longtext('message');
             $table->enum('ticket_status', ['Opened' , 'Closed'])->default('Opened');
             $table->enum('status', ['Active' , 'Inactive'])->default('Active');
-            $table->foreign('subs_id')->references('id')->on('subscriptions')->onDelete('set null');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

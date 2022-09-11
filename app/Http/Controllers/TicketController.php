@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\User;
+
 class TicketController extends Controller
 {
     protected $ticket = null;
     public function __construct(Ticket $ticket)
     {
-       $this->ticket = $ticket;
+        $this->ticket = $ticket;
     }
     /**
      * Display a listing of the resource.
@@ -18,8 +20,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::orderBy('id' , 'DESC')->get();
-        return view('admin.tickets.ticket.ticketList')->with('ticket_data',$tickets);
+        $tickets = Ticket::orderBy('id', 'DESC')->get();
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        return view('admin.tickets.ticket.ticketList')->with('ticket_data', $tickets)->with('user_info', $user_info);
     }
 
     /**
@@ -29,7 +32,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('admin.tickets.ticket.ticketForm');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        return view('admin.tickets.ticket.ticketForm')->with('user_info', $user_info);
     }
 
     /**
@@ -43,6 +47,10 @@ class TicketController extends Controller
         $rules = $this->ticket->getRules();
         $request->validate($rules);
         $data = $request->all();
+        $token_id = $this->ticket->all();
+        // dd($token_id);
+        $data['token_id'] = getTokenID($token_id);
+        // dd($data);
         $this->ticket->fill($data);
         $status = $this->ticket->save();
         return redirect()->route('ticket.index');
@@ -56,11 +64,12 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        $this->ticket= $this->ticket->find($id);
+        $this->ticket = $this->ticket->find($id);
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->ticket) {
             return redirect()->route('ticket.index');
         }
-        return view('admin.tickets.ticket.ticketView')->with('ticket_data', $this->ticket);
+        return view('admin.tickets.ticket.ticketView')->with('ticket_data', $this->ticket)->with('user_info', $user_info);
     }
 
     /**
@@ -72,10 +81,11 @@ class TicketController extends Controller
     public function edit($id)
     {
         $this->ticket = $this->ticket->find($id);
-     if (!$this->ticket) {
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        if (!$this->ticket) {
             return redirect()->route('ticket.index');
         }
-        return view('admin.tickets.ticket.ticketForm')->with('ticket_data', $this->ticket);
+        return view('admin.tickets.ticket.ticketForm')->with('ticket_data', $this->ticket)->with('user_info', $user_info);
     }
 
     /**
@@ -87,17 +97,18 @@ class TicketController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->ticket= $this->ticket->find($id);
-    if (!$this->ticket) {
-
-        return redirect()->route('ticket.index');
+        $this->ticket = $this->ticket->find($id);
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        if (!$this->ticket)
+        {
+            return redirect()->route('ticket.index');
         }
         $rules = $this->ticket->getRules();
         $request->validate($rules);
         $data = $request->all();
         $this->ticket->fill($data);
         $status = $this->ticket->save();
-        return redirect()->route('ticket.index');
+        return redirect()->route('ticket.index')->with('user_info', $user_info);
     }
 
     /**

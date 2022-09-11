@@ -15,9 +15,9 @@
                  @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
                      <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}" class="img-circle elevation-2" alt="">
                  @else
-                     {{-- <img src="{{ asset('dist/img/myphoto.jpg') }}" class="img-circle elevation-2" alt=""> --}}
+                     <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt="">
                      {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
-                     <i class="fa-regular fa-user"></i>
+                     {{-- <i class="fa-regular fa-user"></i> --}}
                  @endif
              </div>
              <div class="info">
