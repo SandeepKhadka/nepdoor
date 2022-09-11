@@ -10,11 +10,11 @@ import "../assets/plugins/jqvmap/maps/jquery.vmap.usa.js";
 
 import "../assets/plugins/jquery-knob/jquery.knob.min.js";
 
-import "../assets/plugins/datatables/jquery.dataTables.min.js";
+// import "../assets/plugins/datatables/jquery.dataTables.min.js";
 
-import "../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js";
+// import "../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js";
 
-import "../assets/plugins/moment/moment.min.js";
+// import "../assets/plugins/moment/moment.min.js";
 
 import "../assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js";
 
