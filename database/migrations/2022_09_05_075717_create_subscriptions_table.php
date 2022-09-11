@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('set null');
             $table->foreign('billing_id')->references('id')->on('billings')->onDelete('set null');
-            $table->date('start_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('start_date')->useCurrent();
             $table->date('end_date');
             $table->timestamps();
         });
