@@ -29,8 +29,8 @@
                         <div class="row">
 
                             <div class="form-group col-md-12">
-                                <label for="inputName">Choose Subject</label>
-                                <select id="inputStatus" class="form-control custom-select">
+                                <label for="subject">Choose Subject</label>
+                                <select id="subject" name="subject" class="form-control custom-select">
                                     <option selected disabled>Choose any one subject...</option>
                                     <option>Standard Package</option>
                                     <option>Premium Package</option>
@@ -41,20 +41,20 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="inputName">Voucher Amount</label>
-                                <input type="number" id="inputName" class="form-control">
+                                <label for="amount">Voucher Amount</label>
+                                <input type="number" id="amount" name="amount" class="form-control">
                             </div>
                         
 
                         <div class="form-group col-md-6" >
                             <label>Insert Voucher Image</label>
-                            <input type="file" class="form-control-file" name="image" >
+                            <input type="file" class="form-control-file" name="image" id="image" >
                         </div>
                     </div>
 
                         <div class="form-group">
-                        <label for="inputDescription">Write Message</label>
-                        <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                        <label for="message">Write Message</label>
+                        <textarea id="message" name="message" class="form-control" rows="4"></textarea>
                         </div>
                         <input type="submit" value="Submit" class="btn btn-success float-right">
                     </div>
