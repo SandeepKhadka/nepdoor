@@ -23,8 +23,12 @@ class ActivityController extends Controller
     public function index()
     {
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
-        $activities = Activity::orderBy('id' , 'DESC')->get();
-        return view('admin.activity.activityList')->with('activity_data',$activities)->with('user_info', $user_info);
+        $activities = Activity::orderBy('id', 'DESC')->get();
+        return view('admin.activity.activityList')
+            ->with([
+                'activity_data' => $activities,
+                'user_info' => $user_info
+            ]);
         // $this->package = $this->package->where('status' , 'Active')->get();
         // return view('admin.packages.package.packageList')->with('package_data' , $this->package);
     }
@@ -64,8 +68,8 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-     $this->activity= $this->activity->find($id);
-     $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        $this->activity = $this->activity->find($id);
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
             return redirect()->route('activity.index');
         }
@@ -80,9 +84,9 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-    $this->activity= $this->activity->find($id);
-    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
-     if (!$this->activity) {
+        $this->activity = $this->activity->find($id);
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        if (!$this->activity) {
             return redirect()->route('activity.index');
         }
 
@@ -98,9 +102,9 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $this->activity= $this->activity->find($id);
-    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
-    if (!$this->activity) {
+        $this->activity = $this->activity->find($id);
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        if (!$this->activity) {
 
             return redirect()->route('activity.index');
         }
