@@ -22,8 +22,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $activities = Activity::orderBy('id' , 'DESC')->get();
-        return view('admin.activity.activityList')->with('activity_data',$activities);
+        return view('admin.activity.activityList')->with('activity_data',$activities)->with('user_info', $user_info);
         // $this->package = $this->package->where('status' , 'Active')->get();
         // return view('admin.packages.package.packageList')->with('package_data' , $this->package);
     }
@@ -35,7 +36,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         return view('admin.activity.activityForm')->with('user_info', $user_info);
     }
 
