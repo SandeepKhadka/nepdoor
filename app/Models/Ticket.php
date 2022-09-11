@@ -9,14 +9,18 @@ class Ticket extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['token_id','subs_id', 'title', 'message','status', 'priority', 'ticket_status'];
+    protected $fillable = ['user_id', 'title', 'message','status', 'priority', 'ticket_status', 'token_id'];
+
+    public function user_info(){
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 
     public function getRules(){
         return [
             'title' => 'required|string',
-            'token_id' => 'required|string',
+            // 'token_id' => 'nullable|string',
             'message' => 'required|string',
-            'subs_id' => 'nullable|exists:users,id',
+            'user_id' => 'nullable|exists:users,id',
             'priority' => 'required|in:Normal,Urgent',
         ];
     }

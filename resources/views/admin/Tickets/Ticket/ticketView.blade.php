@@ -19,16 +19,26 @@
                                 </div>
                             </div>
                             <div class="row">
+
                                 <div class="form-group col-md-6">
-                                    <label for="subs_id">Subscription</label>
-                                    <select type="text" class="form-control form-control-sm" id="subs_id"
-                                        name="subs_id" disabled>
-                                        <option></option>
-                                    </select>
-                                    @error('subs_id')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
+                                    <label>User</label>
+                                    <div>
+                                        <select name="user_id" id="user_id" class="form-control" disabled>
+                                            <option value="" disabled selected hidden>Select user</option>
+                                            @if (isset($user_info))
+                                                @foreach (@$user_info as $user => $data)
+                                                    <option value="{{ @$user != null ? @$user : '' }}"
+                                                        {{ @$tickets_data->user_id == $user ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('user_id')
+                                            <span class="alert-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
+
                                 <div class="form-group col-md-6">
                                     <label for="token_id">Token ID</label>
                                     <input type="text" id="token_id" name="token_id" class="form-control"
@@ -100,8 +110,8 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="created_at">Created at</label>
-                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
-                                        value="{{ @$ticket_data->created_at }}" disabled>
+                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control"
+                                        rows="5" value="{{ @$ticket_data->created_at }}" disabled>
                                 </div>
 
                                 <div class="form-group col-md-6">

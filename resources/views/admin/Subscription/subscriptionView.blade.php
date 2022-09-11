@@ -25,9 +25,6 @@
                                                         {{ @$subscription_data->user_id == $user ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('user_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('user_id')
@@ -47,9 +44,6 @@
                                                         {{ @$subscription_data->package_id == $package ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('package_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('package_id')
@@ -71,9 +65,6 @@
                                                         {{ @$subscription_data->billing_id == $billing ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
-                                                @error('billing_id')
-                                                    <span class="alert-danger">{{ $message }}</span>
-                                                @enderror
                                             @endif
                                         </select>
                                         @error('billing_id')

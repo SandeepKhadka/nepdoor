@@ -40,7 +40,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         return view('admin.activity.activityForm')->with('user_info', $user_info);
     }
 
