@@ -13,10 +13,8 @@ class TicketReply extends Model
 
     public function getRules(){
         return [
-            'title' => 'required|string',
             'message' => 'required|string',
             'ticket_id' => 'nullable|exists:tickets,id',
-            // 'status' => 'required|in:Active,Inactive'
         ];
     }
 }

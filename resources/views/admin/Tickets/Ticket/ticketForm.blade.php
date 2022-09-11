@@ -32,7 +32,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="subs_id">Subscription</label>
                                     <select type="text" class="form-control form-control-sm" id="subs_id"
-                                        name="subs_id" required>
+                                        name="subs_id" >
                                         <option></option>
                                     </select>
                                     @error('subs_id')
