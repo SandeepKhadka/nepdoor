@@ -47,10 +47,7 @@ class TicketController extends Controller
         $rules = $this->ticket->getRules();
         $request->validate($rules);
         $data = $request->all();
-        $token_id = $this->ticket->all();
-        // dd($token_id);
-        $data['token_id'] = getTokenID($token_id);
-        // dd($data);
+        $data['token_id'] = 'tok-' . rand(0, 99) . '-' . $request->user_id;
         $this->ticket->fill($data);
         $status = $this->ticket->save();
         return redirect()->route('ticket.index');

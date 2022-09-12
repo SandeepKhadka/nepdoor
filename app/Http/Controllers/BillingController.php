@@ -57,6 +57,7 @@ class BillingController extends Controller
             }
         }
 
+        $data['billNo'] = 'bil-' . rand(0, 99);
         $this->billing->fill($data);
 
         $status = $this->billing->save();
