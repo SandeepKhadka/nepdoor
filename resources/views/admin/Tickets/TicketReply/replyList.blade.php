@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Ticket Reply List')
+@section('title', 'Nepdoor | Ticket Reply List')
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
@@ -32,7 +32,13 @@
                                     @foreach ($reply_data as $reply)
                                         <tr>
                                             <td>1.</td>
-                                            <td>{{ $reply->ticket_id }}</td>
+                                            <td>
+                                                @if (isset($reply->ticket_info['token_id']))
+                                                    {{ $reply->ticket_info['token_id'] }}
+                                                @else
+                                                    --
+                                                @endif
+                                            </td>
                                             <td>{{ Str::limit($reply->message, 30) }}</td>
                                             <td><span
                                                     class="{{ @$reply->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $reply->status }}

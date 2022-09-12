@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Help Centre Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Help Centre View</small></h4>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -29,20 +29,6 @@
                                     <label for="order_id">order ID</label>
                                     <input type="text" id="order_id" name="order_id" class="form-control" rows="5"
                                         value="{{ @$helpCenter_data->order_id }}"  disabled>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="created_at">Created at</label>
-                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
-                                        value="{{ @$helpCenter_data->created_at }}" disabled>
-                                </div>
-
-                                <div class="form-group col-md-6">
-                                    <label for="updated_at">Updated at</label>
-                                    <input type="datetime-local" id="updated_at" name="updated_at" class="form-control"
-                                        rows="5" value="{{ @$helpCenter_data->updated_at }}" disabled>
                                 </div>
                             </div>
 
