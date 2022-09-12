@@ -20,13 +20,23 @@
                                         @csrf
                             @endif
                             <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="ticket_id">Ticket ID</label>
-                                    <input type="text" id="ticket_id" name="ticket_id" class="form-control"
-                                        value="{{ @$reply_data->ticket_id }}">
-                                    @error('ticket_id')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-group col-md-6">
+                                    <label>Ticket</label>
+                                    <div>
+                                        <select name="ticket_id" id="ticket_id" class="form-control">
+                                            <option value="" disabled selected hidden>Select token no</option>
+                                            @if (isset($ticket_info))
+                                                @foreach (@$ticket_info as $ticket => $data)
+                                                    <option value="{{ @$ticket != null ? @$ticket : '' }}"
+                                                        {{ @$ticket_data->ticket_id == $ticket ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('ticket_id')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
 
                             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use App\Models\TicketReply;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class ReplyController extends Controller
     public function index()
     {
         $replies = TicketReply::orderBy('id','DESC')->get();
-        return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies);
+        $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
+        return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies)->with('ticket_info', $ticket_info);
     }
 
     /**
@@ -31,7 +33,8 @@ class ReplyController extends Controller
      */
     public function create()
     {
-        return view('admin.tickets.ticketReply.replyForm');
+        $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
+        return view('admin.tickets.ticketReply.replyForm')->with('ticket_info', $ticket_info);
     }
 
     /**
@@ -57,12 +60,13 @@ class ReplyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {        
         $this->reply = $this->reply->find($id);
+        $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
             return redirect()->route('reply.index');
         }
-        return view('admin.tickets.ticketReply.replyView')->with('reply_data', $this->reply);
+        return view('admin.tickets.ticketReply.replyView')->with('reply_data', $this->reply)->with('ticket_info', $ticket_info);
     }
 
     /**
@@ -74,11 +78,12 @@ class ReplyController extends Controller
     public function edit($id)
     {
         $this->reply = $this->reply->find($id);
+        $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
             return redirect()->route('reply.index');
         }
 
-        return view('admin.tickets.ticketReply.replyForm')->with('reply_data', $this->reply);
+        return view('admin.tickets.ticketReply.replyForm')->with('reply_data', $this->reply)->with('ticket_info', $ticket_info);
     }
 
     /**
@@ -91,6 +96,7 @@ class ReplyController extends Controller
     public function update(Request $request, $id)
     {
         $this->reply = $this->reply->find($id);
+        $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
 
             return redirect()->route('reply.index');
@@ -100,7 +106,7 @@ class ReplyController extends Controller
         $data = $request->all();
         $this->reply->fill($data);
         $status = $this->reply->save();
-        return redirect()->route('reply.index');
+        return redirect()->route('reply.index')->with('ticket_info', $ticket_info);
     }
 
     /**
