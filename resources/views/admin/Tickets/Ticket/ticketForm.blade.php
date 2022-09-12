@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket
-                        {{ isset($ticket_data) ? 'Update' : 'Add' }}</small></h4>
+                        {{ isset($ticket_data) ? 'Update' : 'Add' }}</h4>
                          @if ($errors->any())
                                 {{ implode('', $errors->all('<div>:message</div>')) }}
                             @endif

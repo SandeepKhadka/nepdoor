@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Help Centre
-                        {{ isset($helpCenter_data) ? 'Update' : 'Add' }}</small></h4>
+                        {{ isset($helpCenter_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($helpCenter_data))

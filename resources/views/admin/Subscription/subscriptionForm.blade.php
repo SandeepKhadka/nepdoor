@@ -6,12 +6,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Subscription
-                        {{ isset($subscription_data) ? 'Update' : 'Add' }}</small></h4>
+                        {{ isset($subscription_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
-                            @if ($errors->any())
-                                {{ implode('', $errors->all('<div>:message</div>')) }}
-                            @endif
                             @if (isset($subscription_data))
                                 <form action="{{ route('subscription.update', @$subscription_data->id) }}" method="post"
                                     class="form" enctype="multipart/form-data">
