@@ -1,5 +1,5 @@
+@notifyJs
+@yield('scripts')
+</body>
 
-        @yield('scripts')
-    </body>
-
-    </html>
+</html>

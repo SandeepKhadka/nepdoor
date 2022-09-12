@@ -53,9 +53,9 @@ class PackageController extends Controller
         
         $status = $this->package->save();
         if($status){
-            // notify()->success('package added successfully');
+            notify()->success('Package added successfully');
         }else{
-            // notify()->error('Sorry! There was problem in adding package');
+            notify()->error('Sorry! There was problem in adding package');
         }
         
         return redirect()->route('package.index');
@@ -73,14 +73,11 @@ class PackageController extends Controller
         $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
             //message
-            // notify()->error('This package doesnot exists');
+            notify()->error('This package doesnot exists');
             return redirect()->route('package.index');
         }
-
-        // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.packages.package.packageView')
             ->with('package_data', $this->package)->with('cat_info', $cat_info);
-            // ->with('category_data', $this->category);
     }
 
     /**
@@ -95,14 +92,11 @@ class PackageController extends Controller
         $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
             //message
-            // notify()->error('This package doesnot exists');
+            notify()->error('This package doesnot exists');
             return redirect()->route('package.index');
         }
-
-        // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.packages.package.packageForm')
             ->with('package_data', $this->package)->with('cat_info', $cat_info);
-            // ->with('category_data', $this->category);
     }
 
     /**
@@ -117,7 +111,7 @@ class PackageController extends Controller
         $this->package = $this->package->find($id);
         $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
         if (!$this->package) {
-            // notify()->error('This package doesnot exists');
+            notify()->error('This package doesnot exists');
             redirect()->route('package.index');
         }
         
@@ -128,11 +122,11 @@ class PackageController extends Controller
         $this->package->fill($data);
 
         $status = $this->package->save();
-        // if($status){
-        //     notify()->success('package updated successfully');
-        // }else{
-        //     notify()->error('Sorry! There was problem in updating package');
-        // }
+        if($status){
+            notify()->success('Package updated successfully');
+        }else{
+            notify()->error('Sorry! There was problem in updating package');
+        }
 
         return redirect()->route('package.index')->with('cat_info', $cat_info);
     }
@@ -147,12 +141,15 @@ class PackageController extends Controller
     {
         $this->package = $this->package->find($id);
         if (!$this->package) {
-            // notify()->error('This package doesnot exists');
+            notify()->error('This package doesnot exists');
             redirect()->route('package.index');
         }
         $del = $this->package->delete();
-        if ($del) {
-            return redirect()->route('package.index');
+        if ($del){
+            notify()->success('Package deleted successfully');
+        } else {
+            notify()->error('There was problem in deleting package');
         }
+        return redirect()->route('package.index');
     }
 }
