@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Activity Form</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Activity Form</h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($activity_data))

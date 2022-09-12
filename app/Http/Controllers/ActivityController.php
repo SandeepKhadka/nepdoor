@@ -40,7 +40,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-    $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         return view('admin.activity.activityForm')->with('user_info', $user_info);
     }
 
@@ -57,6 +57,11 @@ class ActivityController extends Controller
         $data = $request->all();
         $this->activity->fill($data);
         $status = $this->activity->save();
+        if ($status) {
+            notify()->success('Activity added successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding activity.');
+        }
         return redirect()->route('activity.index');
     }
 
@@ -87,6 +92,7 @@ class ActivityController extends Controller
         $this->activity = $this->activity->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
+            notify()->error('This activity doesnot exists');
             return redirect()->route('activity.index');
         }
 
@@ -105,7 +111,7 @@ class ActivityController extends Controller
         $this->activity = $this->activity->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->activity) {
-
+            notify()->error('This activity doesnot exists');
             return redirect()->route('activity.index');
         }
         $rules = $this->activity->getRules();
@@ -113,6 +119,11 @@ class ActivityController extends Controller
         $data = $request->all();
         $this->activity->fill($data);
         $status = $this->activity->save();
+        if ($status) {
+            notify()->success('Activity updated successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding activity.');
+        }
         return redirect()->route('activity.index')->with('user_info', $user_info);
     }
 
@@ -125,7 +136,16 @@ class ActivityController extends Controller
     public function destroy($id)
     {
         $this->activity = $this->activity->find($id);
+        if (!$this->activity) {
+            notify()->error('This activity doesnot exists');
+        }
         $del = $this->activity->delete();
+        if ($del) {
+            notify()->success('Activity deleted successfully');
+        } else {
+            //message
+            notify()->error('Sorry! there was problem in deleting activity');
+        }
         return redirect()->route('activity.index');
     }
 }

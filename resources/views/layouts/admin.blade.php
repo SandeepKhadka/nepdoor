@@ -11,7 +11,7 @@
     @include('admin.section.topnav')
 
     @include('admin.section.sidebar')
-
+    
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper container">
       @yield('main-content')

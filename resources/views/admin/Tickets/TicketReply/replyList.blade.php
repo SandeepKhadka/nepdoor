@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Ticket Reply List')
+@section('title', 'Nepdoor | Ticket Reply List')
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
@@ -32,6 +32,7 @@
                                     @foreach ($reply_data as $reply)
                                         <tr>
                                             <td>1.</td>
+                                            {{-- {{ dd($reply->ticket_info['token_id']) }} --}}
                                             <td>{{ $reply->ticket_id }}</td>
                                             <td>{{ Str::limit($reply->message, 30) }}</td>
                                             <td><span

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply
-                        {{ isset($reply_data) ? 'Update' : 'Add' }}</small></h4>
+                        {{ isset($reply_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($reply_data))
@@ -20,13 +20,23 @@
                                         @csrf
                             @endif
                             <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label for="ticket_id">Ticket ID</label>
-                                    <input type="text" id="ticket_id" name="ticket_id" class="form-control"
-                                        value="{{ @$reply_data->ticket_id }}">
-                                    @error('ticket_id')
-                                        <span class="alert-danger">{{ $message }}</span>
-                                    @enderror
+                                <div class="form-group col-md-6">
+                                    <label>Ticket</label>
+                                    <div>
+                                        <select name="ticket_id" id="ticket_id" class="form-control" style="pointer-events: none">
+                                            <option value="" disabled selected hidden>Select token no</option>
+                                            @if (isset($ticket_info))
+                                                @foreach (@$ticket_info as $ticket => $data)
+                                                    <option value="{{ @$data != null ? @$data : '' }}"
+                                                        {{ @$reply_data->ticket_id == $data ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('ticket_id')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
 
                             </div>

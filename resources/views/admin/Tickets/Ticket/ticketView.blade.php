@@ -5,8 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply View
-                        </small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply View</h4>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -25,11 +24,10 @@
                                     <label>User</label>
                                     <div>
                                         <select name="user_id" id="user_id" class="form-control" disabled>
-                                            <option value="" disabled selected hidden>Select user</option>
                                             @if (isset($user_info))
                                                 @foreach (@$user_info as $user => $data)
                                                     <option value="{{ @$user != null ? @$user : '' }}"
-                                                        {{ @$tickets_data->user_id == $user ? 'selected' : '' }}>
+                                                        {{ @$subscription_data->user_id == $user ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
                                             @endif
@@ -121,16 +119,11 @@
                                         rows="5" value="{{ @$ticket_data->updated_at }}" disabled>
                                 </div>
                             </div>
-
-                            <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
                             <a href="{{ route('ticket.index') }}" class="btn btn-primary float-right"
                                 style="margin-right: 10px" value="Back">Back
                             </a>
-                            </form>
-                            </form>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
