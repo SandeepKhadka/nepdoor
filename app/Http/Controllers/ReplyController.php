@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\TicketReply;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class ReplyController extends Controller
 {
@@ -24,6 +26,17 @@ class ReplyController extends Controller
         $replies = TicketReply::orderBy('id','DESC')->get();
         $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies)->with('ticket_info', $ticket_info);
+    }
+
+    public function messageReply($id)
+    {
+        $tickets = Ticket::find($id);
+        if (!$tickets) {
+            return redirect()->route('ticket.index');
+        }
+        // $tickets = Ticket::orderBy('id', 'DESC')->get();
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        return view('admin.tickets.ticketReply.message')->with('ticket_data', $tickets)->with('user_info', $user_info);
     }
 
     /**

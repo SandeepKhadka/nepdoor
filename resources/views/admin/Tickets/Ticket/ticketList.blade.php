@@ -62,7 +62,7 @@
 
                                                     </i>
                                                 </a>
-                                                <a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-success">
+                                                <a href="{{ route('replyMessage', $ticket->id) }}" class="btn btn-primary">
                                                     <i class="fa fa-message">
 
                                                     </i>

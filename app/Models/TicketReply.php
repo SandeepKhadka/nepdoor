@@ -9,16 +9,18 @@ class TicketReply extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ticket_id', 'message','status'];
+    protected $fillable = ['ticket_id', 'message', 'status'];
 
-public function ticket_info(){
-    return $this->hasOne(Ticket::class, 'id', 'ticket_id');
-}
+    public function ticket_info()
+    {
+        return $this->hasOne(Ticket::class, 'id', 'ticket_id');
+    }
 
-    public function getRules(){
+    public function getRules()
+    {
         return [
             'message' => 'required|string',
-            'ticket_id' => 'nullable|exists:tickets,id',
+            'ticket_id' => 'required|exists:tickets,token_id',
         ];
     }
 }

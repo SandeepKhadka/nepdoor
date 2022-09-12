@@ -23,12 +23,12 @@
                                 <div class="form-group col-md-6">
                                     <label>Ticket</label>
                                     <div>
-                                        <select name="ticket_id" id="ticket_id" class="form-control">
+                                        <select name="ticket_id" id="ticket_id" class="form-control" disabled>
                                             <option value="" disabled selected hidden>Select token no</option>
                                             @if (isset($ticket_info))
                                                 @foreach (@$ticket_info as $ticket => $data)
-                                                    <option value="{{ @$ticket != null ? @$ticket : '' }}"
-                                                        {{ @$ticket_data->ticket_id == $ticket ? 'selected' : '' }}>
+                                                    <option value="{{ @$data != null ? @$data : '' }}"
+                                                        {{ @$reply_data->ticket_id == $data ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
                                             @endif

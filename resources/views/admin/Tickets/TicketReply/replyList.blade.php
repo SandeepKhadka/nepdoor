@@ -32,13 +32,8 @@
                                     @foreach ($reply_data as $reply)
                                         <tr>
                                             <td>1.</td>
-                                            <td>
-                                                @if (isset($reply->ticket_info['token_id']))
-                                                    {{ $reply->ticket_info['token_id'] }}
-                                                @else
-                                                    --
-                                                @endif
-                                            </td>
+                                            {{-- {{ dd($reply->ticket_info['token_id']) }} --}}
+                                            <td>{{ $reply->ticket_id }}</td>
                                             <td>{{ Str::limit($reply->message, 30) }}</td>
                                             <td><span
                                                     class="{{ @$reply->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $reply->status }}

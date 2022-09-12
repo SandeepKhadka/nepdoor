@@ -68,6 +68,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('ticket',TicketController::class);
     Route::resource('user',UserController::class);
     Route::resource('reply',ReplyController::class);
+    Route::get('/replyMessage/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact',ContactController::class);
 
 });

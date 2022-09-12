@@ -25,6 +25,7 @@ class TicketController extends Controller
         return view('admin.tickets.ticket.ticketList')->with('ticket_data', $tickets)->with('user_info', $user_info);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *

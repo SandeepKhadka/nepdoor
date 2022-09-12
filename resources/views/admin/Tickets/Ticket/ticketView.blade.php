@@ -24,11 +24,10 @@
                                     <label>User</label>
                                     <div>
                                         <select name="user_id" id="user_id" class="form-control" disabled>
-                                            <option value="" disabled selected hidden>Select user</option>
                                             @if (isset($user_info))
                                                 @foreach (@$user_info as $user => $data)
                                                     <option value="{{ @$user != null ? @$user : '' }}"
-                                                        {{ @$tickets_data->user_id == $user ? 'selected' : '' }}>
+                                                        {{ @$subscription_data->user_id == $user ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
                                             @endif

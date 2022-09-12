@@ -5,8 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Ticket Reply View
-                        </small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Reply Ticket Message</h4>
                     <div class="card">
                         <div class="card-body">
                             <form action="{{ route('reply.store') }}" method="post" class="form"
@@ -15,20 +14,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label>Title</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ @$ticket_data->title }}" disabled>
-                                        @error('title')
-                                            <span class="alert-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" class="form-control" value="{{ @$ticket_data->title }}"
+                                            disabled>
                                     </div>
                                 </div>
                                 <div class="row">
-
                                     <div class="form-group col-md-6">
                                         <label>User</label>
                                         <div>
-                                            <select  class="form-control" disabled>
-                                                <option value="" disabled selected hidden>Select user</option>
+                                            <select class="form-control" disabled>
                                                 @if (isset($user_info))
                                                     @foreach (@$user_info as $user => $data)
                                                         <option value="{{ @$user != null ? @$user : '' }}"
@@ -41,10 +35,10 @@
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="token_id">Token ID</label>
-                                        <input type="text" id="token_id" name="token_id" class="form-control"
-                                            value="{{ @$ticket_data->token_id }}" disabled>
-                                        @error('token_id')
+                                        <label for="ticket_id">Token ID</label>
+                                        <input type="text" id="ticket_id" name="ticket_id" class="form-control"
+                                            value="{{ @$ticket_data->token_id }}" readonly>
+                                        @error('ticket_id')
                                             <span class="alert-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -66,13 +60,23 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="message">Message</label>
-                                        <textarea type="text" class="form-control" rows="5" name="message" id="message" disabled
+                                        <textarea type="text" class="form-control" rows="5" disabled
                                             style="resize: none;">{{ @$ticket_data->message }}
                                         </textarea>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <label for="message">Message</label>
+                                        <textarea type="text" class="form-control" rows="5" name="message" id="message" required
+                                            style="resize: none;">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-success float-right" value="Sumbit">Reply</button>
                                 <a href="{{ route('ticket.index') }}" class="btn btn-primary float-right"
                                     style="margin-right: 10px" value="Back">Back
                                 </a>

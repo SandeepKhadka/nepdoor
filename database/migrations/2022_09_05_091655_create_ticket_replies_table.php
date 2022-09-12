@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('ticket_replies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ticket_id')->nullable();
+            $table->string('ticket_id')->nullable();
             $table->text('message');
             $table->enum('status', ['Active' , 'Inactive'])->default('Active');
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('set null');
+            // $table->foreign('ticket_id')->references('token_id')->on('tickets')->onDelete('set null');
             $table->timestamps();
         });
     }
