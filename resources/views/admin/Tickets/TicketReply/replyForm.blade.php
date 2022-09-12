@@ -23,7 +23,7 @@
                                 <div class="form-group col-md-6">
                                     <label>Ticket</label>
                                     <div>
-                                        <select name="ticket_id" id="ticket_id" class="form-control" disabled>
+                                        <select name="ticket_id" id="ticket_id" class="form-control" style="pointer-events: none">
                                             <option value="" disabled selected hidden>Select token no</option>
                                             @if (isset($ticket_info))
                                                 @foreach (@$ticket_info as $ticket => $data)
