@@ -61,11 +61,11 @@ class BillingController extends Controller
         $this->billing->fill($data);
 
         $status = $this->billing->save();
-        // if($status){
-        //     notify()->success('billing added successfully');
-        // }else{
-        //     notify()->error('Sorry! There was problem in adding billing');
-        // }
+        if($status){
+            notify()->success('Bill added successfully.');
+        }else{
+            notify()->error('Sorry! There was problem while adding bill.');
+        }
 
         return redirect()->route('billing.index');
     }
@@ -80,12 +80,9 @@ class BillingController extends Controller
     {
         $this->billing = $this->billing->find($id);
         if (!$this->billing) {
-            //message
-            // notify()->error('This billing doesnot exists');
+            notify()->error('This bill doesnot exists');
             return redirect()->route('billing.index');
         }
-
-        // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.billing.billingView')
             ->with('billing_data', $this->billing);
     }
@@ -101,11 +98,10 @@ class BillingController extends Controller
         $this->billing = $this->billing->find($id);
         if (!$this->billing) {
             //message
-            // notify()->error('This billing doesnot exists');
+            notify()->error('This bill doesnot exists');
             return redirect()->route('billing.index');
         }
 
-        // $this->category = $this->category->orderBy('id', 'DESC')->pluck('title', 'id');
         return view('admin.billing.billingForm')
             ->with('billing_data', $this->billing);
             // ->with('category_data', $this->category);
@@ -122,7 +118,7 @@ class BillingController extends Controller
     {
         $this->billing = $this->billing->find($id);
         if (!$this->billing) {
-            // notify()->error('This billing doesnot exists');
+            notify()->error('This billing doesnot exists');
             redirect()->route('billing.index');
         }
 
@@ -144,11 +140,11 @@ class BillingController extends Controller
         $this->billing->fill($data);
 
         $status = $this->billing->save();
-        // if($status){
-        //     notify()->success('billing updated successfully');
-        // }else{
-        //     notify()->error('Sorry! There was problem in updating billing');
-        // }
+        if($status){
+            notify()->success('Bill updated successfully.');
+        }else{
+            notify()->error('Sorry! There was problem while adding bill.');
+        }
         return redirect()->route('billing.index');
     }
 
@@ -162,7 +158,7 @@ class BillingController extends Controller
     {
         $this->billing = $this->billing->find($id);
         if (!$this->billing) {
-            // notify()->error('This billing doesnot exists');
+            notify()->error('This bill doesnot exists');
             redirect()->route('billing.index');
         }
 
@@ -173,11 +169,11 @@ class BillingController extends Controller
                 unlink(public_path() . '/uploads/billing/' . $voucher);
                 unlink(public_path() . '/uploads/billing/Thumb-' . $voucher);
                 //message
-                // notify()->success('billing deleted successfully');
+                notify()->success('Bill deleted successfully');
             }
             else {
                 //message
-                // notify()->error('Sorry! there was problem in deleting data');
+                notify()->error('Sorry! there was problem in deleting bill');
             }
 
             return redirect()->route('billing.index');

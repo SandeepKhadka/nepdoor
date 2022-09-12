@@ -51,6 +51,11 @@ class TicketController extends Controller
         $data['token_id'] = 'tok-' . rand(0, 99) . '-' . $request->user_id;
         $this->ticket->fill($data);
         $status = $this->ticket->save();
+        if ($status) {
+            notify()->success('Ticket added successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding ticket.');
+        }
         return redirect()->route('ticket.index');
     }
 
@@ -65,6 +70,7 @@ class TicketController extends Controller
         $this->ticket = $this->ticket->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->ticket) {
+            notify()->error('This ticket doesnot exists');
             return redirect()->route('ticket.index');
         }
         return view('admin.tickets.ticket.ticketView')->with('ticket_data', $this->ticket)->with('user_info', $user_info);
@@ -81,6 +87,7 @@ class TicketController extends Controller
         $this->ticket = $this->ticket->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->ticket) {
+            notify()->error('This ticket doesnot exists');
             return redirect()->route('ticket.index');
         }
         return view('admin.tickets.ticket.ticketForm')->with('ticket_data', $this->ticket)->with('user_info', $user_info);
@@ -99,6 +106,7 @@ class TicketController extends Controller
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->ticket)
         {
+            notify()->error('This ticket doesnot exists');
             return redirect()->route('ticket.index');
         }
         $rules = $this->ticket->getRules();
@@ -106,6 +114,11 @@ class TicketController extends Controller
         $data = $request->all();
         $this->ticket->fill($data);
         $status = $this->ticket->save();
+        if ($status) {
+            notify()->success('Ticket updated successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding ticket.');
+        }
         return redirect()->route('ticket.index')->with('user_info', $user_info);
     }
 
@@ -118,7 +131,18 @@ class TicketController extends Controller
     public function destroy($id)
     {
         $this->ticket = $this->ticket->find($id);
+        if (!$this->helpCenter) {
+            notify()->error('This ticket doesnot exists');
+            redirect()->route('helpCenter.index');
+        }
         $del = $this->ticket->delete();
+        if ($del) {
+            notify()->success('Ticket deleted successfully');
+        }
+        else {
+            //message
+            notify()->error('Sorry! there was problem in deleting ticket');
+        }
         return redirect()->route('ticket.index');
     }
 }
