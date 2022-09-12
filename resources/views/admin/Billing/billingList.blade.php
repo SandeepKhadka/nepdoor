@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title' , 'Nepdoor | Billing List')
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
@@ -21,6 +21,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
+                                    <th style="width: 50px">BillNo</th>
                                     <th>Amount</th>
                                     <th>Voucher</th>
                                     <th style="width:150px">Payment Status</th>
@@ -33,6 +34,7 @@
                                     @foreach ($billing_data as $billings => $billing)
                                         <tr>
                                             <td>{{ $billings + 1 }}</td>
+                                            <td>{{ $billing->billNo }}</td>
                                             <td>{{ $billing->amount }}</td>
                                             <td>
                                                 <img src="{{ asset('uploads/billing/Thumb-' . $billing->voucher) }}"

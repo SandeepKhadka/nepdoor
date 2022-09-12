@@ -9,7 +9,7 @@ class Billing extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount','voucher','payment_status','status'];
+    protected $fillable = ['amount','voucher','payment_status','status','billNo'];
 
     public function getRules($act = 'add'){
         $rules = [

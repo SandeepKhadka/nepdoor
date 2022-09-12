@@ -40,12 +40,3 @@ function getOrderId($array)
 
     return $order_id;
 }
-
-function getTokenID($array)
-{
-
-    foreach ($array as $value) {
-        $value['token_id'] = 'tok-' . rand(0, 999) . '-' . $value['user_id'];
-    }
-    return $value['token_id'];
-}

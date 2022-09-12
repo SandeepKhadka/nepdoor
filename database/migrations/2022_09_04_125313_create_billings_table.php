@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('billings', function (Blueprint $table) {
             $table->id();
+            $table->string('billNo');
             $table->double('amount');
             $table->string('voucher');
             $table->enum('payment_status', ['Paid', 'Unpaid'])->default('Unpaid');
