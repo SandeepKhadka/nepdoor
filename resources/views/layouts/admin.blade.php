@@ -1,4 +1,6 @@
 @include('admin.section.header')
+
+@section('title' , 'Nepdoor | Admin')
 <div class="wrapper">
 
     <!-- Preloader -->

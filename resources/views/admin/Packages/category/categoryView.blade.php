@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title' , 'Nepdoor | Category View')
 @section('main-content')
     <div class="content">
         <div class="container">

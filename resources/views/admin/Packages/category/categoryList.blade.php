@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title' , 'Nepdoor | Category List')
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
