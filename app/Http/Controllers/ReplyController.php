@@ -21,7 +21,7 @@ class ReplyController extends Controller
      */
     public function index()
     {
-        $replies = TicketReply::orderBy('id','DESC')->get();
+        $replies = TicketReply::orderBy('id', 'DESC')->get();
         $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies)->with('ticket_info', $ticket_info);
     }
@@ -50,6 +50,11 @@ class ReplyController extends Controller
         $data = $request->all();
         $this->reply->fill($data);
         $status = $this->reply->save();
+        if ($status) {
+            notify()->success('Reply added successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding reply.');
+        }
         return redirect()->route('reply.index');
     }
 
@@ -60,10 +65,11 @@ class ReplyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {        
+    {
         $this->reply = $this->reply->find($id);
         $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
+            notify()->error('This reply doesnot exists');
             return redirect()->route('reply.index');
         }
         return view('admin.tickets.ticketReply.replyView')->with('reply_data', $this->reply)->with('ticket_info', $ticket_info);
@@ -80,6 +86,7 @@ class ReplyController extends Controller
         $this->reply = $this->reply->find($id);
         $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
+            notify()->error('This reply doesnot exists');
             return redirect()->route('reply.index');
         }
 
@@ -98,7 +105,7 @@ class ReplyController extends Controller
         $this->reply = $this->reply->find($id);
         $ticket_info = Ticket::orderBy('id', 'Desc')->pluck('token_id', 'id');
         if (!$this->reply) {
-
+            notify()->error('This reply doesnot exists');
             return redirect()->route('reply.index');
         }
         $rules = $this->reply->getRules();
@@ -106,6 +113,11 @@ class ReplyController extends Controller
         $data = $request->all();
         $this->reply->fill($data);
         $status = $this->reply->save();
+        if ($status) {
+            notify()->success('Reply updated successfully.');
+        } else {
+            notify()->error('Sorry! There was problem while adding reply.');
+        }
         return redirect()->route('reply.index')->with('ticket_info', $ticket_info);
     }
 
@@ -118,7 +130,16 @@ class ReplyController extends Controller
     public function destroy($id)
     {
         $this->reply = $this->reply->find($id);
+        if (!$this->helpCenter) {
+            notify()->error('This reply doesnot exists');
+            redirect()->route('reply.index');
+        }
         $del = $this->reply->delete();
+        if ($del) {
+            notify()->success('Reply deleted successfully');
+        } else {
+            notify()->error('There was problem in deleting reply');
+        }
         return redirect()->route('reply.index');
     }
 }

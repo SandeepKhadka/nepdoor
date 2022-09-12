@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
-
+    @notifyCss
     @yield('styles')
 
 </head>

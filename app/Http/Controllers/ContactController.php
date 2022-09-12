@@ -49,9 +49,9 @@ class ContactController extends Controller
 
         $status = $this->contact->save();
         if($status){
-            // notify()->success('contact added successfully');
+            notify()->success('Contact added successfully.');
         }else{
-            // notify()->error('Sorry! There was problem in adding contact');
+            notify()->error('Sorry! There was problem in adding contact.');
         }
 
         return redirect()->route('contact.index');
@@ -67,6 +67,7 @@ class ContactController extends Controller
     {
         $this->contact = $this->contact->find($id);
         if (!$this->contact) {
+            notify()->error('This contact doesnot exists');
             return redirect()->route('contact.index');
         }
         return view('admin.contact.contactView')->with('contact_data', $this->contact);
@@ -82,6 +83,7 @@ class ContactController extends Controller
     {
         $this->contact = $this->contact->find($id);
         if (!$this->contact) {
+            notify()->error('This contact doesnot exists');
             return redirect()->route('contact.index');
         }
 
@@ -99,7 +101,7 @@ class ContactController extends Controller
     {
         $this->contact = $this->contact->find($id);
         if (!$this->contact) {
-
+            notify()->error('This contact doesnot exists');
             return redirect()->route('contact.index');
         }
         $rules = $this->contact->getRules();
@@ -107,6 +109,11 @@ class ContactController extends Controller
         $data = $request->all();
         $this->contact->fill($data);
         $status = $this->contact->save();
+        if($status){
+            notify()->success('Contact updated successfully');
+        }else{
+            notify()->error('Sorry! There was problem in adding contact');
+        }
         return redirect()->route('contact.index');
     }
 
@@ -119,7 +126,16 @@ class ContactController extends Controller
     public function destroy($id)
     {
         $this->contact = $this->contact->find($id);
+        if (!$this->gallery) {
+            notify()->error('This contact doesnot exists');
+            return redirect()->route('gallery.index');
+        }
         $del = $this->contact->delete();
+        if ($del) {
+            notify()->success('This contact deleted successfully');
+        } else {
+            notify()->error('There was problem in deleting contact');
+        }
         return redirect()->route('contact.index');
     }
 }

@@ -52,9 +52,9 @@ class PackageCategoryController extends Controller
 
         $status = $this->packageCategories->save();
         if($status){
-            // notify()->success('packageCategories added successfully');
+            notify()->success('Category added successfully');
         }else{
-            // notify()->error('Sorry! There was problem in adding packageCategories');
+            notify()->error('Sorry! There was problem while adding category');
         }
 
         return redirect()->route('category.index');
@@ -71,7 +71,7 @@ class PackageCategoryController extends Controller
         $this->packageCategories = $this->packageCategories->find($id);
         if (!$this->packageCategories) {
             # code...
-            // notify()->error('This task doesnot exists');
+            notify()->error('This category doesnot exists');
             return redirect()->route('category.index');
         }
         return view('admin.packages.category.categoryView')->with('packageCategories_data', $this->packageCategories);
@@ -88,7 +88,7 @@ class PackageCategoryController extends Controller
         $this->packageCategories = $this->packageCategories->find($id);
         if (!$this->packageCategories) {
             # code...
-            // notify()->error('This task doesnot exists');
+            notify()->error('This category doesnot exists');
             return redirect()->route('category.index');
         }
         return view('admin.packages.category.categoryForm')->with('packageCategories_data', $this->packageCategories);
@@ -106,7 +106,7 @@ class PackageCategoryController extends Controller
         $this->packageCategories = $this->packageCategories->find($id);
         if (!$this->packageCategories) {
             # code...
-            // notify()->error('This task doesnot exists');
+            notify()->error('This category doesnot exists');
             return redirect()->route('category.index');
         }
         $rules = $this->packageCategories->getRules();
@@ -116,9 +116,9 @@ class PackageCategoryController extends Controller
 
         $status = $this->packageCategories->save();
         if($status){
-            // notify()->success('packageCategories added successfully');
+            notify()->success('Category updated successfully');
         }else{
-            // notify()->error('Sorry! There was problem in adding packageCategories');
+            notify()->error('Sorry! There was problem in adding category');
         }
 
         return redirect()->route('category.index');
@@ -135,14 +135,14 @@ class PackageCategoryController extends Controller
         $this->packageCategories = $this->packageCategories->find($id);
         if (!$this->packageCategories) {
             # code...
-            // notify()->error('This task doesnot exists');
+            notify()->error('This category doesnot exists');
             return redirect()->route('category.index');
         }
         $del = $this->packageCategories->delete();
         if ($del) {
-            // notify()->success('This task deleted successfully');
+            notify()->success('Category deleted successfully');
         } else {
-            // notify()->error('There was problem in deleting task');
+            notify()->error('There was problem in deleting category');
         }
         return redirect()->route('category.index');
     }
