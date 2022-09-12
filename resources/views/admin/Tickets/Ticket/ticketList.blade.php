@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Ticket List')
+@section('title', 'Nepdoor | Ticket List')
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
@@ -27,7 +27,7 @@
                                     <th>Token number</th>
                                     <th>Ticket Status</th>
                                     <th style="width: 90px">Status</th>
-                                    <th style="width: 190px">Action</th>
+                                    <th style="width: 210px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,6 +59,11 @@
                                                 </a>
                                                 <a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-success">
                                                     <i class="fa fa-pen">
+
+                                                    </i>
+                                                </a>
+                                                <a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-success">
+                                                    <i class="fa fa-message">
 
                                                     </i>
                                                 </a>
