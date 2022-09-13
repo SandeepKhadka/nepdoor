@@ -10,6 +10,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,12 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-Route::get('/digitalMarketing', function () {
-    return view('digitalMarketing');
-});
+// Route::get('/digitalMarketing', function () {
+//     return view('digitalMarketing');
+// });
+
+Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
+
 
 Route::get('/seo', function () {
     return view('seo');
@@ -70,6 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('reply',ReplyController::class);
     Route::get('/replyMessage/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact',ContactController::class);
+    Route::resource('frontend',FrontEndController::class);
 
 });
 

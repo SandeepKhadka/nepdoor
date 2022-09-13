@@ -27,17 +27,25 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('storeDigitalFormData') }}" method="post" enctype="multipart/form-data">
+                                    @if ($errors->any())
+                                        {{ implode('', $errors->all('<div>:message</div>')) }}
+                                    @endif
+                                    <form action="{{ route('storeDigitalFormData') }}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="form-group col-md-12">
-                                                <label for="package">Choose Package</label>
-                                                <select id="package" name="package"
+                                                <label for="package_id">Choose Package</label>
+                                                <select id="package_id" name="package_id"
                                                     class="form-control custom-select">
-                                                    <option selected disabled>Choose any one package...</option>
-                                                    <option>Standard Package</option>
-                                                    <option>Premium Package</option>
-                                                    <option>Enterprise Package</option>
+                                                    <option selected disabled hidden>Choose any one package...</option>
+                                                    @if (isset($package_info))
+                                                        @foreach ($package_info as $package)
+                                                            @if ($package->cat_info['title'] == 'Digital Marketing' )
+                                                                <option value="{{ $package->id }}">{{ $package->name }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
