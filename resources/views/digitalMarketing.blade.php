@@ -30,12 +30,10 @@
                                     <form action="{{ route('frontend.frontEndForm_store') }}" method="post" class="form"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        @endif
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="subject">Choose Subject</label>
-                                                <select id="subject" name="subject"
-                                                    class="form-control custom-select">
+                                                <select id="subject" name="subject" class="form-control custom-select">
                                                     <option selected disabled>Choose any one subject...</option>
                                                     <option>Standard Package</option>
                                                     <option>Premium Package</option>
