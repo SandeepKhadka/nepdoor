@@ -79,3 +79,6 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], fun
     Route::get('/', [App\Http\Controllers\HomeController::class, 'customer'])->name('customer');
 
 });
+
+
+Route::post('/store/digitalMarketingdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');

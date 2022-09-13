@@ -31,12 +31,12 @@ class Subscription extends Model
         return $this->hasOne(Billing::class, 'id', 'billing_id');
     }
 
-    public function getRules(){
+    public static function getRules(){
         return [
             'message' => 'required|string',
             'user_id' => 'nullable|exists:users,id',
             'package_id' => 'nullable|exists:packages,id',
-            'billing_id' => 'nullable|exists:billings,id',
+            // 'billing_id' => 'required|string',
             // 'status' => 'required|in:Active,Inactive'
         ];
     }

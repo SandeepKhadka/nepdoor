@@ -23,7 +23,7 @@
                                     <th style="width: 10px">S.N.</th>
                                     <th>User</th>
                                     <th>Package</th>
-                                    <th>Billing</th>
+                                    <th>Billing Id</th>
                                     <th>Message</th>
                                     <th>End Date</th>
                                     <th style="width: 90px">Status</th>
@@ -50,11 +50,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if (isset($subscription->billing_info['amount']))
-                                                    {{ $subscription->billing_info['amount'] }}
-                                                @else
-                                                    --
-                                                @endif
+                                                {{ $subscription->billing_id }}
                                             </td>
                                             <td>{{ Str::limit($subscription->message, 20) }}</td>
                                             <td>{{ $subscription->end_date }}</td>
