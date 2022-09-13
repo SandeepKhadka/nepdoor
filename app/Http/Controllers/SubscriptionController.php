@@ -55,6 +55,7 @@ class SubscriptionController extends Controller
         $data = $request->except(['_token']);
         $endDate = Carbon::today()->addDays(30);
         $data['end_date'] = $endDate;
+        $data['billing_id'] = 'bil-' . rand(0, 99);
         $this->subscription->fill($data);
 
         $status = $this->subscription->save();
