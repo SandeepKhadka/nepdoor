@@ -32,9 +32,12 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-Route::get('/digitalMarketing', function () {
-    return view('digitalMarketing');
-});
+// Route::get('/digitalMarketing', function () {
+//     return view('digitalMarketing');
+// });
+
+Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
+
 
 Route::get('/seo', function () {
     return view('seo');

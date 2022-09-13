@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Billing;
+use App\Models\Package;
+use App\Models\PackageCategories;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -49,5 +51,15 @@ class FrontendController extends Controller
         $subscription_status = $this->subscription->save();
 
         return redirect()->back();
+    }
+
+    public function digitalMarketing()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        $category_info = PackageCategories::where('status', 'Active')->pluck('title');
+        return view('digitalMarketing')->with([
+            'package_info' => $package_info,
+            'category_info' => $category_info
+        ]);
     }
 }

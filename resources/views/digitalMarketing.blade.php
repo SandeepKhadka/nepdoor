@@ -30,7 +30,8 @@
                                     @if ($errors->any())
                                         {{ implode('', $errors->all('<div>:message</div>')) }}
                                     @endif
-                                    <form action="{{ route('storeDigitalFormData') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('storeDigitalFormData') }}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="form-group col-md-12">
@@ -38,9 +39,13 @@
                                                 <select id="package" name="package"
                                                     class="form-control custom-select">
                                                     <option selected disabled>Choose any one package...</option>
-                                                    <option>Standard Package</option>
-                                                    <option>Premium Package</option>
-                                                    <option>Enterprise Package</option>
+                                                    @if (isset($package_info))
+                                                        @foreach ($package_info as $package)
+                                                            @if ($package->cat_info['title'] == 'Digital Marketing' )
+                                                                <option>{{ $package->name }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
