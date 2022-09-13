@@ -69,7 +69,7 @@
 
                                 <div class="row">
                                     <div class="form-group col-md-12">
-                                        <label for="message"> Reply Message</label>
+                                        <label for="message">Reply Message</label>
                                         <textarea type="text" class="form-control" rows="5" name="message" id="message" required
                                             style="resize: none;">
                                         </textarea>

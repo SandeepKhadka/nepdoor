@@ -11,11 +11,11 @@ class Billing extends Model
 
     protected $fillable = ['amount','voucher','payment_status','status','billNo'];
 
-    public function getRules($act = 'add'){
+    public static function getRules($act = 'add'){
         $rules = [
             'amount' => 'required|string',
             'voucher' => 'required|image|max:5120',
-            'payment_status' => 'required|in:Paid,Unpaid',
+            // 'payment_status' => 'required|in:Paid,Unpaid',
             // 'status' => 'required|in:Active,Inactive'
         ];
 

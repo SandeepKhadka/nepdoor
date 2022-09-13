@@ -24,7 +24,8 @@ class PackageController extends Controller
     public function index()
     {
         $this->package = $this->package->orderBy('id', 'DESC')->get();
-        return view('admin.packages.package.packageList')->with('package_data' , $this->package);
+        $cat_info = PackageCategories::orderBy('id', 'Desc')->pluck('title', 'id');
+        return view('admin.packages.package.packageList')->with('package_data' , $this->package)->with('cat_info', $cat_info);
     }
 
     /**

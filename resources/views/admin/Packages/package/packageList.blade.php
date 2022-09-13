@@ -39,7 +39,6 @@
                                                 @else
                                                     --
                                                 @endif
-                                                {{-- {{($package->category_info['title']) == null ? '' : $package->category_info['title']}} --}}
                                             </td>
                                             <td>${{ $package->price }}</td>
                                             <td><span class="{{ @$package->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $package->status }}</span></td>
