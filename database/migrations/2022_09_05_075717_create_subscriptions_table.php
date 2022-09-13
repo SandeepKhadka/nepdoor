@@ -18,12 +18,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('package_id')->nullable();
-            $table->unsignedBigInteger('billing_id')->nullable();
+            $table->string('billing_id');
             $table->text('message')->nullable();
-            $table->enum('status',['Active', 'Inactive'])->default('Active');
+            $table->enum('status',['Active', 'Inactive'])->default('Inactive');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('set null');
-            $table->foreign('billing_id')->references('id')->on('billings')->onDelete('set null');
+            // $table->foreign('billing_id')->references('id')->on('billings')->onDelete('set null');
             $table->timestamp('start_date')->useCurrent();
             $table->date('end_date');
             $table->timestamps();

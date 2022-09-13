@@ -61,28 +61,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label>Billing</label>
-                                    <div>
-                                        <select name="billing_id" id="billing_id" class="form-control">
-                                            <option value="" disabled selected hidden>Select billing</option>
-                                            @if (isset($billing_info))
-                                                @foreach (@$billing_info as $billing => $data)
-                                                    <option value="{{ @$billing != null ? @$billing : '' }}"
-                                                        {{ @$subscription_data->billing_id == $billing ? 'selected' : '' }}>
-                                                        {{ @$data }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                        @error('billing_id')
-                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="message">Message</label>
                                     <textarea type="text" id="message" name="message" class="form-control" style="resize: none" rows="5">{{ @$subscription_data->message }}</textarea>
@@ -91,7 +69,6 @@
                                     @enderror
                                 </div>
                             </div>
-
 
                             @if (isset($subscription_data))
                                 <div class="row">
