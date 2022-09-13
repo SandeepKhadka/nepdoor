@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 @section('title' , 'Nepdoor | Activity List')
+
+@section('styles')
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+@endsection
+
+@section('scripts')
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.table').DataTable();
+    </script>
+@endsection
+
 @section('main-content')
     <div class="container-fluid">
         <div class="row">
@@ -17,7 +29,7 @@
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="searching" class="table table-bordered">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
