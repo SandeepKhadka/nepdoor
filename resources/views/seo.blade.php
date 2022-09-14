@@ -36,22 +36,25 @@
                                         <div class="row" style="display: none">
                                             <div class="form-group col-md-6">
                                                 <label for="cat_id">Category</label>
-                                                <input type="text" id="cat_id" name="cat_id"
-                                                    class="form-control" value="SEO">
+                                                <input type="text" id="cat_id" name="cat_id" class="form-control"
+                                                    value="SEO">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-12">
-                                                <label for="package">Choose Package</label>
-                                                <select id="package" name="package"
+                                                <label for="package_id">Choose Package</label>
+                                                <select id="package_id" name="package_id"
                                                     class="form-control custom-select">
-                                                    <option selected disabled>Choose any one package...</option>
-                                                    <option>Standard Package</option>
-                                                    <option>Premium Package</option>
-                                                    <option>Enterprise Package</option>
+                                                    <option selected disabled hidden>Choose any one package...</option>
+                                                    @if (isset($package_info))
+                                                        @foreach ($package_info as $package)
+                                                            @if ($package->cat_info['title'] == 'SEO')
+                                                                <option value="{{ $package->id }}">{{ $package->name }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
-
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-6">
@@ -59,15 +62,12 @@
                                                 <input type="number" id="amount" name="amount"
                                                     class="form-control">
                                             </div>
-
-
                                             <div class="form-group col-md-6">
                                                 <label>Insert Voucher Image</label>
                                                 <input type="file" class="form-control-file" name="voucher"
                                                     id="voucher">
                                             </div>
                                         </div>
-
                                         <div class="form-group">
                                             <label for="message">Write Message</label>
                                             <textarea id="message" name="message" class="form-control" rows="4"></textarea>

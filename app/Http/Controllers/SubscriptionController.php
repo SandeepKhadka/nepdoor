@@ -56,7 +56,7 @@ class SubscriptionController extends Controller
         $data = $request->except(['_token']);
         $endDate = Carbon::today()->addDays(30);
         $data['end_date'] = $endDate;
-        $data['billing_id'] =  'bil-' . rand(0, 99);
+        $data['billing_id'] = 'bil-' . rand(0, 99);
         $this->subscription->fill($data);
 
         $status = $this->subscription->save();
@@ -99,7 +99,6 @@ class SubscriptionController extends Controller
         $this->subscription = $this->subscription->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
             notify()->error('This subscription doesnot exists');
             return redirect()->route('subscription.index');

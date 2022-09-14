@@ -34,10 +34,12 @@ class FrontendController extends Controller
                 $bills['voucher'] = $file_name;
             }
         }
-
-        $bills['billNo'] = 'bil-' . rand(0, 99);
+        
+        $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . $this->billing->id;
         $this->billing->fill($bills);
+        dd($bills['billNo']);
         $bill_status = $this->billing->save();
+        
 
         $subscription = $request->except(['_token', 'voucher', 'amount']);
         $subscription_rules = Subscription::getRules();
@@ -56,10 +58,16 @@ class FrontendController extends Controller
     public function digitalMarketing()
     {
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
-        $category_info = PackageCategories::where('status', 'Active')->pluck('title');
         return view('digitalMarketing')->with([
-            'package_info' => $package_info,
-            'category_info' => $category_info
+            'package_info' => $package_info
+        ]);
+    }
+
+    public function seo()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('seo')->with([
+            'package_info' => $package_info
         ]);
     }
 }

@@ -37,11 +37,9 @@ Route::get('/subscribe', function () {
 // });
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
+Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 
 
-Route::get('/seo', function () {
-    return view('seo');
-});
 
 Route::get('/digital_marketing_training', function () {
     return view('digital_marketing_training');

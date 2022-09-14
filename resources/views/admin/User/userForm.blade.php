@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | User Form')
+@section('title', 'Nepdoor | User Form')
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -8,6 +8,9 @@
                     <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">User Add</h4>
                     <div class="card">
                         <div class="card-body">
+                            @if ($errors->any())
+                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                            @endif
                             @if (isset($user_data))
                                 <form action="{{ route('user.update', @$user_data->id) }}" method="post" class="form"
                                     enctype="multipart/form-data">
