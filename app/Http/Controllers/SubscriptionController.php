@@ -25,8 +25,10 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        $this->subscription = $this->subscription->with('user_info', 'package_info', 'billing_info')->orderBy('id', 'DESC')->get();
-        return view('admin.subscription.subscriptionList')->with('subscription_data', $this->subscription);
+        $this->subscription = $this->subscription->orderBy('id', 'DESC')->get();
+        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
+        return view('admin.subscription.subscriptionList')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -38,8 +40,7 @@ class SubscriptionController extends Controller
     {
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
-        return view('admin.subscription.subscriptionForm')->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
+        return view('admin.subscription.subscriptionForm')->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -55,6 +56,7 @@ class SubscriptionController extends Controller
         $data = $request->except(['_token']);
         $endDate = Carbon::today()->addDays(30);
         $data['end_date'] = $endDate;
+        $data['billing_id'] = 'bil-' . rand(0, 99);
         $this->subscription->fill($data);
 
         $status = $this->subscription->save();
@@ -78,13 +80,12 @@ class SubscriptionController extends Controller
         $this->subscription = $this->subscription->find($id); 
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
             # code...
             notify()->error('This subscription doesnot exists');
             return redirect()->route('subscription.index');
         }
-        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
+        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -98,12 +99,11 @@ class SubscriptionController extends Controller
         $this->subscription = $this->subscription->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
             notify()->error('This subscription doesnot exists');
             return redirect()->route('subscription.index');
         }
-        return view('admin.subscription.subscriptionForm')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
+        return view('admin.subscription.subscriptionForm')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -118,7 +118,6 @@ class SubscriptionController extends Controller
         $this->subscription = $this->subscription->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        $billing_info = Billing::orderBy('id', 'Desc')->pluck('amount', 'id');
         if (!$this->subscription) {
             # code...
             notify()->error('This subscription doesnot exists');
@@ -136,7 +135,7 @@ class SubscriptionController extends Controller
             notify()->error('Sorry! There was problem in adding subscription');
         }
 
-        return redirect()->route('subscription.index')->with('user_info', $user_info)->with('package_info', $package_info)->with('billing_info', $billing_info);
+        return redirect()->route('subscription.index')->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**

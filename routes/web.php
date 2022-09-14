@@ -37,11 +37,9 @@ Route::get('/subscribe', function () {
 // });
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
+Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 
 
-Route::get('/seo', function () {
-    return view('seo');
-});
 
 Route::get('/digital_marketing_training', function () {
     return view('digital_marketing_training');
@@ -85,3 +83,5 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], fun
 
 
 Route::post('/store/digitalMarketingdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
+Route::post('/store/searchEngineOptimizationdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
+

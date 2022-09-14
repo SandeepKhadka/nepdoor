@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Subscription Form')
+@section('title', 'Nepdoor | Subscription Form')
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -40,6 +40,29 @@
                                     </div>
                                 </div>
 
+                                {{-- <div class="form-group col-md-6">
+                                    <label>Category</label>
+                                    <div>
+                                        <select name="cat_id" id="cat_id" class="form-control">
+                                            <option value="" disabled selected hidden>Select package category</option>
+                                            @if (isset($cat_info))
+                                                @foreach (@$cat_info as $category => $data)
+                                                    <option value="{{ @$category != null ? @$category : '' }}"
+                                                        {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
+                                                        {{ @$data }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                        @error('cat_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div> --}}
+                            </div>
+
+                            <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>Package</label>
                                     <div>
@@ -58,9 +81,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="message">Message</label>
                                     <textarea type="text" id="message" name="message" class="form-control" style="resize: none" rows="5">{{ @$subscription_data->message }}</textarea>
