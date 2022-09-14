@@ -33,6 +33,13 @@
                                     <form action="{{ route('storeDigitalFormData') }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
+                                        <div class="row" style="display: none">
+                                            <div class="form-group col-md-6">
+                                                <label for="cat_id">Category</label>
+                                                <input type="text" id="cat_id" name="cat_id"
+                                                    class="form-control" value="Digital Marketing">
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="package_id">Choose Package</label>

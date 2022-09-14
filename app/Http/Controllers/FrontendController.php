@@ -37,7 +37,9 @@ class FrontendController extends Controller
 
         $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
         $this->billing->fill($bills);
+        // dd($bills['billNo']);
         $bill_status = $this->billing->save();
+        
 
         $subscription = $request->except(['_token', 'voucher', 'amount']);
         $subscription_rules = Subscription::getRules();
@@ -57,6 +59,14 @@ class FrontendController extends Controller
     {
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
         return view('digitalMarketing')->with([
+            'package_info' => $package_info
+        ]);
+    }
+
+    public function seo()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('seo')->with([
             'package_info' => $package_info
         ]);
     }
