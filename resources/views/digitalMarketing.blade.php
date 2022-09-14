@@ -42,7 +42,7 @@
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
                                                             @if ($package->cat_info['title'] == 'Digital Marketing' )
-                                                                <option>{{ $package->name }}</option>
+                                                                <option value="{{isset($package->id) ? $package->id : " "}}" >{{ $package->name }}</option>
                                                             @endif
                                                         @endforeach
                                                     @endif
