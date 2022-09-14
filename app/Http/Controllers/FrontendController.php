@@ -35,7 +35,7 @@ class FrontendController extends Controller
             }
         }
 
-        $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . $this->billing->id;
+        $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
         $this->billing->fill($bills);
         $bill_status = $this->billing->save();
 
@@ -44,7 +44,7 @@ class FrontendController extends Controller
         $this->validate($request, $subscription_rules);
         $endDate = Carbon::today()->addDays(30);
         $subscription['end_date'] = $endDate;
-        $subscription['user_id'] = ucfirst(auth()->user()->id);
+        $subscription['user_id'] = auth()->user()->id;
         $subscription['billing_id'] = $bills['billNo'];
 
         $this->subscription->fill($subscription);
