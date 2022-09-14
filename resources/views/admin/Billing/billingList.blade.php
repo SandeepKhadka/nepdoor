@@ -21,7 +21,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
-                                    <th style="width: 50px">BillNo</th>
+                                    <th style="width: 9 0px">BillNo</th>
                                     <th>Amount</th>
                                     <th>Voucher</th>
                                     <th style="width:150px">Payment Status</th>

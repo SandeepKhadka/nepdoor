@@ -17,11 +17,13 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('cat_id')->nullable();
             $table->unsignedBigInteger('package_id')->nullable();
             $table->string('billing_id');
             $table->text('message')->nullable();
             $table->enum('status',['Active', 'Inactive'])->default('Inactive');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            // $table->foreign('cat_id')->references('id')->on('package_categories')->onDelete('set null');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('set null');
             // $table->foreign('billing_id')->references('id')->on('billings')->onDelete('set null');
             $table->timestamp('start_date')->useCurrent();

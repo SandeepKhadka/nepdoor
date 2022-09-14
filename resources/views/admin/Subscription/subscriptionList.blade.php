@@ -11,8 +11,6 @@
                             style="margin-left:0px"><i class="fa fa-plus" style="font-size: 12px">Add Subscription</i>
 
                         </a>
-
-                        {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}
                     </div>
 
                     <!-- /.card-header -->
@@ -22,8 +20,9 @@
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
                                     <th>User</th>
+                                    <th>Category</th>
                                     <th>Package</th>
-                                    <th>Billing Id</th>
+                                    <th>Billing No</th>
                                     <th>Message</th>
                                     <th>End Date</th>
                                     <th style="width: 90px">Status</th>
@@ -43,15 +42,16 @@
                                                 @endif
                                             </td>
                                             <td>
+                                                {{ $subscription->cat_id }}
+                                            </td>
+                                            <td>
                                                 @if (isset($subscription->package_info['name']))
                                                     {{ $subscription->package_info['name'] }}
                                                 @else
                                                     --
                                                 @endif
                                             </td>
-                                            <td>
-                                                {{ $subscription->billing_id }}
-                                            </td>
+                                            <td>{{ $subscription->billing_id }}</td>
                                             <td>{{ Str::limit($subscription->message, 20) }}</td>
                                             <td>{{ $subscription->end_date }}</td>
                                             <td><span
