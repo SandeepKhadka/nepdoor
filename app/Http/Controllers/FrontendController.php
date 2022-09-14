@@ -35,9 +35,9 @@ class FrontendController extends Controller
             }
         }
         
-        $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . $this->billing->id;
+        $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
         $this->billing->fill($bills);
-        dd($bills['billNo']);
+        // dd($bills['billNo']);
         $bill_status = $this->billing->save();
         
 
