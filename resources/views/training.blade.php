@@ -55,11 +55,6 @@
                                                             @endif
                                                         @endforeach
                                                     @endif
-                                                    {{-- <option>Certified SEO Professional Course</option>
-                                                    <option>Certified Digital Marketing Professional Course</option>
-                                                    <option>Certified Combo (SEO + digital Marketing) Professional
-                                                        Course
-                                                    </option> --}}
                                                 </select>
                                             </div>
 
@@ -104,59 +99,35 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Certified Digital Marketing Professional Course</span>
-                                    <span class="info-box-number">
-                                        NRs. 30,000 (2 Months Course + 3 Months Internship)
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
+
+                        @foreach ($package_info as $package)
+                            @if ($package->cat_info['title'] == 'Training')
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="info-box">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{ $package->name }}</span>
+                                            <span class="info-box-number">
+                                                NRs. {{ $package->price }} (2 Months Course + 3 Months Internship)
+                                            </span>
+                                            <a href="#" class="card-link">Learn More</a>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                    <!-- /.info-box -->
                                 </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Certified SEO Professional Course</span>
-                                    <span class="info-box-number">
-                                        NRs. 30,000 (2 Months Course + 3 Months Internship)
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Certified Combo (SEO + digital Marketing) Course</span>
-                                    <span class="info-box-number">
-                                        NRs. 55,000 (4 Months Course + 3 Months Internship)
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
+                            @endif
+                        @endforeach
+
                     </div>
 
 
 
                     <!-- /.info-box -->
+
                 </div>
+                <!-- /.col-md-6 -->
             </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
 
-        </div>
-
-    </div>
-    <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-    </div><!-- /.container-fluid -->
-
-    @include('inc.footer')
+        @include('inc.footer')
