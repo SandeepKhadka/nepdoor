@@ -45,7 +45,6 @@
                                         rows="5" value="{{ @$subscription_data->start_date }}">
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>Package</label>

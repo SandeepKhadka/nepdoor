@@ -68,4 +68,12 @@ class FrontendController extends Controller
             'package_info' => $package_info
         ]);
     }
+
+    public function basic()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('basic')->with([
+            'package_info' => $package_info
+        ]);
+    }
 }
