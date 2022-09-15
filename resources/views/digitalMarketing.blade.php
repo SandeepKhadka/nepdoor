@@ -27,9 +27,6 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    @if ($errors->any())
-                                        {{ implode('', $errors->all('<div>:message</div>')) }}
-                                    @endif
                                     <form action="{{ route('storeDigitalFormData') }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
