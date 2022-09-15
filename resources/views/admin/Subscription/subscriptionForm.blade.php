@@ -44,8 +44,6 @@
                                     <input type="datetime-local" id="start_date" name="start_date" class="form-control"
                                         rows="5" value="{{ @$subscription_data->start_date }}">
                                 </div>
-
-
                             </div>
 
                             <div class="row">
