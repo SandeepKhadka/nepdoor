@@ -34,10 +34,8 @@ class FrontendController extends Controller
                 $bills['voucher'] = $file_name;
             }
         }
-        
         $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
         $this->billing->fill($bills);
-        // dd($bills['billNo']);
         $bill_status = $this->billing->save();
         
 
@@ -46,7 +44,7 @@ class FrontendController extends Controller
         $this->validate($request, $subscription_rules);
         $endDate = Carbon::today()->addDays(30);
         $subscription['end_date'] = $endDate;
-        $subscription['user_id'] = ucfirst(auth()->user()->id);
+        $subscription['user_id'] = auth()->user()->id;
         $subscription['billing_id'] = $bills['billNo'];
 
         $this->subscription->fill($subscription);
@@ -71,6 +69,14 @@ class FrontendController extends Controller
         ]);
     }
 
+    public function training()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('training')->with([
+            'package_info' => $package_info
+        ]);
+    }
+    
     public function basic()
     {
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();

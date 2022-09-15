@@ -19,7 +19,6 @@
                                         enctype="multipart/form-data">
                                         @csrf
                             @endif
-
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>User</label>
@@ -39,14 +38,12 @@
                                         @enderror
                                     </div>
                                 </div>
-
                                 <div class="form-group col-md-6">
                                     <label for="start_date">Start Date</label>
                                     <input type="datetime-local" id="start_date" name="start_date" class="form-control"
                                         rows="5" value="{{ @$subscription_data->start_date }}">
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>Package</label>

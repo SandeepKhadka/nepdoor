@@ -24,7 +24,7 @@
                                     <th>Package</th>
                                     <th>Billing No</th>
                                     <th>Message</th>
-                                    <th>End Date</th>
+                                    <th style="width: 130px">End Date</th>
                                     <th style="width: 90px">Status</th>
                                     <th style="width: 160px">Action</th>
                                 </tr>
