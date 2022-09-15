@@ -74,8 +74,10 @@ class FrontendController extends Controller
     public function basic()
     {
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        $billing_info = Billing::orderBy('id', 'Desc')->where('status', 'Active')->get();
         return view('basic')->with([
-            'package_info' => $package_info
+            'package_info' => $package_info,
+            'billing_info' => $billing_info
         ]);
     }
 }

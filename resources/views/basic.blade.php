@@ -27,9 +27,6 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    @if ($errors->any())
-                                        {{ implode('', $errors->all('<div>:message</div>')) }}
-                                    @endif
                                     <form action="{{ route('storeDigitalFormData') }}" method="post"
                                         enctype="multipart/form-data">
                                         @csrf
@@ -68,7 +65,8 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="amount">Voucher Amount</label>
-                                                <input type="number" id="amount" name="amount" class="form-control">
+                                                <input type="number" id="amount" name="amount"
+                                                    class="form-control">
                                             </div>
 
 
@@ -103,58 +101,32 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Social Media Marketing Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 10,000 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
+                        @foreach ($package_info as $package)
+                            @if ($package->name == 'Basic')
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="info-box">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{ $package->cat_info['title'] }}</span>
+                                            <span class="info-box-number">
+                                                NRs. {{ $package->price }} Monthly
+                                            </span>
+                                            <a href="#" class="card-link">Learn More</a>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                    <!-- /.info-box -->
                                 </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Digital Marketing Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 15,000 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">SEO Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 20,000 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
+                            @endif
+                        @endforeach
+
                     </div>
                 </div>
 
                 <!-- /.info-box -->
             </div>
+            <!-- /.col-md-6 -->
         </div>
-
-    </div>
-
-    </div>
-    <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
+        <!-- /.row -->
     </div><!-- /.container-fluid -->
 
     @include('inc.footer')

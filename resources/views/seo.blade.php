@@ -49,7 +49,8 @@
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
                                                             @if ($package->cat_info['title'] == 'SEO')
-                                                                <option value="{{ $package->id }}">{{ $package->name }}</option>
+                                                                <option value="{{ $package->id }}">{{ $package->name }}
+                                                                </option>
                                                             @endif
                                                         @endforeach
                                                     @endif
@@ -92,57 +93,31 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Standard Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 33,900 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
+                        @foreach ($package_info as $package)
+                            @if ($package->cat_info['title'] == 'SEO')
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="info-box">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{ $package->name }}</span>
+                                            <span class="info-box-number">
+                                                NRs. {{ $package->price }} Monthly
+                                            </span>
+                                            <a href="#" class="card-link">Learn More</a>
+                                        </div>
+                                        <!-- /.info-box-content -->
+                                    </div>
+                                    <!-- /.info-box -->
                                 </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Premium Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 67,800 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Enterprise Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 1,00,700 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
+                            @endif
+                        @endforeach
+
                     </div>
 
                     <!-- /.info-box -->
                 </div>
+                <!-- /.col-md-6 -->
             </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
 
-        </div>
-
-    </div>
-    <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-    </div><!-- /.container-fluid -->
-
-    @include('inc.footer')
+        @include('inc.footer')

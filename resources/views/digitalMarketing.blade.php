@@ -33,8 +33,8 @@
                                         <div class="row" style="display: none">
                                             <div class="form-group col-md-6">
                                                 <label for="cat_id">Category</label>
-                                                <input type="text" id="cat_id" name="cat_id"
-                                                    class="form-control" value="Digital Marketing">
+                                                <input type="text" id="cat_id" name="cat_id" class="form-control"
+                                                    value="Digital Marketing">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -45,8 +45,9 @@
                                                     <option selected disabled hidden>Choose any one package...</option>
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
-                                                            @if ($package->cat_info['title'] == 'Digital Marketing' )
-                                                                <option value="{{ $package->id }}">{{ $package->name }}</option>
+                                                            @if ($package->cat_info['title'] == 'Digital Marketing')
+                                                                <option value="{{ $package->id }}">{{ $package->name }}
+                                                                </option>
                                                             @endif
                                                         @endforeach
                                                     @endif
@@ -89,53 +90,31 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Standard Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 22,600 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
+                            @foreach ($package_info as $package)
+                                @if ($package->cat_info['title'] == 'Digital Marketing')
+                                    <div class="col-12 col-sm-6 col-md-4">
+                                        <div class="info-box">
+                                            <div class="info-box-content">
+                                                <span class="info-box-text">{{ $package->name }}</span>
+                                                <span class="info-box-number">
+                                                    NRs. {{ $package->price }} Monthly
+                                                </span>
+                                                <a href="#" class="card-link">Learn More</a>
+                                            </div>
+                                            <!-- /.info-box-content -->
+                                        </div>
+                                        <!-- /.info-box -->
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Premium Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 45,200 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-4">
-                            <div class="info-box">
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Enterprise Package</span>
-                                    <span class="info-box-number">
-                                        NRs. 67,800 Monthly
-                                    </span>
-                                    <a href="#" class="card-link">Learn More</a>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
+
                     </div>
 
                 </div>
-
+                <!-- /.col-md-6 -->
             </div>
-            <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
 
-    @include('inc.footer')
+        @include('inc.footer')
