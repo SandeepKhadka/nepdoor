@@ -24,9 +24,9 @@
                                     <th>Package</th>
                                     <th>Billing No</th>
                                     <th>Message</th>
-                                    <th>End Date</th>
+                                    <th style="width: 130px">End Date</th>
                                     <th style="width: 90px">Status</th>
-                                    <th style="width: 190px">Action</th>
+                                    <th style="width: 160px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -52,7 +52,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ $subscription->billing_id }}</td>
-                                            <td>{{ Str::limit($subscription->message, 20) }}</td>
+                                            <td>{{ Str::limit($subscription->message, 10) }}</td>
                                             <td>{{ $subscription->end_date }}</td>
                                             <td><span
                                                     class="{{ @$subscription->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $subscription->status }}</span>
