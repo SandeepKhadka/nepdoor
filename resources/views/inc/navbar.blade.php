@@ -19,23 +19,16 @@
                               class="fas fa-bars"></i></a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{url('digitalMarketing')}}" class="nav-link">Digital Marketing</a>
+                      <a href="{{ url('digitalMarketing') }}" class="nav-link">Digital Marketing</a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{url('seo')}}" class="nav-link">SEO</a>
+                      <a href="{{ url('seo') }}" class="nav-link">SEO</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{url('basic')}}" class="nav-link">Basic</a>
-                </li>
-                  <li class="nav-item dropdown">
-                      <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false" class="nav-link dropdown-toggle">Training</a>
-                      <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                          <li><a href="{{url('digital_marketing_training')}}" class="dropdown-item">Certified Digital Marketing Professional
-                                  Course</a></li>
-                          <li class="dropdown-divider"></li>
-                          <li><a href="{{url('seo_training')}}" class="dropdown-item">Certified SEO Professional Course</a></li>
-                      </ul>
+                      <a href="{{ url('basic') }}" class="nav-link">Basic</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ url('training') }}" class="nav-link">Training</a>
                   </li>
               </ul>
               <ul class="navbar-nav ml-3">
