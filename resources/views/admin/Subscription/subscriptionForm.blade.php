@@ -19,7 +19,6 @@
                                         enctype="multipart/form-data">
                                         @csrf
                             @endif
-
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>User</label>

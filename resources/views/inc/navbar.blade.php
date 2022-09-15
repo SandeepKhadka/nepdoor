@@ -19,9 +19,6 @@
                               class="fas fa-bars"></i></a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ url('/') }}" class="nav-link">Home</a>
-                  </li>
-                  <li class="nav-item">
                       <a href="{{url('digitalMarketing')}}" class="nav-link">Digital Marketing</a>
                   </li>
                   <li class="nav-item">
@@ -40,11 +37,7 @@
                           <li><a href="{{url('seo_training')}}" class="dropdown-item">Certified SEO Professional Course</a></li>
                       </ul>
                   </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">Blogs</a>
-                  </li>
               </ul>
-
               <ul class="navbar-nav ml-3">
                   <li class="nav-item">
                       <a name="" id="" class="btn btn-primary" href="{{ url('subscribe') }}"
@@ -56,37 +49,11 @@
           <!-- Right navbar links -->
           <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
               <!-- Notifications Dropdown Menu -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link" data-toggle="dropdown" href="#">
-                      <i class="far fa-bell"></i>
-                      <span class="badge badge-warning navbar-badge">15</span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                      <span class="dropdown-header">15 Notifications</span>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">
-                          <i class="fas fa-envelope mr-2"></i> 4 new messages
-                          <span class="float-right text-muted text-sm">3 mins</span>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">
-                          <i class="fas fa-users mr-2"></i> 8 friend requests
-                          <span class="float-right text-muted text-sm">12 hours</span>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item">
-                          <i class="fas fa-file mr-2"></i> 3 new reports
-                          <span class="float-right text-muted text-sm">2 days</span>
-                      </a>
-                      <div class="dropdown-divider"></div>
-                      <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                  </div>
-              </li>
               <li class="nav-item dropdown user-menu">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                       <img src="assets/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
                           alt="User Image">
-                      <span class="d-none d-md-inline">Alexander Pierce</span>
+                      <span class="d-none d-md-inline">{{ Auth::user()->username }}</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                       <!-- User image -->
@@ -94,24 +61,8 @@
                           <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
                           <p>
-                              Alexander Pierce - Web Developer
-                              <small>Member since Nov. 2012</small>
+                              {{ Auth::user()->full_name }}
                           </p>
-                      </li>
-                      <!-- Menu Body -->
-                      <li class="user-body">
-                          <div class="row">
-                              <div class="col-4 text-center">
-                                  <a href="#">Projects</a>
-                              </div>
-                              <div class="col-4 text-center">
-                                  <a href="#">Activity</a>
-                              </div>
-                              <div class="col-4 text-center">
-                                  <a href="#">Billings</a>
-                              </div>
-                          </div>
-                          <!-- /.row -->
                       </li>
                       <!-- Menu Footer-->
                       <li class="user-footer">
