@@ -34,10 +34,8 @@ class FrontendController extends Controller
                 $bills['voucher'] = $file_name;
             }
         }
-
         $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
         $this->billing->fill($bills);
-        // dd($bills['billNo']);
         $bill_status = $this->billing->save();
         
 

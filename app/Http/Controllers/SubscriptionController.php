@@ -54,7 +54,7 @@ class SubscriptionController extends Controller
         $rules = $this->subscription->getRules();
         $request->validate($rules);
         $data = $request->except(['_token']);
-        $endDate = Carbon::today()->addDays(30);
+        $endDate = Carbon::parse($this->subscription->start_date)->addDays(30);
         $data['end_date'] = $endDate;
         $data['billing_id'] = 'bil-' . rand(0, 99);
         $this->subscription->fill($data);
@@ -126,11 +126,13 @@ class SubscriptionController extends Controller
         $rules = $this->subscription->getRules();
         $request->validate($rules);
         $data = $request->except(['_token']);
+        $endDate = Carbon::parse($request->start_date)->addDays(30);
+        $data['end_date'] = $endDate;
         $this->subscription->fill($data);
 
         $status = $this->subscription->save();
         if ($status) {
-            notify()->success('Subscription added successfully');
+            notify()->success('Subscription updated successfully');
         } else {
             notify()->error('Sorry! There was problem in adding subscription');
         }

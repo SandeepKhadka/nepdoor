@@ -39,27 +39,11 @@
                                         @enderror
                                     </div>
                                 </div>
-
-                                {{-- <div class="form-group col-md-6">
-                                    <label>Category</label>
-                                    <div>
-                                        <select name="cat_id" id="cat_id" class="form-control">
-                                            <option value="" disabled selected hidden>Select package category</option>
-                                            @if (isset($cat_info))
-                                                @foreach (@$cat_info as $category => $data)
-                                                    <option value="{{ @$category != null ? @$category : '' }}"
-                                                        {{ @$package_data->cat_id == $category ? 'selected' : '' }}>
-                                                        {{ @$data }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                        @error('cat_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div> --}}
+                                <div class="form-group col-md-6">
+                                    <label for="start_date">Start Date</label>
+                                    <input type="datetime-local" id="start_date" name="start_date" class="form-control"
+                                        rows="5" value="{{ @$subscription_data->start_date }}">
+                                </div>
                             </div>
 
                             <div class="row">
