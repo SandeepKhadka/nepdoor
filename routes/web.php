@@ -33,11 +33,11 @@ Route::get('/subscribe', function () {
 });
 
 Route::get('/createTicket', function () {
-    return view('customer.supportTicket.createTicket');
+    return view('front.supportTicket.createTicket');
 });
 
 Route::get('/allTicket', function () {
-    return view('customer.supportTicket.allTickets');
+    return view('front.supportTicket.allTickets');
 });
 
 // customer.supportTicket.createTicket
@@ -46,12 +46,17 @@ Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class,
 Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 Route::get('/training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
 Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
+// Route::get('/billing', [App\Http\Controllers\FrontendController::class, 'billing'])->name('billing');
 
 
 
-// Route::get('/training', function () {
-//     return view('training');
-// });
+Route::get('/billing', function () {
+    return view('front.billing.billing');
+});
+
+Route::get('/activity', function () {
+    return view('front.activity.activity');
+});
 
 
 // Route::get('/basic', function () {
