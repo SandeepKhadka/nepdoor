@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Package Form')
+@section('title', 'Nepdoor | Package Form')
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -9,9 +9,6 @@
                         {{ isset($package_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
-                            {{-- @if ($errors->any())
-                                {{ implode('', $errors->all('<div>:message</div>')) }}
-                            @endif --}}
                             @if (isset($package_data))
                                 <form action="{{ route('package.update', @$package_data->id) }}" method="post" class="form"
                                     enctype="multipart/form-data">
@@ -63,7 +60,18 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="link">Link</label>
+                                    <input type="link" id="link" name="link" class="form-control"
+                                        value="{{ @$helpCenter_data->link }}" required>
+                                    @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
                             @if (isset($package_data))
                                 <div class="row">
                                     <div class=" form-group col-md-12">

@@ -46,8 +46,11 @@
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
                                                             @if ($package->cat_info['title'] == 'Digital Marketing')
-                                                                <option value="{{ $package->id }}">{{ $package->name }}
-                                                                </option>
+                                                                @if (ucfirst($package->name) != 'Basic')
+                                                                    <option value="{{ $package->id }}">
+                                                                        {{ $package->name }}
+                                                                    </option>
+                                                                @endif
                                                             @endif
                                                         @endforeach
                                                     @endif
@@ -90,8 +93,9 @@
                     </div>
 
                     <div class="row">
-                            @foreach ($package_info as $package)
-                                @if ($package->cat_info['title'] == 'Digital Marketing')
+                        @foreach ($package_info as $package)
+                            @if ($package->cat_info['title'] == 'Digital Marketing')
+                                @if (ucfirst($package->name) != 'Basic')
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="info-box">
                                             <div class="info-box-content">
@@ -106,15 +110,16 @@
                                         <!-- /.info-box -->
                                     </div>
                                 @endif
-                            @endforeach
-                        </div>
-
+                            @endif
+                        @endforeach
                     </div>
 
                 </div>
-                <!-- /.col-md-6 -->
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
 
-        @include('inc.footer')
+            </div>
+            <!-- /.col-md-6 -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+
+    @include('inc.footer')

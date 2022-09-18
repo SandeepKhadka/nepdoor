@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->string('link')->nullable();
             $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->unsignedBigInteger('cat_id')->nullable();
             $table->foreign('cat_id')->references('id')->on('package_categories')->onDelete('set null');
