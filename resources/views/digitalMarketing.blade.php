@@ -113,8 +113,8 @@
 
                 </div>
                 <!-- /.col-md-6 -->
-            </div>
+        </div>
             <!-- /.row -->
-        </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
 
         @include('inc.footer')

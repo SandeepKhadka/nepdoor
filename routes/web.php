@@ -32,9 +32,15 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-// Route::get('/digitalMarketing', function () {
-//     return view('digitalMarketing');
-// });
+Route::get('/createTicket', function () {
+    return view('customer.supportTicket.createTicket');
+});
+
+Route::get('/allTicket', function () {
+    return view('customer.supportTicket.allTickets');
+});
+
+// customer.supportTicket.createTicket
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
 Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
