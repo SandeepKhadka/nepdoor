@@ -73,13 +73,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../mailbox/mailbox.html" class="nav-link">
+                <a href="{{ url('createTicket') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create New Ticket</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../mailbox/compose.html" class="nav-link">
+                <a href="{{ url('allTicket') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Tickets</p>
                 </a>
