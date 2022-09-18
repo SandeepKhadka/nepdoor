@@ -86,4 +86,12 @@ class FrontendController extends Controller
             'billing_info' => $billing_info
         ]);
     }
+
+    public function billing()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('training')->with([
+            'package_info' => $package_info
+        ]);
+    }
 }
