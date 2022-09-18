@@ -115,11 +115,17 @@
                     </div>
 
                 </div>
+<<<<<<< HEAD
 
             </div>
             <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
+=======
+                <!-- /.col-md-6 -->
+        </div>
+            <!-- /.row -->
+>>>>>>> 5533ef5af515183827784d77e8509db146cba9fe
     </div><!-- /.container-fluid -->
 
     @include('inc.footer')
