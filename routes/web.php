@@ -33,11 +33,11 @@ Route::get('/subscribe', function () {
 });
 
 Route::get('/createTicket', function () {
-    return view('customer.supportTicket.createTicket');
+    return view('front.supportTicket.createTicket');
 });
 
 Route::get('/allTicket', function () {
-    return view('customer.supportTicket.allTickets');
+    return view('front.supportTicket.allTickets');
 });
 
 // customer.supportTicket.createTicket
