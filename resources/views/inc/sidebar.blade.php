@@ -50,7 +50,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../kanban.html" class="nav-link">
+            <a href="{{ url('activity') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Activity
@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="assets/iframe.html" class="nav-link">
+            <a href="{{ url('billing') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Billings</p>
             </a>
