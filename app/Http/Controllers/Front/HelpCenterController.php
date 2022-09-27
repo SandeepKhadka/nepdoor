@@ -14,7 +14,7 @@ class HelpCenterController extends Controller
         if ($search != ""){
             $helpCenter_info = HelpCenter::where('title','LIKE',"%$search%")->get();
         } else{
-            $helpCenter_info = HelpCenter::orderBy('order_id', 'Desc')->where('status', 'Active')->get();
+            $helpCenter_info = HelpCenter::orderBy('order_id', 'ASC')->where('status', 'Active')->get();
         }
         // dd($search);
         $data = compact('helpCenter_info','search');
