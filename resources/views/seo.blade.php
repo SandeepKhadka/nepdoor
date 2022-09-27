@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="message">Write Message</label>
-                                            <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+                                            <textarea id="message" name="message" class="form-control" rows="4" style="resize: none"></textarea>
                                         </div>
                                         <button type="submit" value="Submit"
                                             class="btn btn-success float-right">Submit</button>

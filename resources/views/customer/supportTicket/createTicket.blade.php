@@ -28,7 +28,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="message">Send Message</label>
-                                                <textarea type="text" class="form-control" rows="5" name="message" id="message" required
+                                                <textarea id="message" name="message" class="form-control" rows="5" required
                                                     style="resize: none;">
                                                 </textarea>
                                             </div>

@@ -40,12 +40,18 @@ Route::get('/allTicket', function () {
     return view('customer.supportTicket.allTickets');
 });
 
+// Route::get('/helpCenter', function () {
+//     return view('customer.helpCenter.helpCenterView');
+// });
+
 // customer.supportTicket.createTicket
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
 Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 Route::get('/training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
 Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
+Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('helpCenter');
+// Route::get('/searchHelpLink', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('searchHelpLink');
 
 
 

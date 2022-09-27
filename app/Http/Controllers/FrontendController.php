@@ -6,6 +6,7 @@ use App\Models\Billing;
 use App\Models\Package;
 use App\Models\PackageCategories;
 use App\Models\Subscription;
+// use App\Models\HelpCenter;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -86,4 +87,13 @@ class FrontendController extends Controller
             'billing_info' => $billing_info
         ]);
     }
+
+    // public function helpCenter()
+    // {
+    //     $helpCenter_info = HelpCenter::orderBy('order_id', 'Desc')->where('status', 'Active')->get();
+    //     return view('customer.helpCenter.helpCenterView')->with([
+    //         'helpCenter_info' => $helpCenter_info
+    //     ]);
+    // }
+
 }

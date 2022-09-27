@@ -1,0 +1,79 @@
+@include('inc.toppart')
+
+<body class="hold-transition sidebar-collapse layout-top-nav">
+    <div class="wrapper">
+
+        @include('inc.navbar')
+
+        @include('inc.sidebar')
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <h1 style="color:rgb(8, 66, 160); text-align:center;"> How can we help you? </h1>
+                        </div><!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="input-group">
+                        </div>
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+
+            <div class="content">
+                <form action="">
+                    {{-- @csrf --}}
+                    <div class="row">
+                    <div class="form-group">
+                        <input type="search" placeholder="Search" name="search" class="form-control" value="{{$search}}" 
+                            style="width: 600px; height: 50px; margin-left:450px;" />
+                    </div>
+                    <button class="btn btn-primary" style="width: 60px; height:50px;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    </div>
+                </form>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card" style="margin-top:50px;">
+                                <div class="card-header" style="text-align:left">
+                                    <h2 style="font-size:20px">Help Topics</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        @foreach ($helpCenter_info as $helpCenter)
+                                            <div class="col-lg-6">
+                                                <div class="card" style="height: 50px">
+                                                    <a href="{{ $helpCenter->link }}" target="new"
+                                                        style="margin-left:20px; font-size:17px; margin-top:12px; ">{{ $helpCenter->title }}</a>
+                                                </div>
+                                            </div>
+
+                                            {{-- <div class="card-body">
+                                            <div class="col-lg-6"></div>
+                                            <div class="col-lg-6">
+                                                <div class="card" style="height: 50px">
+                                                    <a href="https://www.youtube.com/"
+                                                        style="margin-left:20px; font-size:17px; margin-top:12px; ">How
+                                                        to Buy package</a>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @include('inc.footer')
+</body>
