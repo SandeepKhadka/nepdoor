@@ -18,7 +18,7 @@
                       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                               class="fas fa-bars"></i></a>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                       <a href="{{ url('digitalMarketing') }}" class="nav-link">Digital Marketing</a>
                   </li>
                   <li class="nav-item">
@@ -29,12 +29,12 @@
                   </li>
                   <li class="nav-item">
                       <a href="{{ url('training') }}" class="nav-link">Training</a>
-                  </li>
+                  </li> --}}
               </ul>
               <ul class="navbar-nav ml-3">
                   <li class="nav-item">
-                      <a name="" id="" class="btn btn-primary" href="{{ url('subscribe') }}"
-                          role="button">Subscribe Now</a>
+                    <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new" style="margin-left: 700px"
+                    role="button">Blogs</a>
                   </li>
               </ul>
           </div>

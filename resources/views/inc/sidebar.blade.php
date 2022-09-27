@@ -17,7 +17,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ url('digitalMarketing') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Digital Marketing
@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="{{ url('seo') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 SEO
@@ -33,7 +33,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('training') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Training
@@ -87,7 +87,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="../kanban.html" class="nav-link">
+            <a href="{{ url('helpCenter') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Help Center
