@@ -88,12 +88,11 @@ class FrontendController extends Controller
         ]);
     }
 
-    // public function helpCenter()
-    // {
-    //     $helpCenter_info = HelpCenter::orderBy('order_id', 'Desc')->where('status', 'Active')->get();
-    //     return view('customer.helpCenter.helpCenterView')->with([
-    //         'helpCenter_info' => $helpCenter_info
-    //     ]);
-    // }
-
+    public function billing()
+    {
+        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+        return view('training')->with([
+            'package_info' => $package_info
+        ]);
+    }
 }

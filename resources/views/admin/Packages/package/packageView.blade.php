@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Package View')
+@section('title', 'Nepdoor | Package View')
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -48,10 +48,22 @@
                             </div>
 
                             <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="link">Link</label>
+                                    <input type="link" class="form-control"
+                                        value="{{ @$helpCenter_data->link }}" disabled>
+                                    @error('link')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="created_at">Created at</label>
-                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
-                                        value="{{ @$package_data->created_at }}" disabled>
+                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control"
+                                        rows="5" value="{{ @$package_data->created_at }}" disabled>
                                 </div>
 
                                 <div class="form-group col-md-6">
