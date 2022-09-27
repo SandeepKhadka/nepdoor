@@ -46,11 +46,8 @@
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
                                                             @if ($package->cat_info['title'] == 'SEO')
-                                                                @if (ucfirst($package->name) != 'Basic')
-                                                                    <option value="{{ $package->id }}">
-                                                                        {{ $package->name }}
-                                                                    </option>
-                                                                @endif
+                                                                <option value="{{ $package->id }}">{{ $package->name }}
+                                                                </option>
                                                             @endif
                                                         @endforeach
                                                     @endif
@@ -95,21 +92,19 @@
                     <div class="row">
                         @foreach ($package_info as $package)
                             @if ($package->cat_info['title'] == 'SEO')
-                                @if (ucfirst($package->name) != 'Basic')
-                                    <div class="col-12 col-sm-6 col-md-4">
-                                        <div class="info-box">
-                                            <div class="info-box-content">
-                                                <span class="info-box-text">{{ $package->name }}</span>
-                                                <span class="info-box-number">
-                                                    NRs. {{ $package->price }} Monthly
-                                                </span>
-                                                <a href="#" class="card-link">Learn More</a>
-                                            </div>
-                                            <!-- /.info-box-content -->
+                                <div class="col-12 col-sm-6 col-md-4">
+                                    <div class="info-box">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">{{ $package->name }}</span>
+                                            <span class="info-box-number">
+                                                NRs. {{ $package->price }} Monthly
+                                            </span>
+                                            <a href="#" class="card-link">Learn More</a>
                                         </div>
-                                        <!-- /.info-box -->
+                                        <!-- /.info-box-content -->
                                     </div>
-                                @endif
+                                    <!-- /.info-box -->
+                                </div>
                             @endif
                         @endforeach
 

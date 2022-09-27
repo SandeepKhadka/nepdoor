@@ -41,15 +41,17 @@
                         <div class="col-lg-12">
                             <div class="card" style="margin-top:50px;">
                                 <div class="card-header" style="text-align:left">
-                                    <h2 style="font-size:20px">Help Topics</h2>
+                                    <a href="{{ url('helpCenter') }}" style="color: black;font-size:20px;">Help Topics</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         @foreach ($helpCenter_info as $helpCenter)
                                             <div class="col-lg-6">
-                                                <div class="card" style="height: 50px">
-                                                    <a href="{{ $helpCenter->link }}" target="new"
-                                                        style="margin-left:20px; font-size:17px; margin-top:12px; ">{{ $helpCenter->title }}</a>
+                                                <div class="card" >
+                                                    <div class="card-body">
+                                                        <a href="{{ $helpCenter->link }}" class="card-link" target="new"
+                                                         style=" font-size:17px ">{{ $helpCenter->title }}</a>
+                                                </div>
                                                 </div>
                                             </div>
 
