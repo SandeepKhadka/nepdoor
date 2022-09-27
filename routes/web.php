@@ -54,10 +54,7 @@ Route::get('/billing', function () {
     return view('front.billing.billing');
 });
 
-Route::get('/activity', function () {
-    return view('front.activity.activity');
-});
-
+Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 
 // Route::get('/basic', function () {
 //     return view('basic');

@@ -15,8 +15,8 @@
                         <div class="col-sm-12">
                             <h1 class="m-0 text-center font-weight-bold"> Digital Marketing</small></h1>
                         </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                    </div>
+                </div>
             </div>
             <!-- /.content-header -->
 
@@ -115,17 +115,9 @@
                     </div>
 
                 </div>
-<<<<<<< HEAD
-
-            </div>
-            <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-=======
                 <!-- /.col-md-6 -->
         </div>
             <!-- /.row -->
->>>>>>> 5533ef5af515183827784d77e8509db146cba9fe
     </div><!-- /.container-fluid -->
 
     @include('inc.footer')

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('content')->nullable();
-            $table->enum('status', ['Active', 'Inactive'])->default('Active');
+            $table->enum('status', ['In progress', 'Completed'])->default('In progress');
+            $table->string('progress')->default('0');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
