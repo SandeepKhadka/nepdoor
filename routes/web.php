@@ -100,4 +100,5 @@ Route::post('/store/digitalMarketingdata', [App\Http\Controllers\FrontendControl
 Route::post('/store/searchEngineOptimizationdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/trainingdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
+Route::post('/store/Ticket', [App\Http\Controllers\Front\TicketController::class, 'storeTicket'])->name('storeTicket');
 
