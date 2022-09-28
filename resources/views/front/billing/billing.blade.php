@@ -8,37 +8,21 @@
         @include('inc.sidebar')
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <h1 class="m-0 text-center font-weight-bold">Billing</small></h1>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
-
 
             <div class="content">
-                <div class="container">
-
-
-                    {{-- @if (isset($billing_data)) --}}
-                    {{-- @foreach ($billing_data as $billings => $billing) --}}
+                <div class="container w-50">
                     @if (isset($subscription_data))
                         @foreach ($subscription_data as $subscriptions => $subscription)
-                            {{-- @if (isset($billing_info))
-                                        @foreach (@$billing_info as $billings => $data)
-                                            @if ($subscription->billNo == $billings->billNo) --}}
-                            {{-- @if ($billing->billNo == $subscriptions) --}}
                             <section class="invoice mt-10">
-                                <!-- title row -->
-
-                                <!-- Table row -->
                                 <div class="row">
                                     <div class="col-12 table-responsive">
                                         <table class="table table-striped">
@@ -86,15 +70,12 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- /.row -->
 
                                 <div class="row">
-                                    <!-- /.col -->
                                     <div class="col-6"></div>
                                     <div class="col-6">
-                                        <p class="lead" style="font-weight: bold">Date:
+                                        <p class="m-1 ml-2" style="font-weight: bold">Date:
                                             {{ $subscription->created_at }}
                                         </p>
 
@@ -142,24 +123,16 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <!-- /.col -->
                                 </div>
-                                <!-- /.row -->
                             </section>
 
                             <hr>
-                            {{-- @endif --}}
-                            {{-- @endif
-                                        @endforeach
-                                    @endif --}}
-                            {{-- @endforeach --}}
-                            {{-- @endif --}}
                         @endforeach
                     @endif
 
                 </div>
             </div>
 
-        </div><!-- /.container-fluid -->
+        </div>
 
         @include('inc.footer')
