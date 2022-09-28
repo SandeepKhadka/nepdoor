@@ -31,7 +31,6 @@
                                                 <div class="row">
                                                     <textarea type="text" id="message" name="message" class="form-control w-100 px-3 py-3 " rows="2"
                                                         style=" resize: none ;background-color:#e7e7e9; border-radius: 0px 15px 15px 12px; color: rgb(0, 0, 0); font-size:12px" disabled></textarea>
-
                                                 </div>
                                                 @error('message')
                                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>

@@ -36,9 +36,11 @@ Route::get('/createTicket', function () {
     return view('front.supportTicket.createTicket');
 });
 
-Route::get('/allTicket', function () {
-    return view('front.supportTicket.allTickets');
-});
+// Route::get('/allTicket', function () {
+//     return view('front.supportTicket.allTickets');
+// });
+
+Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeTicket');
 
 // Route::get('/helpCenter', function () {
 //     return view('customer.helpCenter.helpCenterView');
