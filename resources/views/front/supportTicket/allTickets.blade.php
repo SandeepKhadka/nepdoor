@@ -44,7 +44,7 @@
                                         <div class="col-lg-9">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <span class="badge" style="margin-left:498px">Admin</span>
+                                                    <span class="badge" style="margin-left:440px">Admin</span>
                                                     <textarea type="number" id="amount" name="amount" class="form-control w-100 px-3 py-3" rows="2"
                                                         style="resize: none ;background-color: #e7e7e9; border-radius:15px 12px 0px 15px; color: rgb(0, 0, 0); font-size:12px"
                                                         ></textarea>
