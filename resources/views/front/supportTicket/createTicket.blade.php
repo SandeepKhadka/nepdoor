@@ -23,6 +23,9 @@
                                             <div class="form-group col-md-12">
                                                 <label>Title</label>
                                                 <input type="text" class="form-control" name="title" required>
+                                                @error('title')
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="row">
@@ -45,8 +48,11 @@
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="message">Send Message</label>
-                                                <textarea id="message" name="message" class="form-control" rows="5" required style="resize: none;">
-                                                </textarea>
+                                                <textarea id="message" name="message" class="form-control form-control-sm" rows="5" required
+                                                    style="resize: none;"></textarea>
+                                                @error('message')
+                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-success float-right">Send</button>
