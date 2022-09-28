@@ -8,7 +8,6 @@
         @include('inc.sidebar')
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <div class="content" style="padding-top:50px;">
                 <div class="container">
                     <div class="row">
@@ -45,10 +44,12 @@
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="message">Send Message</label>
-                                                <textarea id="message" name="message" class="form-control" rows="5" required style="resize: none;">
-                                                </textarea>
+                                                <textarea id="message" name="message" class="form-control" rows="5" required style="resize: none;"></textarea>
                                             </div>
                                         </div>
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                         <button type="submit" class="btn btn-success float-right">Send</button>
                                         </a>
                                     </form>
@@ -58,7 +59,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
     @include('inc.footer')
 </body>
