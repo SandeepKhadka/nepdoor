@@ -9,11 +9,12 @@ class Billing extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount','voucher','payment_status','status','billNo'];
+    protected $fillable = ['amount','discount' ,'voucher','payment_status','status','billNo'];
 
     public static function getRules($act = 'add'){
         $rules = [
             'amount' => 'required|string',
+            'discount' => 'nullable|integer',
             'voucher' => 'required|image|max:5120',
             // 'payment_status' => 'required|in:Paid,Unpaid',
             // 'status' => 'required|in:Active,Inactive'

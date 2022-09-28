@@ -55,10 +55,11 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 // Route::get('/billing', [App\Http\Controllers\FrontendController::class, 'billing'])->name('billing');
 
 
+Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 
-Route::get('/billing', function () {
-    return view('front.billing.billing');
-});
+// Route::get('/billing', function () {
+//     return view('front.billing.billing');
+// });
 
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 
