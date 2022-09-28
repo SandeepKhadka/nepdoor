@@ -15,8 +15,8 @@
                         <div class="col-sm-12">
                             <h1 class="m-0 text-center font-weight-bold"> Digital Marketing</small></h1>
                         </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                    </div>
+                </div>
             </div>
             <!-- /.content-header -->
 
@@ -46,8 +46,11 @@
                                                     @if (isset($package_info))
                                                         @foreach ($package_info as $package)
                                                             @if ($package->cat_info['title'] == 'Digital Marketing')
-                                                                <option value="{{ $package->id }}">{{ $package->name }}
-                                                                </option>
+                                                                @if (ucfirst($package->name) != 'Basic')
+                                                                    <option value="{{ $package->id }}">
+                                                                        {{ $package->name }}
+                                                                    </option>
+                                                                @endif
                                                             @endif
                                                         @endforeach
                                                     @endif
@@ -68,7 +71,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="message">Write Message</label>
-                                            <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+                                            <textarea id="message" name="message" class="form-control" rows="4" style="resize: none"></textarea>
                                         </div>
                                         <button type="submit" value="Submit"
                                             class="btn btn-success float-right">Submit</button>
@@ -90,8 +93,9 @@
                     </div>
 
                     <div class="row">
-                            @foreach ($package_info as $package)
-                                @if ($package->cat_info['title'] == 'Digital Marketing')
+                        @foreach ($package_info as $package)
+                            @if ($package->cat_info['title'] == 'Digital Marketing')
+                                @if (ucfirst($package->name) != 'Basic')
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="info-box">
                                             <div class="info-box-content">
@@ -106,9 +110,8 @@
                                         <!-- /.info-box -->
                                     </div>
                                 @endif
-                            @endforeach
-                        </div>
-
+                            @endif
+                        @endforeach
                     </div>
 
                 </div>
@@ -117,4 +120,4 @@
             <!-- /.row -->
     </div><!-- /.container-fluid -->
 
-        @include('inc.footer')
+    @include('inc.footer')

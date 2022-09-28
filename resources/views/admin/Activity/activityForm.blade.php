@@ -1,5 +1,52 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Activity Form')
+@section('title', 'Nepdoor | Activity Form')
+@section('styles')
+    <style>
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+    </style>
+@endsection
+@section('scripts')
+    <script>
+        document.getElementById('progressTracker').innerHTML = document.getElementById("progress").value
+
+        function updateSlider() {
+            document.getElementById('progressTracker').innerHTML = document.getElementById("progress").value
+        }
+    </script>
+@endsection
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -57,6 +104,23 @@
                             </div>
 
                             <div class="row">
+                                <div class="form-group col-md-6">
+                                    <div class="slidecontainer">
+                                        <label for="progress">Progress</label>
+                                        <input type="range" min="0" max="100" class="slider" id="progress"
+                                            name="progress" value="{{ @$activity_data->progress }}"
+                                            onchange="updateSlider()" oninput="updateSlider()">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="slidecontainer">
+                                        <label for="progress">Value</label>
+                                        <p id="progressTracker"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="content">Content</label>
                                     <textarea type="text" id="content" name="content" class="form-control" rows="5" required>{{ @$activity_data->content }} 
@@ -74,9 +138,11 @@
                                         <label for="status ">Status</label>
                                         <select type="text" class="form-control form-control-sm" id="status"
                                             name="status" required>
-                                            <option {{ @$activity_data->status == 'Active' ? 'selected' : '' }}>Active
+                                            <option {{ @$activity_data->status == 'In progress' ? 'selected' : '' }}>In
+                                                progess
                                             </option>
-                                            <option {{ @$activity_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                            <option {{ @$activity_data->status == 'Completed' ? 'selected' : '' }}>
+                                                Completed
                                             </option>
                                         </select>
                                         @error('status')

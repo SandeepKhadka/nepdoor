@@ -9,7 +9,7 @@ class Activity extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','title','content','status'];
+    protected $fillable = ['user_id','title','content','status','progress'];
 
     public function user_info(){
         return $this->hasOne(User::class, 'id', 'user_id');

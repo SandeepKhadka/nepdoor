@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Activity List')
+@section('title', 'Nepdoor | Activity List')
 
 @section('styles')
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
@@ -19,8 +19,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight:bold;">Activity</h3>
-                        <a href="{{ route('activity.create') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
-                                class="fa fa-plus" style="font-size: 12px">
+                        <a href="{{ route('activity.create') }}" class="btn btn-success float-right"
+                            style="margin-bottom: 0px"><i class="fa fa-plus" style="font-size: 12px">
                                 Add Activity
                             </i>
                         </a>
@@ -36,6 +36,7 @@
                                     <th style="width: 200px">User</th>
                                     <th style="width: 180px">Title</th>
                                     <th>Content</th>
+                                    <th>Progress</th>
                                     <th style="width: 90px">Status</th>
                                     <th style="width: 190px">Action</th>
                                 </tr>
@@ -53,8 +54,17 @@
                                                 @endif
                                             </td>
                                             <td>{{ $activity->title }}</td>
-                                            <td>{{ $activity->content }}</td>
-                                            <td><span class="{{@$activity->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $activity->status }}</span></td>
+                                            <td>{{ Str::limit($activity->content, 20) }}</td>
+                                            <td>
+                                                <div class="progress progress-sm" style="width: 50%">
+                                                    <div class="progress-bar bg-green" role="progressbar"
+                                                        aria-valuemin="0" aria-valuemax="100" style="width: {{$activity->progress}}%">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span
+                                                    class="{{ @$activity->status == 'Completed' ? 'badge bg-success' : 'badge bg-warning' }}">{{ $activity->status }}</span>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('activity.show', $activity->id) }}"
                                                     class="btn btn-primary">

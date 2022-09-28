@@ -40,12 +40,18 @@ Route::get('/allTicket', function () {
     return view('front.supportTicket.allTickets');
 });
 
+// Route::get('/helpCenter', function () {
+//     return view('customer.helpCenter.helpCenterView');
+// });
+
 // customer.supportTicket.createTicket
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
 Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 Route::get('/training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
 Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
+Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('helpCenter');
+// Route::get('/searchHelpLink', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('searchHelpLink');
 // Route::get('/billing', [App\Http\Controllers\FrontendController::class, 'billing'])->name('billing');
 
 
@@ -55,10 +61,7 @@ Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'ge
 //     return view('front.billing.billing');
 // });
 
-Route::get('/activity', function () {
-    return view('front.activity.activity');
-});
-
+Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 
 // Route::get('/basic', function () {
 //     return view('basic');
