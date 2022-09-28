@@ -8,7 +8,6 @@
         @include('inc.sidebar')
 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <div class="content" style="padding-top:50px;">
                 <div class="container">
                     <div class="row">
@@ -55,6 +54,9 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                         <button type="submit" class="btn btn-success float-right">Send</button>
                                         </a>
                                     </form>
@@ -64,7 +66,7 @@
                     </div>
                 </div>
             </div>
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
     @include('inc.footer')
 </body>
