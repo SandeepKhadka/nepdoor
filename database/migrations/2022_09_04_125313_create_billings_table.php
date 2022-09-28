@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('billNo');
             $table->double('amount');
+            $table->integer('discount')->nullable();
             $table->string('voucher');
             $table->enum('payment_status', ['Paid', 'Unpaid'])->default('Unpaid');
             $table->enum('status', ['Active', 'Inactive'])->default('Inactive');

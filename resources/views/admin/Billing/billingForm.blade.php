@@ -30,7 +30,19 @@
                                         </span>
                                     @enderror
                                 </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="discount">Discount</label>
+                                    <input type="number" id="discount" name="discount" class="form-control"
+                                        value="{{ @$billing_data->discount }}" required>
+                                    @error('discount')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
+
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label class="col-md-3" for="voucher">Voucher:</label>

@@ -49,10 +49,11 @@ Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])-
 // Route::get('/billing', [App\Http\Controllers\FrontendController::class, 'billing'])->name('billing');
 
 
+Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 
-Route::get('/billing', function () {
-    return view('front.billing.billing');
-});
+// Route::get('/billing', function () {
+//     return view('front.billing.billing');
+// });
 
 Route::get('/activity', function () {
     return view('front.activity.activity');

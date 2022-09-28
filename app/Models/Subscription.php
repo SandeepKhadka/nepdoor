@@ -28,6 +28,9 @@ class Subscription extends Model
         return $this->hasOne(Package::class, 'id', 'package_id');
     }
 
+    // public function billing_info(){
+    //     return $this->hasOne(Billing::class, 'id', 'billing_id');
+    // }
     // public function cat_info(){
     //     return $this->hasOne(PackageCategories::class, 'id', 'cat_id');
     // }
