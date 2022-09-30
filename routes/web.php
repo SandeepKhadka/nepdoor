@@ -61,10 +61,11 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
+Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
 
-Route::get('/project', function () {
-    return view('front.project.project');
-});
+// Route::get('/subscription', function () {
+//     return view('front.subscription.subscription');
+// });
 
 
 Auth::routes();

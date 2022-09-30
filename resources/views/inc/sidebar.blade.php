@@ -42,10 +42,10 @@
           </li>
           <li class="nav-header">System</li>
           <li class="nav-item">
-            <a href="{{ url('project') }}" class="nav-link">
+            <a href="{{ url('subscription') }}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
-                Projects
+                Subscriptions
               </p>
             </a>
           </li>
