@@ -21,7 +21,7 @@
             <div class="content">
                 <div class="container-sm w-50">
                     <div class="row">
-                        <div class="col lg-12">
+                        <div class="col-lg-12">
                             <div class="card">
 
                                 <div class="card-header">
@@ -40,7 +40,7 @@
 
 
                                     <div class="row">
-                                        <div class="col lg-12">
+                                        <div class="col-lg-12">
                                             <div class="card h-100">
 
 
