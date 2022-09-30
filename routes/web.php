@@ -40,6 +40,10 @@ Route::get('/allTicket', function () {
     return view('front.supportTicket.allTickets');
 });
 
+Route::get('/profile', function () {
+    return view('front.user.userDetail');
+});
+
 // Route::get('/helpCenter', function () {
 //     return view('customer.helpCenter.helpCenterView');
 // });
