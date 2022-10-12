@@ -62,6 +62,7 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
+Route::get('/profile', [App\Http\Controllers\Front\UserController::class, 'getUserData'])->name('user');
 
 // Route::get('/subscription', function () {
 //     return view('front.subscription.subscription');
