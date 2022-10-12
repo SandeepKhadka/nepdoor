@@ -131,9 +131,9 @@ class TicketController extends Controller
     public function destroy($id)
     {
         $this->ticket = $this->ticket->find($id);
-        if (!$this->helpCenter) {
+        if (!$this->ticket) {
             notify()->error('This ticket doesnot exists');
-            redirect()->route('helpCenter.index');
+            redirect()->route('ticket.index');
         }
         $del = $this->ticket->delete();
         if ($del) {

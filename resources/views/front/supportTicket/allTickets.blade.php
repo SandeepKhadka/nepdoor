@@ -2,11 +2,8 @@
 
 <body class="hold-transition sidebar-collapse layout-top-nav">
     <div class="wrapper">
-
         @include('inc.navbar')
-
         @include('inc.sidebar')
-
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-sm">
@@ -17,40 +14,127 @@
                     </div>
                 </div>
             </div>
-
             <div class="content">
-                <div class="container-sm w-50">
-                    <div class="row">
-                        <div class="col lg-12">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-10">
-                                            <div class="card-body">
-                                                <span class="badge">You</span>
-                                                <div class="row">
-                                                    <textarea type="text" id="message" name="message" class="form-control w-100 px-3 py-3 " rows="2"
-                                                        style=" resize: none ;background-color:#e7e7e9; border-radius: 0px 15px 15px 12px; color: rgb(0, 0, 0); font-size:12px" disabled></textarea>
+                @if (isset($ticket_title) && $ticket_title != null)
+                    <div class="container-sm w-50">
+                        <div class="row">
+                            <div class="col lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        {{-- @foreach ($ticket_title as $title) --}}
+                                            <h3 class="card-title" style="font-weight: bold">
+                                                {{ @$ticket_title }}
+                                                {{-- {{ @$title->title }} --}}
+                                            </h3>
+                                        {{-- @endforeach --}}
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                                title="Collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {{-- @endif
+                                            @endforeach
+                                            @endif --}}
+                                    <div class="card-body" id="msgBody"
+                                        style="height: 400px; overflow-y: scroll; overflow-x: hidden">
+                                        <div class="row">
+                                            <div class="col lg-12">
+                                                <div>
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div>
+                                                                    {{-- @if (auth()->user()->role == 'customer') --}}
+                                                                    @foreach ($ticket_message as $message)
+                                                                        @if (isset($message) && $message->message != null)
+                                                                            @if (auth()->user()->id == $message->user_id)
+                                                                                <div style="text-align: right;">
+                                                                                    <p
+                                                                                        style="background-color:lightblue; word-wrap:break-word; display:inline-block;
+                                                                                            padding:5px; border-radius:10px; max-width:70%; margin: 5px">
+                                                                                        {{ $message->message }}
+                                                                                    </p>
+
+                                                                                </div>
+                                                                                @php
+                                                                                    $message_token_id = $message->token_id;
+                                                                                    
+                                                                                @endphp
+                                                                            @endif
+                                                                            @if (isset($message_token_id))
+                                                                                @if ($message->user_id == 1 && $message->token_id == $message_token_id)
+                                                                                    <div style="text-align: left;">
+                                                                                        <p
+                                                                                            style="background-color:yellow; word-wrap:break-word; display:inline-block;
+                                                                                    padding:5px; border-radius:10px; max-width:70%">
+                                                                                            {{ $message->message }}
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                @endif
+                                                                            @endif
+                                                                        @endif
+                                                                    @endforeach
+                                                                    {{-- @endif --}}
+                                                                    {{-- @if (auth()->user()->role == 'admin') --}}
+                                                                    {{-- @if (isset($ticket_reply) && $ticket_reply != null)
+                                                                        @foreach ($ticket_reply as $reply)
+                                                                            @if (isset($reply) && $reply->message != null)
+                                                                                <div style="text-align: left;">
+                                                                                    <p
+                                                                                        style="background-color:yellow; word-wrap:break-word; display:inline-block;
+                                                                                            padding:5px; border-radius:10px; max-width:70%">
+                                                                                        {{ $reply->message }}
+                                                                                    </p>
+
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    @endif --}}
+                                                                    {{-- @endif --}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                 </div>
-                                                @error('message')
-                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
-                                        <div class="col-lg-3"></div>
-                                        <div class="col-lg-9">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <span class="badge" style="margin-left:440px">Admin</span>
-                                                    <textarea type="text" id="message" name="message" class="form-control w-100 px-3 py-3" rows="2"
-                                                        style="resize: none ;background-color: #e7e7e9; border-radius:15px 12px 0px 15px; color: rgb(0, 0, 0); font-size:12px" disabled></textarea>
-                                                </div> 
-                                                @error('message')
-                                                    <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                                @enderror
+                                        <div class="col lg-12">
+                                            <div class="card" style="margin-bottom: 1px">
+                                                <div class="card-body ">
+                                                    {{-- {{dd($message->title)}} --}}
+                                                    <form action="{{ route('storeTicketReply', $token_id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @if ($errors->any())
+                                                            {{ implode('', $errors->all('<div>:message</div>')) }}
+                                                        @endif
+                                                        <div class="row">
+                                                            <input type="text" name="title"
+                                                                value="{{ $ticket_title }}" hidden>
+                                                            <input type="text" name="priority"
+                                                                value="{{ $priority }}" hidden>
+                                                            <div class="col-lg-11">
+                                                                <textarea type="text" id="message" name="message" class="form-control" rows="1" required
+                                                                    style=" resize: none ;background-color:#ffffff; border-radius: 12px 15px 15px 12px; font-size:13px; border: 1px solid black"></textarea>
+
+                                                                @error('message')
+                                                                    <span class="invalid-feedback"
+                                                                        role="alert">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="col-lg-1">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary px-2">Reply</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -58,25 +142,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="container-sm w-50">
-                    <div class="row">
-                        <div class="col lg-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <button type="submit" value="Submit"
-                                            class="btn btn-primary float-right">Reply</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {{-- @if (!isset($title) || $title == null)
+                        <h5 class="text-center">There is no ticket created</h5>
+                    @endif --}}
+                @else
+                    <h5 class="text-center">There is no ticket created</h5>
+                @endif
+
+                {{-- @endif
+                    @endforeach
+                    @if (!isset($message))
+                        <h4 class="text-center">There is no tickets created</h4>
+                    @endif
+                @else
+                    <h4 class="text-center">There is no tickets created</h4>
+                @endif --}}
             </div>
         </div>
     </div>
-
     @include('inc.footer')

@@ -58,16 +58,11 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 
 
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
-
-// Route::get('/billing', function () {
-//     return view('front.billing.billing');
-// });
-
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 
-// Route::get('/basic', function () {
-//     return view('basic');
-// });
+Route::get('/project', function () {
+    return view('front.project.project');
+});
 
 
 Auth::routes();
@@ -103,4 +98,6 @@ Route::post('/store/searchEngineOptimizationdata', [App\Http\Controllers\Fronten
 Route::post('/store/trainingdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/Ticket', [App\Http\Controllers\Front\TicketController::class, 'storeTicket'])->name('storeTicket');
+Route::post('/update/Ticket{id}', [App\Http\Controllers\Front\TicketController::class, 'updateTicket'])->name('updateTicket');
+Route::post('/store/TicketReply{token_id}', [App\Http\Controllers\Front\TicketController::class, 'storeTicketReply'])->name('storeTicketReply');
 

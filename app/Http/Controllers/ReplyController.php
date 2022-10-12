@@ -11,9 +11,11 @@ use App\Models\User;
 class ReplyController extends Controller
 {
     protected $reply = null;
-    public function __construct(TicketReply $reply)
+    protected $ticket = null;
+    public function __construct(Ticket $ticket, TicketReply $reply)
     {
         // $this->middleware('auth');
+        $this->ticket = $ticket;
         $this->reply = $reply;
     }
     /**
@@ -30,13 +32,41 @@ class ReplyController extends Controller
 
     public function messageReply($id)
     {
-        $tickets = Ticket::find($id);
-        if (!$tickets) {
-            return redirect()->route('ticket.index');
+        $ticket_message = $this->ticket->orderBy('id', 'Desc')->get() ?? "";
+        $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status']) ?? "";
+        $ticket_reply = "";
+        foreach ($ticket_id as $ticket) {
+            $ticket_reply = $this->reply->get(['message', 'ticket_id', 'status'])->where('ticket_id', $ticket->token_id) ?? "";
         }
-        // $tickets = Ticket::orderBy('id', 'DESC')->get();
-        $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
-        return view('admin.tickets.ticketReply.message')->with('ticket_data', $tickets)->with('user_info', $user_info);
+        $ticket_title = "";
+        $token_id = "";
+        $priority = "";
+        // dd($ticket_reply);
+        if (isset($ticket_message) && $ticket_message != null) {
+            foreach ($ticket_message as $message) {
+                $ticket_title = $message->title;
+                $token_id = $message->token_id;
+                $priority = $message->priority;
+            }
+        }
+        return view('admin.tickets.ticketReply.message')->with(
+            [
+                'ticket_message' => $ticket_message,
+                'ticket_title' => $ticket_title,
+                'token_id' => $token_id,
+                'priority' => $priority,
+                'ticket_reply' => $ticket_reply
+            ]
+        );
+        
+        
+        // $tickets = Ticket::find($id);
+        // if (!$tickets) {
+        //     return redirect()->route('ticket.index');
+        // }
+        // // $tickets = Ticket::orderBy('id', 'DESC')->get();
+        // $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
+        // return view('admin.tickets.ticketReply.message')->with('ticket_data', $tickets)->with('user_info', $user_info);
     }
 
     /**
