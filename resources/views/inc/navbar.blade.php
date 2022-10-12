@@ -33,8 +33,8 @@
               </ul>
               <ul class="navbar-nav ml-3">
                   <li class="nav-item">
-                    <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new" style="margin-left: 700px"
-                    role="button">Blogs</a>
+                      <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new"
+                          style="margin-left: 700px" role="button">Blogs</a>
                   </li>
               </ul>
           </div>
@@ -44,22 +44,42 @@
               <!-- Notifications Dropdown Menu -->
               <li class="nav-item dropdown user-menu">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                      <img src="assets/dist/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
-                          alt="User Image">
+                      {{-- <div class="image"> --}}
+                      @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                          <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
+                              class="img-circle elevation-2" alt="">
+                      @else
+                          <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-1"
+                              alt="User Image">
+                          {{-- <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt=""> --}}
+                          {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
+                          {{-- <i class="fa-regular fa-user"></i> --}}
+                      @endif
+                      {{-- </div> --}}
                       <span class="d-none d-md-inline">{{ @Auth::user()->username }}</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                       <!-- User image -->
                       <li class="user-header bg-primary">
-                          <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-
+                          {{-- <div class="image"> --}}
+                          @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                              <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
+                                  class="img-circle elevation-2" alt="">
+                          @else
+                              <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2"
+                                  alt="User Image">
+                              {{-- <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt=""> --}}
+                              {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
+                              {{-- <i class="fa-regular fa-user"></i> --}}
+                          @endif
+                          {{-- </div> --}}
                           <p>
                               {{ @Auth::user()->full_name }}
                           </p>
                       </li>
                       <!-- Menu Footer-->
                       <li class="user-footer">
-                          <a href="{{url('profile')}}" class="btn btn-default btn-flat">Profile</a>
+                          <a href="{{ url('profile') }}" class="btn btn-default btn-flat">Profile</a>
                           {{-- <a href="logout" class="btn btn-default btn-flat float-right">Sign out</a> --}}
                           <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right"
                               onclick="event.preventDefault();
