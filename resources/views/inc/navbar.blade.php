@@ -45,15 +45,14 @@
               <li class="nav-item dropdown user-menu">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                       {{-- <div class="image"> --}}
-                      @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+
+                      @if (isset(auth()->user()->photo) && auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
                           <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
-                              class="img-circle elevation-2" alt="">
+                              class="user-image img-circle elevation-1" alt="">
                       @else
                           <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-1"
                               alt="User Image">
-                          {{-- <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt=""> --}}
-                          {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
-                          {{-- <i class="fa-regular fa-user"></i> --}}
+                         
                       @endif
                       {{-- </div> --}}
                       <span class="d-none d-md-inline">{{ @Auth::user()->username }}</span>
@@ -62,15 +61,12 @@
                       <!-- User image -->
                       <li class="user-header bg-primary">
                           {{-- <div class="image"> --}}
-                          @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                          @if (isset(auth()->user()->photo) && auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
                               <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
                                   class="img-circle elevation-2" alt="">
                           @else
                               <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2"
                                   alt="User Image">
-                              {{-- <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt=""> --}}
-                              {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
-                              {{-- <i class="fa-regular fa-user"></i> --}}
                           @endif
                           {{-- </div> --}}
                           <p>
