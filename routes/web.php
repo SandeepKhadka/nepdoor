@@ -10,6 +10,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Front\UserProfileController;
 use App\Http\Controllers\FrontEndController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +44,9 @@ Route::get('/subscribe', function () {
 Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
 Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
 
-Route::get('/profile', function () {
-    return view('front.user.userDetail');
-});
+// Route::get('/profile', function () {
+//     return view('front.user.userDetail');
+// });
 
 // Route::get('/helpCenter', function () {
 //     return view('customer.helpCenter.helpCenterView');
@@ -65,7 +66,13 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
-Route::get('/profile', [App\Http\Controllers\Front\UserController::class, 'getUserData'])->name('user');
+// Route::get('/profile', [App\Http\Controllers\Front\UserController::class, 'getUserData'])->name('user');
+// Route::get('/profile/{id}', [App\Http\Controllers\Front\UserController::class, 'store'])->name('user');
+// Route::get('/profile/{id}', [App\Http\Controllers\Front\UserController::class, 'update'])->name('user');
+Route::resource('profile',UserProfileController::class);
+
+
+
 
 // Route::get('/subscription', function () {
 //     return view('front.subscription.subscription');

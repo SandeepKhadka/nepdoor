@@ -11,6 +11,7 @@
                             @if ($errors->any())
                                 {{ implode('', $errors->all('<div>:message</div>')) }}
                             @endif
+
                             @if (isset($user_data))
                                 <form action="{{ route('user.update', @$user_data->id) }}" method="post" class="form"
                                     enctype="multipart/form-data">
@@ -21,6 +22,7 @@
                                         enctype="multipart/form-data">
                                         @csrf
                             @endif
+                            
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="name">Full Name</label>

@@ -7,6 +7,10 @@
     "file": "assets/fa-brands-400.e4299464.eot",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot"
   },
+  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400.e4299464.eot",
+    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot"
+  },
   "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.eot": {
     "file": "assets/fa-solid-900.373c04fd.eot",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.eot"
@@ -62,6 +66,10 @@
   "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.ttf": {
     "file": "assets/fa-solid-900.af639750.ttf",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400.cda59d6e.ttf",
+    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.ttf"
   },
   "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.svg": {
     "file": "assets/fa-regular-400.62f1f2b9.svg",
