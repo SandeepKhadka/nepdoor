@@ -32,15 +32,20 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-Route::get('/createTicket', function () {
-    return view('front.supportTicket.createTicket');
-});
+// Route::get('/createTicket', function () {
+//     return view('front.supportTicket.createTicket');
+// });
 
 // Route::get('/allTicket', function () {
 //     return view('front.supportTicket.allTickets');
 // });
 
-Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeTicket');
+Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
+Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
+
+Route::get('/profile', function () {
+    return view('front.user.userDetail');
+});
 
 // Route::get('/helpCenter', function () {
 //     return view('customer.helpCenter.helpCenterView');
@@ -59,10 +64,12 @@ Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::clas
 
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
+Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
+Route::get('/profile', [App\Http\Controllers\Front\UserController::class, 'getUserData'])->name('user');
 
-Route::get('/project', function () {
-    return view('front.project.project');
-});
+// Route::get('/subscription', function () {
+//     return view('front.subscription.subscription');
+// });
 
 
 Auth::routes();
@@ -82,6 +89,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('user',UserController::class);
     Route::resource('reply',ReplyController::class);
     Route::get('/replyMessage/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
+    Route::post('/store/TicketReply/{token_id}', [App\Http\Controllers\TicketController::class, 'storeTicketReply'])->name('TicketReply');
+    Route::post('/store/TicketReplyAndClose/{token_id}', [App\Http\Controllers\TicketController::class, 'replyAndClose'])->name('replyAndClose');
+    // Route::get('/replyAndClose/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact',ContactController::class);
     Route::resource('frontend',FrontEndController::class);
 
@@ -99,5 +109,6 @@ Route::post('/store/trainingdata', [App\Http\Controllers\FrontendController::cla
 Route::post('/store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/Ticket', [App\Http\Controllers\Front\TicketController::class, 'storeTicket'])->name('storeTicket');
 Route::post('/update/Ticket{id}', [App\Http\Controllers\Front\TicketController::class, 'updateTicket'])->name('updateTicket');
-Route::post('/store/TicketReply{token_id}', [App\Http\Controllers\Front\TicketController::class, 'storeTicketReply'])->name('storeTicketReply');
+Route::post('/store/TicketReply/{token_id}', [App\Http\Controllers\Front\TicketController::class, 'storeTicketReply'])->name('storeTicketReply');
+
 

@@ -17,6 +17,13 @@ class TicketController extends Controller
         $this->ticketReply = $ticketReply;
     }
 
+    public function createTicket()
+    {
+        $ticket_status = $this->ticket->get(['ticket_status', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
+        return view('front.supportTicket.createTicket')
+            ->with('ticket_status', $ticket_status);
+    }
+
     public function storeTicket(Request $request)
     {
         $rules = $this->ticket->getRules();
@@ -26,7 +33,7 @@ class TicketController extends Controller
         $data['token_id'] = 'tok-' . rand(0, 99) . '-' . $data['user_id'];
         $this->ticket->fill($data);
         $status = $this->ticket->save();
-        return redirect()->back();
+        return redirect('allTicket');
     }
 
     public function storeTicketReply(Request $request, $token_id)
@@ -39,8 +46,27 @@ class TicketController extends Controller
         $data['token_id'] = $token_id;
         $this->ticket->fill($data);
         $status = $this->ticket->save();
-        return redirect()->back();
+        return redirect('allTicket');
     }
+
+    // public function replyAndClose(Request $request, $token_id)
+    // {
+
+    //     $rules = $this->ticket->getRules();
+    //     $request->validate($rules);
+    //     $data = $request->all();
+    //     $data['user_id'] = auth()->user()->id;
+    //     $data['token_id'] = $token_id;
+    //     $data['ticket_status'] = "Closed";
+    //     $this->ticket->fill($data);
+    //     $this->ticket->where('token_id', $token_id)
+    //         ->update([
+    //             'ticket_status' => "Closed"
+    //         ]);
+    //     $status = $this->ticket->save();
+    //     return redirect()->back();
+    // }
+
     public function updateTicket(Request $request, $id)
     {
         $this->ticket = $this->ticket->find($id);
@@ -69,16 +95,16 @@ class TicketController extends Controller
             return redirect('/login');
         }
         $ticket_message = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active') ?? "";
-        $ticket_title = $this->ticket->get(['title', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
+        $ticket_title = $this->ticket->orderBy('id', 'Desc')->get(['title', 'user_id', 'token_id', 'ticket_status', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         // $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         // $ticket_reply = "";
         // foreach ($ticket_id as $ticket) {
         //     $ticket_reply = $this->ticketReply->get(['message', 'ticket_id', 'status'])->where('ticket_id', $ticket->token_id) ?? "";
         // }
         // $ticket_title = "";
-        foreach($ticket_title as $ticket){
-            $title = $ticket->title;
-        }
+        // foreach($ticket_title as $ticket){
+        //     $title = $ticket->title;
+        // }
         // dd($title);
         $token_id = "";
         $priority = "";
@@ -86,19 +112,24 @@ class TicketController extends Controller
         if (isset($ticket_message) && $ticket_message != null) {
             foreach ($ticket_message as $message) {
                 // $ticket_title = $message->title;
-                $token_id = $message->token_id;
-                $priority = $message->priority;
+                // if ($message->ticket_status == 'Opened') {
+                    // dd($message);
+                    $token_id = $message->token_id;
+                    $priority = $message->priority;
+                // }
+                break;
             }
         }
-        // dd($ticket_title);
-        
         return view('front.supportTicket.allTickets')->with(
             [
                 'ticket_message' => $ticket_message,
-                'ticket_title' => $title,
+                'ticket_title' => $ticket_title,
                 'token_id' => $token_id,
                 'priority' => $priority
             ]
         );
+
+        // dd($ticket_title);
+
     }
 }

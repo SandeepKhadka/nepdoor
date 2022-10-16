@@ -18,7 +18,7 @@ class HelpCenterController extends Controller
         }
         // dd($search);
         $data = compact('helpCenter_info','search');
-        return view('customer.helpCenter.helpCenterView')->with($data);
+        return view('front.helpCenter.helpCenterView')->with($data);
     }
 
     public function searchHelpCenter(Request $request)
@@ -31,7 +31,7 @@ class HelpCenterController extends Controller
         }
         // dd($search);
         $data = compact('helpCenter_info','search');
-        return view('customer.helpCenter.helpCenterView')->with($data);
+        return view('front.helpCenter.helpCenterView')->with($data);
     }
 
 }

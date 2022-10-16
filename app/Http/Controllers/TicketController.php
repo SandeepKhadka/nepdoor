@@ -56,7 +56,38 @@ class TicketController extends Controller
         } else {
             notify()->error('Sorry! There was problem while adding ticket.');
         }
-        return redirect()->route('ticket.index');
+        return redirect()->back();
+    }
+
+    public function storeTicketReply(Request $request, $token_id)
+    {
+
+        $rules = $this->ticket->getRules();
+        $request->validate($rules);
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['token_id'] = $token_id;
+        $this->ticket->fill($data);
+        $status = $this->ticket->save();
+        return redirect()->back();
+    }
+
+    public function replyAndClose(Request $request, $token_id)
+    {
+
+        $rules = $this->ticket->getRules();
+        $request->validate($rules);
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+        $data['token_id'] = $token_id;
+        $data['ticket_status'] = "Closed";
+        $this->ticket->fill($data);
+        $this->ticket->where('token_id', $token_id)
+            ->update([
+                'ticket_status' => "Closed"
+            ]);
+        $status = $this->ticket->save();
+        return redirect()->back();
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Subscription View')
+@section('title', 'Nepdoor | Subscription View')
 @section('main-content')
     <div class="content">
         <div class="container">
@@ -41,7 +41,7 @@
                                             <option value="" disabled selected hidden>Select package</option>
                                             @if (isset($package_info))
                                                 @foreach (@$package_info as $package => $data)
-                                                    <option value="{{ @$package != null ? @$package : ''  }}"
+                                                    <option value="{{ @$package != null ? @$package : '' }}"
                                                         {{ @$subscription_data->package_id == $package ? 'selected' : '' }}>
                                                         {{ @$data }}</option>
                                                 @endforeach
@@ -57,21 +57,11 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label>Billing</label>
-                                    <div>
-                                        <select name="billing_id" id="billing_id" class="form-control" disabled>
-                                            <option value="" disabled selected hidden>Select billing</option>
-                                            @if (isset($billing_info))
-                                                @foreach (@$billing_info as $billing => $data)
-                                                    <option value="{{ @$billing != null ? @$billing : '' }}"
-                                                        {{ @$subscription_data->billing_id == $billing ? 'selected' : '' }}>
-                                                        {{ @$data }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
-                                        @error('billing_id')
-                                            <span class="alert-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                                    <input type="text" id="billing_id" name="billing_id" class="form-control"
+                                        value="{{ @$subscription_data->billing_id }}" disabled>
+                                    @error('billing_id')
+                                        <span class="alert-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -84,8 +74,8 @@
 
                                 <div class="form-group col-md-6">
                                     <label for="end_date">End Date</label>
-                                    <input type="date" id="end_date" name="end_date" class="form-control"
-                                        rows="5" value="{{ @$subscription_data->end_date }}" disabled>
+                                    <input type="date" id="end_date" name="end_date" class="form-control" rows="5"
+                                        value="{{ @$subscription_data->end_date }}" disabled>
                                 </div>
                             </div>
 
@@ -101,8 +91,8 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="message">Message</label>
-                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none"
-                                         rows="5" disabled>{{ @$subscription_data->message }}</textarea>
+                                    <textarea type="text" id="message" name="message" class="form-control" style="resize: none" rows="5"
+                                        disabled>{{ @$subscription_data->message }}</textarea>
                                     @error('message')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror

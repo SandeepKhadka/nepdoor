@@ -44,8 +44,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="message">Message</label>
                                     <textarea type="text" id="message" name="message" class="form-control" style="resize: none;" rows="5"
-                                        required>{{ @$reply_data->message }}
-                                    </textarea>
+                                        required>{{ @$reply_data->message }}</textarea>
                                     @error('message')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror

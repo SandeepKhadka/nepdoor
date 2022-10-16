@@ -30,36 +30,69 @@ class ReplyController extends Controller
         return view('admin.tickets.ticketReply.replyList')->with('reply_data', $replies)->with('ticket_info', $ticket_info);
     }
 
-    public function messageReply($id)
+    public function messageReply($ticket_token_id)
     {
-        $ticket_message = $this->ticket->orderBy('id', 'Desc')->get() ?? "";
-        $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status']) ?? "";
-        $ticket_reply = "";
-        foreach ($ticket_id as $ticket) {
-            $ticket_reply = $this->reply->get(['message', 'ticket_id', 'status'])->where('ticket_id', $ticket->token_id) ?? "";
+
+        if (!auth()->user()) {
+            return redirect('/login');
         }
-        $ticket_title = "";
+
+        // dd($ticket_token_id);
+        $ticket_message = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active') ?? "";
+        $ticket_title = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active')->where('token_id', $ticket_token_id) ?? "";
         $token_id = "";
         $priority = "";
-        // dd($ticket_reply);
-        if (isset($ticket_message) && $ticket_message != null) {
-            foreach ($ticket_message as $message) {
-                $ticket_title = $message->title;
+
+        if (isset($ticket_title) && $ticket_title != null) {
+            foreach ($ticket_title as $message) {
+                // $ticket_title = $message->title;
+                // if ($message->ticket_status == 'Opened') {
+                // dd($message);
                 $token_id = $message->token_id;
+                // dd($token_id);
                 $priority = $message->priority;
+                // }
+                break;
             }
         }
+
         return view('admin.tickets.ticketReply.message')->with(
             [
                 'ticket_message' => $ticket_message,
                 'ticket_title' => $ticket_title,
                 'token_id' => $token_id,
-                'priority' => $priority,
-                'ticket_reply' => $ticket_reply
+                'priority' => $priority
             ]
         );
-        
-        
+
+        // $ticket_message = $this->ticket->orderBy('id', 'Desc')->get() ?? "";
+        // $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status']) ?? "";
+        // $ticket_reply = "";
+        // foreach ($ticket_id as $ticket) {
+        //     $ticket_reply = $this->reply->get(['message', 'ticket_id', 'status'])->where('ticket_id', $ticket->token_id) ?? "";
+        // }
+        // $ticket_title = "";
+        // $token_id = "";
+        // $priority = "";
+
+        // if (isset($ticket_message) && $ticket_message != null) {
+        //     foreach ($ticket_message as $message) {
+        //         $ticket_title = $message->title;
+        //         $token_id = $message->token_id;
+        //         $priority = $message->priority;
+        //     }
+        // }
+        // return view('admin.tickets.ticketReply.message')->with(
+        //     [
+        //         'ticket_message' => $ticket_message,
+        //         'ticket_title' => $ticket_title,
+        //         'token_id' => $token_id,
+        //         'priority' => $priority,
+        //         'ticket_reply' => $ticket_reply
+        //     ]
+        // );
+
+
         // $tickets = Ticket::find($id);
         // if (!$tickets) {
         //     return redirect()->route('ticket.index');
