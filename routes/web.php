@@ -33,13 +33,16 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-Route::get('/createTicket', function () {
-    return view('front.supportTicket.createTicket');
-});
+// Route::get('/createTicket', function () {
+//     return view('front.supportTicket.createTicket');
+// });
 
-Route::get('/allTicket', function () {
-    return view('front.supportTicket.allTickets');
-});
+// Route::get('/allTicket', function () {
+//     return view('front.supportTicket.allTickets');
+// });
+
+Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
+Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
 
 // Route::get('/profile', function () {
 //     return view('front.user.userDetail');
@@ -93,6 +96,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::resource('user',UserController::class);
     Route::resource('reply',ReplyController::class);
     Route::get('/replyMessage/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
+    Route::post('/store/TicketReply/{token_id}', [App\Http\Controllers\TicketController::class, 'storeTicketReply'])->name('TicketReply');
+    Route::post('/store/TicketReplyAndClose/{token_id}', [App\Http\Controllers\TicketController::class, 'replyAndClose'])->name('replyAndClose');
+    // Route::get('/replyAndClose/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact',ContactController::class);
     Route::resource('frontend',FrontEndController::class);
 
@@ -109,4 +115,7 @@ Route::post('/store/searchEngineOptimizationdata', [App\Http\Controllers\Fronten
 Route::post('/store/trainingdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeDigitalFormData'])->name('storeDigitalFormData');
 Route::post('/store/Ticket', [App\Http\Controllers\Front\TicketController::class, 'storeTicket'])->name('storeTicket');
+Route::post('/update/Ticket{id}', [App\Http\Controllers\Front\TicketController::class, 'updateTicket'])->name('updateTicket');
+Route::post('/store/TicketReply/{token_id}', [App\Http\Controllers\Front\TicketController::class, 'storeTicketReply'])->name('storeTicketReply');
+
 
