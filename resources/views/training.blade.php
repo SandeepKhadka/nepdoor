@@ -31,7 +31,7 @@
                                         {{ implode('', $errors->all('<div>:message</div>')) }}
                                     @endif
                                     <form action="{{ route('storeDigitalFormData') }}" method="post"
-                                        enctype="multipart/form-data">
+                                        enctype="multipart/form-data" onsubmit="alert('Form sent successfully.')">
                                         @csrf
                                         <div class="row" style="display: none">
                                             <div class="form-group col-md-6">

@@ -23,6 +23,14 @@ class FrontendController extends Controller
         $this->subscription = $subscription;
     }
 
+    public function getSubscriptionDetail()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('index')->with([
+            'package_info' => $package_info
+        ]);
+    }
+
     public function storeDigitalFormData(Request $request)
     {
         $bills = $request->except(['_token', 'package', 'message']);

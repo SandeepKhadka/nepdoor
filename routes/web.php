@@ -81,6 +81,7 @@ Route::resource('profile',UserProfileController::class);
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){

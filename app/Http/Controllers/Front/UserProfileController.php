@@ -24,16 +24,16 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        //     $this->user = $this->user->orderBy('id', 'DESC')->get();
-        //     return view('front.user.userDetail')->with('user_data', $this->user);
         if (!auth()->user()) {
             return redirect('/login');
         }
-        $user_data = User::get()->where('id', auth()->user()->id);
-        // dd($user_data);
-        return view('front.user.userDetail')->with([
-            'user_data' => $user_data
-        ]);
+
+        if (isset(auth()->user()->role) && auth()->user()->role == 'customer') {
+            return view('front.user.userDetail');
+        } 
+        else{
+            return view('admin.user.adminDetail');
+        }
     }
 
     /**
@@ -54,26 +54,7 @@ class UserProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = $this->user->getRules();
-        $request->validate($rules);
-        $data = $request->except(['_token', 'photo']);
-        if ($request->has('photo')) {
-            $photo = $request->photo;
-            $file_name = uploadImage($photo, 'user', '125x125');
-            if ($file_name) {
-                $data['photo'] = $file_name;
-            }
-        }
-
-        $data['password'] = Hash::make($data['password']);
-        $this->user->fill($data);
-        $status = $this->user->save();
-        if ($status) {
-            notify()->success('User added successfully');
-        } else {
-            notify()->error('Sorry! There was problem while adding user');
-        }
-        return redirect()->route('profile.index');
+        //
     }
 
     /**
@@ -135,16 +116,22 @@ class UserProfileController extends Controller
             }
         }
 
-
-        if ($data['password'] != $request->oldPassword) {
-            notify()->error("Your provided password did not match.");
+        if (isset($request->oldPassword) && $request->oldPassword != null) {
+            if (password_verify($request->oldPassword, $data['password'])) {
+                notify()->error("Your provided password did not match.");
+                return redirect()->back();
+            }
         }
-        
-        if ($request->newPassword == $request->retypeNewPassword) {
-            $data['password'] = Hash::make($request->newPassword);
-        } else {
-            notify()->error("Password did not match.");
-            return redirect()->route('profile.index');
+
+        if (isset($request->newPassword) && $request->newPassword != null) {
+            if (isset($request->retypeNewPassword) && $request->retypeNewPassword != null) {
+                if ($request->newPassword == $request->retypeNewPassword) {
+                    $data['password'] = Hash::make($request->newPassword);
+                } else {
+                    notify()->error("Password did not match.");
+                    return redirect()->route('profile.index');
+                }
+            }
         }
 
         $this->user->fill($data);
