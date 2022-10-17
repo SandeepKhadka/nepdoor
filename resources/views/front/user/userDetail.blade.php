@@ -19,9 +19,9 @@
                 </div>
             </div>
 
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 {{ implode('', $errors->all('<div>:message</div>')) }}
-            @endif
+            @endif --}}
 
             @if (isset($user_data))
                 @foreach ($user_data as $user_id)
@@ -124,7 +124,7 @@
                                                 <div class="form-group row">
                                                     <label for="full_name" class="col-sm-2 col-form-label">Name</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="full_name"
+                                                        <input type="text" class="form-control @error('full_name') is-invalid @enderror" id="full_name"
                                                             name="full_name" placeholder="Name"
                                                             value="{{ @$user_id->full_name }}">
                                                         @error('full_name')
