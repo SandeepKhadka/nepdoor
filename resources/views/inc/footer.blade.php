@@ -12,7 +12,7 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
+@notifyJs
 <!-- jQuery -->
 <script src="assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

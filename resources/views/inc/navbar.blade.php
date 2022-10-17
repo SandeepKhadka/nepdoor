@@ -1,5 +1,7 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+      <x:notify-messages />
+
       <div class="container">
           <a href="{{ url('/') }}" class="navbar-brand">
               <img src="{{ asset('uploads/initial/logo.png') }}" alt="Nepdoor Logo" class="brand-image elevation-3 p-2"
@@ -18,18 +20,7 @@
                       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                               class="fas fa-bars"></i></a>
                   </li>
-                  {{-- <li class="nav-item">
-                      <a href="{{ url('digitalMarketing') }}" class="nav-link">Digital Marketing</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="{{ url('seo') }}" class="nav-link">SEO</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="{{ url('basic') }}" class="nav-link">Basic</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="{{ url('training') }}" class="nav-link">Training</a>
-                  </li> --}}
+
               </ul>
               <ul class="navbar-nav ml-3">
                   <li class="nav-item">
@@ -42,41 +33,42 @@
           <!-- Right navbar links -->
           <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
               <!-- Notifications Dropdown Menu -->
-              <li class="nav-item dropdown user-menu">
+              <li class="nav-item dropdown user-menu w-100">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                      {{-- <div class="image"> --}}
+                      <div class="image float-left">
 
-                      @if (isset(auth()->user()->photo) && auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
-                          <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
-                              class="user-image img-circle elevation-1" alt="">
-                      @else
-                          <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-1"
-                              alt="User Image">
-                         
-                      @endif
-                      {{-- </div> --}}
+                          @if (isset(auth()->user()->photo) &&
+                              auth()->user()->photo != null &&
+                              file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                              <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
+                                  class="user-image img-circle elevation-1" alt="">
+                          @else
+                              <img src="{{ asset('dist/img/defaultUser.png') }}"
+                                  class="user-image img-circle elevation-1" alt="User Image">
+                          @endif
+                      </div>
                       <span class="d-none d-md-inline">{{ @Auth::user()->username }}</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                       <!-- User image -->
-                      <li class="user-header bg-primary">
+                      <li class="user-header bg-primary d-flex justify-content-center h-50">
                           {{-- <div class="image"> --}}
-                          @if (isset(auth()->user()->photo) && auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                          @if (isset(auth()->user()->photo) &&
+                              auth()->user()->photo != null &&
+                              file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
                               <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
                                   class="img-circle elevation-2" alt="">
                           @else
                               <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2"
                                   alt="User Image">
                           @endif
-                          {{-- </div> --}}
-                          <p>
-                              {{ @Auth::user()->full_name }}
-                          </p>
-                      </li>
+                        </li>
+                        <p class="bg-primary text-center">
+                            {{ @Auth::user()->full_name }}
+                        </p>
                       <!-- Menu Footer-->
                       <li class="user-footer">
                           <a href="{{ url('profile') }}" class="btn btn-default btn-flat">Profile</a>
-                          {{-- <a href="logout" class="btn btn-default btn-flat float-right">Sign out</a> --}}
                           <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right"
                               onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
@@ -89,13 +81,8 @@
                       </li>
                   </ul>
               </li>
-              {{-- <li class="nav-item">
-            <a name="" id="" class="btn btn-primary" href="#" role="button">Log In</a>
-        </li>
-        <li class="nav-item ml-1">
-            <a name="" id="" class="btn btn-primary" href="#" role="button">Sign Up</a>
-        </li> --}}
           </ul>
       </div>
+
   </nav>
   <!-- /.navbar -->
