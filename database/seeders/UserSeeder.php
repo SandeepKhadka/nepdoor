@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
                 'username' => 'Admin',
                 'email' => 'admin@nepdoor.com',
                 'password' => Hash::make('admin123'),
+                'phone' => '9827129065',
                 'role' => 'admin',
                 'status' => 'Active'
             ],
@@ -36,6 +37,7 @@ class UserSeeder extends Seeder
                 'username' => 'Customer',
                 'email' => 'customer@nepdoor.com',
                 'password' => Hash::make('customer123'),
+                'phone' => '9827129065',
                 'role' => 'customer',
                 'status' => 'Inactive'
             ],

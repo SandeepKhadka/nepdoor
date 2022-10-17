@@ -29,11 +29,9 @@ class UserProfileController extends Controller
         if (!auth()->user()) {
             return redirect('/login');
         }
-        $user_data = User::get()->where('id', auth()->user()->id);
+        // $user_data = User::get()->where('id', auth()->user()->id);
         // dd($user_data);
-        return view('front.user.userDetail')->with([
-            'user_data' => $user_data
-        ]);
+        return view('front.user.userDetail');
     }
 
     /**
@@ -135,11 +133,13 @@ class UserProfileController extends Controller
             }
         }
 
-
-        if ($data['password'] != $request->oldPassword) {
-            notify()->error("Your provided password did not match.");
+        if (isset($request->oldPassword) && $request->oldPassword != null) {
+            if ($data['password'] != $request->oldPassword) {
+                notify()->error("Your provided password did not match.");
+                return redirect()->back();
+            }
         }
-        
+
         if ($request->newPassword == $request->retypeNewPassword) {
             $data['password'] = Hash::make($request->newPassword);
         } else {
