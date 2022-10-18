@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('cat_id')->nullable();
+            $table->string('category')->nullable();
             $table->unsignedBigInteger('package_id')->nullable();
             $table->string('billing_id');
             $table->text('message')->nullable();

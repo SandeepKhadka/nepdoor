@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-    
+
         $this->middleware('auth');
     }
 
@@ -29,10 +29,17 @@ class HomeController extends Controller
 
     public function admin()
     {
+        if (!auth()->user()) {
+            return redirect('/login');
+        }
         return view('layouts.admin');
     }
 
-    public function customer(){
+    public function customer()
+    {
+        if (!auth()->user()) {
+            return redirect('/login');
+        }
         return view('index');
     }
 }
