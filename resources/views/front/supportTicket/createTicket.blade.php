@@ -4,7 +4,13 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('creatTicket') }}">Support Tickets</a></li>
+                <li class="breadcrumb-item active" aria-current="creatTicket">Create Ticket</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">

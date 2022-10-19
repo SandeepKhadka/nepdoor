@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="billings">Billings</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -67,7 +72,8 @@
                                         <div class="row">
                                             {{-- <div class="col-7"></div> --}}
                                             <div class="col-7">
-                                                <p class="m-1 ml-2 font-weight-bold">Date: {{ $subscription->created_at }}
+                                                <p class="m-1 ml-2 font-weight-bold">Date:
+                                                    {{ $subscription->created_at }}
                                                 </p>
 
                                                 <div class="table-responsive">
@@ -127,11 +133,10 @@
                                 </div>
                             </div>
                             <hr>
-
                         @endforeach
-                        @if (!isset($subscriptions) || $subscriptions == null)
-                                <h5 class="text-center">There are no bills to display.</h5>
-                            @endif
+                        @if (!isset($subscription) || $subscription == null)
+                            <h5 class="text-center">There are no bills to display.</h5>
+                        @endif
                     @endif
 
                 </div>

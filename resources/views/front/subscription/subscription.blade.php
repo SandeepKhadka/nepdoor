@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="subscriptions">Subscriptions</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -20,9 +25,9 @@
                 <div class="content">
                     <div class="container">
                         {{-- <div class="col-lg-12"> --}}
-                            @if (isset($subscription_data) && $subscription_data != null)
+                        @if (isset($subscription_data) && $subscription_data != null)
                             @foreach ($subscription_data as $subscription)
-                            <div class="row">
+                                <div class="row">
                                     {{-- <div class="row"> --}}
                                     <div class="col-lg-4 ">
                                         <div class="card">
@@ -64,12 +69,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
-                                @if (!isset($subscription) || $subscription == null)
-                                    <h5 class="text-center">There are no ongoing activities.</h5>
-                                @endif
+                            @endforeach
+                            @if (!isset($subscription) || $subscription == null)
+                                <h5 class="text-center">There are no ongoing activities.</h5>
                             @endif
-                            {{-- </div>  --}}
+                        @endif
+                        {{-- </div>  --}}
                     </div>
                 </div>
 
