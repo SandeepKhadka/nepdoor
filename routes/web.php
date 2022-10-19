@@ -33,50 +33,24 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 
-// Route::get('/createTicket', function () {
-//     return view('front.supportTicket.createTicket');
-// });
-
-// Route::get('/allTicket', function () {
-//     return view('front.supportTicket.allTickets');
-// });
-
 Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
 Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
 
-// Route::get('/profile', function () {
-//     return view('front.user.userDetail');
-// });
-
-// Route::get('/helpCenter', function () {
-//     return view('customer.helpCenter.helpCenterView');
-// });
-
-// customer.supportTicket.createTicket
 
 Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
 Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
 Route::get('/training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
 Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
 Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('helpCenter');
-// Route::get('/searchHelpLink', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('searchHelpLink');
-// Route::get('/billing', [App\Http\Controllers\FrontendController::class, 'billing'])->name('billing');
+
 
 
 Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
 Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
 Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
-// Route::get('/profile', [App\Http\Controllers\Front\UserController::class, 'getUserData'])->name('user');
-// Route::get('/profile/{id}', [App\Http\Controllers\Front\UserController::class, 'store'])->name('user');
-// Route::get('/profile/{id}', [App\Http\Controllers\Front\UserController::class, 'update'])->name('user');
 Route::resource('profile',UserProfileController::class);
 
 
-
-
-// Route::get('/subscription', function () {
-//     return view('front.subscription.subscription');
-// });
 
 
 Auth::routes();
@@ -99,7 +73,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
     Route::get('/replyMessage/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::post('/store/TicketReply/{token_id}', [App\Http\Controllers\TicketController::class, 'storeTicketReply'])->name('TicketReply');
     Route::post('/store/TicketReplyAndClose/{token_id}', [App\Http\Controllers\TicketController::class, 'replyAndClose'])->name('replyAndClose');
-    // Route::get('/replyAndClose/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact',ContactController::class);
     Route::resource('frontend',FrontEndController::class);
 

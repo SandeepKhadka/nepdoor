@@ -13,15 +13,13 @@
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
                  @if (auth()->user()->photo != null && file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
-                     <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}" class="img-circle elevation-2" alt="">
+                     <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}" class="brand-image img-circle elevation-2" alt="">
                  @else
-                     <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2" alt="">
-                     {{-- <img src="" class="img-circle elevation-2" alt=""> --}}
-                     {{-- <i class="fa-regular fa-user"></i> --}}
+                     <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-2" alt="">
                  @endif
              </div>
              <div class="info">
-                 <a href="#" class="d-block">{{ ucfirst(auth()->user()->full_name) }}</a>
+                 <a href="{{route('profile.index')}}" class="d-block">{{ ucfirst(auth()->user()->full_name) }}</a>
              </div>
          </div>
 

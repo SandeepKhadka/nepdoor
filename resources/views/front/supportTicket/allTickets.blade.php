@@ -123,7 +123,7 @@
                                             </div>
                                         </div>
                                     @else
-                                        <h5 class="text-center">Your ticket has been Closed</h5>
+                                        <h5 class="text-center">Your ticket has been Closed.</h5>
                                     @endif
                                 </div>
                             </div>
@@ -134,10 +134,10 @@
                     @break
                 @endforeach
                 @if (!isset($title) || $title == null)
-                    <h5 class="text-center">There is no ticket created</h5>
+                    <h5 class="text-center">There is no ticket created.</h5>
                 @endif
             @else
-                <h5 class="text-center">There is no ticket created</h5>
+                <h5 class="text-center">There is no ticket created.</h5>
             @endif
         </div>
     </div>
