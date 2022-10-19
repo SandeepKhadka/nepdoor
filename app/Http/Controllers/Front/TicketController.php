@@ -49,29 +49,10 @@ class TicketController extends Controller
         return redirect('allTicket');
     }
 
-    // public function replyAndClose(Request $request, $token_id)
-    // {
-
-    //     $rules = $this->ticket->getRules();
-    //     $request->validate($rules);
-    //     $data = $request->all();
-    //     $data['user_id'] = auth()->user()->id;
-    //     $data['token_id'] = $token_id;
-    //     $data['ticket_status'] = "Closed";
-    //     $this->ticket->fill($data);
-    //     $this->ticket->where('token_id', $token_id)
-    //         ->update([
-    //             'ticket_status' => "Closed"
-    //         ]);
-    //     $status = $this->ticket->save();
-    //     return redirect()->back();
-    // }
 
     public function updateTicket(Request $request, $id)
     {
         $this->ticket = $this->ticket->find($id);
-        // dd($this->ticket);
-        // $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         if (!$this->ticket) {
             notify()->error('This ticket doesnot exists');
             return redirect()->route('ticket.index');
@@ -96,6 +77,7 @@ class TicketController extends Controller
         }
         $ticket_message = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active') ?? "";
         $ticket_title = $this->ticket->orderBy('id', 'Desc')->get(['title', 'user_id', 'token_id', 'ticket_status', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
+        // dd($ticket_title);
         // $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         // $ticket_reply = "";
         // foreach ($ticket_id as $ticket) {

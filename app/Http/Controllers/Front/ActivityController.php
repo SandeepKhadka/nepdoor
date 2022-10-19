@@ -13,7 +13,8 @@ class ActivityController extends Controller
         if (!auth()->user()) {
             return redirect('/login');
         }
-        $activity_data = Activity::orderBy('id', 'DESC')->where('user_id', auth()->user()->id)->get();
+        $activity_data = Activity::orderBy('id', 'DESC')->get()->where('user_id', auth()->user()->id);
+        // dd($activity_data);
         return view('front.activity.activity')->with('activity_data', $activity_data);
     }
 }
