@@ -98,7 +98,8 @@ class AdminHomeController extends Controller
         $subscription_info = Subscription::orderBy('id', 'ASC')->with('package_info')->where('status', 'Active')->get();
         foreach ($subscription_info as $subscription) {
             // dd($subscription);
-            if ($subscription->cat_id != null) {
+
+            if (isset($subscription) && $subscription->cat_id != null) {
                 $subscriptionCategory[] = $subscription->cat_id;
             }
             // $package_collection = array_count_values($package);

@@ -36,7 +36,7 @@
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered" id="table">
+                        <table  id="table" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>

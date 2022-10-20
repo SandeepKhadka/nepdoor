@@ -23,7 +23,7 @@
 
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="searching" class="table table-bordered">
+                        <table id="table" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
