@@ -96,6 +96,7 @@ class AdminHomeController extends Controller
 
 
         $subscription_info = Subscription::orderBy('id', 'ASC')->with('package_info')->where('status', 'Active')->get();
+        $subscriptionCategory = [];
         foreach ($subscription_info as $subscription) {
             // dd($subscription);
 
@@ -104,7 +105,10 @@ class AdminHomeController extends Controller
             }
             // $package_collection = array_count_values($package);
         }
-        $unique_subscriptionCategory = array_count_values($subscriptionCategory);
+        // if (isset($subscriptionCategory)) {
+
+            $unique_subscriptionCategory = array_count_values($subscriptionCategory);
+        // }
         // dd($unique_subscriptionPackages);
         // foreach ($unique_subscriptionCategory as $category_name => $category_number) {
         //     if ($category_name != null) {

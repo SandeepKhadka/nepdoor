@@ -51,22 +51,26 @@
                                                             @endforeach
                                                         @endforeach
                                                         @php
-                                                            $unique_subscriptionPackage = array_count_values($subscriptionPackage);
-                                                            $subscriptionPackage = [];
+                                                            if (isset($subscriptionPackage)) {
+                                                                $unique_subscriptionPackage = array_count_values($subscriptionPackage);
+                                                                $subscriptionPackage = [];
+                                                            }
                                                         @endphp
-                                                        @foreach ($unique_subscriptionPackage as $package_name => $package_number)
-                                                            <div class="col-lg-4 col-6">
-                                                                <div class="small-box bg-success">
-                                                                    <div class="inner">
-                                                                        <h3>{{ $package_number }}</h3>
-                                                                        <p>{{ $package_name }}</p>
-                                                                    </div>
-                                                                    <div class="icon">
-                                                                        <i class="ion ion-bag"></i>
+                                                        @if (isset($unique_subscriptionPackage))
+                                                            @foreach ($unique_subscriptionPackage as $package_name => $package_number)
+                                                                <div class="col-lg-4 col-6">
+                                                                    <div class="small-box bg-success">
+                                                                        <div class="inner">
+                                                                            <h3>{{ $package_number }}</h3>
+                                                                            <p>{{ $package_name }}</p>
+                                                                        </div>
+                                                                        <div class="icon">
+                                                                            <i class="ion ion-bag"></i>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        @endforeach
+                                                            @endforeach
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
