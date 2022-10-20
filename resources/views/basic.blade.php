@@ -27,7 +27,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('storeDigitalFormData') }}" method="post"
+                                    <form action="{{ route('storeBasicData') }}" method="post"
                                         enctype="multipart/form-data" onsubmit="alert('Form sent successfully.')">
                                         @csrf
                                         <div class="row" style="display: none">

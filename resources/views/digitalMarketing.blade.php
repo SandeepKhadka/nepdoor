@@ -20,6 +20,16 @@
             </div>
             <!-- /.content-header -->
 
+            {{-- @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Oh sorry!</strong>There were some issues with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif --}}
             <!-- Main content -->
             <div class="content">
                 <div class="container">
@@ -27,20 +37,20 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{ route('storeDigitalFormData') }}" method="post"
-                                        enctype="multipart/form-data" onsubmit="alert('Form sent successfully.')">
+                                    <form action="{{ route('storeDigitalMarketingData') }}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <div class="row" style="display: none">
                                             <div class="form-group col-md-6">
                                                 <label for="cat_id">Category</label>
-                                                <input type="text" id="cat_id" name="cat_id" class="form-control"
+                                                <input type="text" id="cat_id" name="cat_id" class="form-control" 
                                                     value="Digital Marketing">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-md-12">
                                                 <label for="package_id">Choose Package</label>
-                                                <select id="package_id" name="package_id"
+                                                <select id="package_id" name="package_id" required
                                                     class="form-control custom-select">
                                                     <option selected disabled hidden>Choose any one package...</option>
                                                     @if (isset($package_info))
@@ -60,18 +70,18 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="amount">Voucher Amount</label>
-                                                <input type="number" id="amount" name="amount"
+                                                <input type="number" id="amount" name="amount" required 
                                                     class="form-control">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Insert Voucher Image</label>
-                                                <input type="file" class="form-control-file" name="voucher"
+                                                <input type="file" class="form-control-file" name="voucher" required  @error('voucher') is-invalid @enderror
                                                     id="voucher">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="message">Write Message</label>
-                                            <textarea id="message" name="message" class="form-control" rows="4" style="resize: none"></textarea>
+                                            <textarea id="message" name="message" class="form-control" rows="4" style="resize: none"  @error('message') is-invalid @enderror></textarea>
                                         </div>
                                         <button type="submit" value="Submit"
                                             class="btn btn-success float-right">Submit</button>
@@ -116,8 +126,8 @@
 
                 </div>
                 <!-- /.col-md-6 -->
-        </div>
+            </div>
             <!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div><!-- /.container-fluid -->
 
-    @include('inc.footer')
+        @include('inc.footer')

@@ -63,7 +63,7 @@ class User extends Authenticatable
         ];
 
         if ($act == 'update') {
-            $rules['voucher'] = 'sometimes|image|max:5120';
+            $rules['photo'] = 'sometimes|image|max:5120';
         }
 
         return $rules;

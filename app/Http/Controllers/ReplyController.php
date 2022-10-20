@@ -38,7 +38,7 @@ class ReplyController extends Controller
         }
 
         // dd($ticket_token_id);
-        $ticket_message = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active') ?? "";
+        $ticket_message = $this->ticket->orderBy('id', 'Desc')->with('user_info')->where('status', 'Active')->get() ?? "";
         $ticket_title = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active')->where('token_id', $ticket_token_id) ?? "";
         $token_id = "";
         $priority = "";

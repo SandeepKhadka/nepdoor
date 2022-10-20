@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\Ticket;
 use App\Models\TicketReply;
 use Illuminate\Http\Request;
@@ -19,9 +20,11 @@ class TicketController extends Controller
 
     public function createTicket()
     {
+        $subscription = Subscription::where('user_id', auth()->user()->id)->where('status', 'Active')->first();
         $ticket_status = $this->ticket->get(['ticket_status', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         return view('front.supportTicket.createTicket')
-            ->with('ticket_status', $ticket_status);
+            ->with('ticket_status', $ticket_status)
+            ->with('subscription', $subscription);
     }
 
     public function storeTicket(Request $request)
@@ -33,7 +36,13 @@ class TicketController extends Controller
         $data['token_id'] = 'tok-' . rand(0, 99) . '-' . $data['user_id'];
         $this->ticket->fill($data);
         $status = $this->ticket->save();
-        return redirect('allTicket');
+        if($status){
+            notify()->success('Ticket created successfully');
+            return redirect('customer/allTicket');
+        }else{
+            notify()->error('There was a problem in creating ticket');
+            return redirect()->back();
+        }
     }
 
     public function storeTicketReply(Request $request, $token_id)
@@ -46,7 +55,11 @@ class TicketController extends Controller
         $data['token_id'] = $token_id;
         $this->ticket->fill($data);
         $status = $this->ticket->save();
-        return redirect('allTicket');
+        if($status){
+            return redirect('customer/allTicket');
+        }else{
+            return redirect()->back();
+        }
     }
 
     // public function replyAndClose(Request $request, $token_id)
@@ -94,7 +107,7 @@ class TicketController extends Controller
         if (!auth()->user()) {
             return redirect('/login');
         }
-        $ticket_message = $this->ticket->orderBy('id', 'Desc')->get()->where('status', 'Active') ?? "";
+        $ticket_message = $this->ticket->orderBy('id', 'Desc')->with('user_info')->get()->where('status', 'Active') ?? "";
         $ticket_title = $this->ticket->orderBy('id', 'Desc')->get(['title', 'user_id', 'token_id', 'ticket_status', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         // $ticket_id = $this->ticket->get(['token_id', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         // $ticket_reply = "";

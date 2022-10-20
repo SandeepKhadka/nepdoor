@@ -17,7 +17,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('digitalMarketing') }}" class="nav-link">
+            <a href="{{ url('customer/digitalMarketing') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Digital Marketing
@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('seo') }}" class="nav-link">
+            <a href="{{ url('customer/seo') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 SEO
@@ -33,7 +33,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('training') }}" class="nav-link">
+            <a href="{{ url('customer/training') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Training
@@ -42,7 +42,7 @@
           </li>
           <li class="nav-header">System</li>
           <li class="nav-item">
-            <a href="{{ url('subscription') }}" class="nav-link">
+            <a href="{{ url('customer/subscription') }}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Subscriptions
@@ -50,7 +50,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('activity') }}" class="nav-link">
+            <a href="{{ url('customer/activity') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Activity
@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('billing') }}" class="nav-link">
+            <a href="{{ url('customer/billing') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Billings</p>
             </a>
@@ -73,13 +73,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('createTicket') }}" class="nav-link">
+                <a href="{{ url('customer/createTicket') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create New Ticket</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('allTicket') }}" class="nav-link">
+                <a href="{{ url('customer/allTicket') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Tickets</p>
                 </a>
@@ -87,7 +87,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ url('helpCenter') }}" class="nav-link">
+            <a href="{{ url('customer/helpCenter') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Help Center

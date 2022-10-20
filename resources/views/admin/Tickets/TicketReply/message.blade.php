@@ -61,7 +61,7 @@
                                                                             
                                                                         @endphp
                                                                         @if (isset($message_token_id))
-                                                                            @if ($message->user_id != 1 && $message->token_id == $message_token_id)
+                                                                            @if ($message->user_info['role'] != 'admin' && $message->token_id == $message_token_id)
                                                                                 <div style="text-align: left;">
                                                                                     <p
                                                                                         style="background-color:yellow; word-wrap:break-word; display:inline-block;

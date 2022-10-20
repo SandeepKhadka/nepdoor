@@ -28,7 +28,7 @@
                 </div>
             @endif
             <form action="{{ route('profile.update', auth()->user()->id) }}" method="post" class="form"
-                enctype="multipart/form-data" onsubmit="alert('Details updated successfully.')">
+                enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="card p-2 ">
@@ -58,18 +58,8 @@
                                                             alt="User profile picture">
                                                     @endif
                                                 </div>
-
-                                                {{-- <div class="row"> --}}
-                                                {{-- <div class="form-group col-md-12"> --}}
-                                                {{-- <div class="col-md-4"> --}}
                                                 <input id="file" style="visibility:hidden;" name="photo"
                                                     type="file">
-                                                {{-- </div> --}}
-                                                {{-- </div> --}}
-                                                {{-- </div> --}}
-
-                                                {{-- <h6>Change profile</small></h6> --}}
-
                                             </div>
                                             <label for="file" class="btn d-flex justify-content-center"
                                                 style="font-weight: lighter">Change
@@ -77,9 +67,6 @@
 
                                             <h3 class="profile-username text-center">{{ auth()->user()->username }}
                                             </h3>
-
-                                            {{-- <p class="text-muted text-center"></p> --}}
-
                                             <ul class="list-group list-group-unbordered mb-3">
                                                 <li class="list-group-item">
                                                     <b>Email:</b> {{ auth()->user()->email }}<a class="float-right"></a>
@@ -117,7 +104,6 @@
 
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="userDetail">
-                                                    {{-- <form class="form-horizontal"> --}}
                                                     <div class="form-group row">
                                                         <label for="full_name" class="col-sm-2 col-form-label">Full
                                                             Name</label>
@@ -191,7 +177,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    {{-- </form> --}}
                                                 </div>
 
                                                 <div class="form-group row" hidden>
@@ -207,7 +192,7 @@
                                                         <label for="oldPassword" class="col-sm-2 col-form-label">Old
                                                             Password</label>
                                                         <div class="col-sm-10">
-                                                            <input type="oldPassword" class="form-control"
+                                                            <input type="password" class="form-control"
                                                                 name="oldPassword"
                                                                 @error('oldPassword') is-invalid @enderror
                                                                 id="oldPassword" placeholder="Old Password">
@@ -241,7 +226,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="offset-sm-11 ">
-                                            <button type="submit" class="btn btn-success" onclick="confirm('Do you want to update your detail.')">Update</button>
+                                            <button type="submit" class="btn btn-success"
+                                                onclick="confirm('Do you want to update your detail.')">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -250,10 +236,7 @@
                     </div>
                 </div>
             </form>
-            {{-- @endforeach
-                @endif --}}
-            {{-- </form> --}}
-
-
-
-            @include('inc.footer')
+        </div>
+    </div>
+</body>
+@include('inc.footer')

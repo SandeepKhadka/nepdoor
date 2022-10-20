@@ -40,7 +40,7 @@ class Subscription extends Model
             'message' => 'required|string',
             'user_id' => 'nullable|exists:users,id',
             // 'cat_id' => 'nullable|exists:package_categories,id',
-            'package_id' => 'nullable|exists:packages,id',
+            'package_id' => 'required|exists:packages,id',
             // 'billing_id' => 'required|string',
             // 'status' => 'required|in:Active,Inactive'
         ];

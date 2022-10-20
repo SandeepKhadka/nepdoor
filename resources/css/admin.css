@@ -7,6 +7,7 @@
 @import "../assets/dist/css/adminlte.min.css";
 @import "../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css";
 @import "../assets/plugins/summernote/summernote-bs4.min.css";
+@import "../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css";
 
 .dropdown-item:hover {
     background-color: gray;

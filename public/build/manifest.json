@@ -1,11 +1,7 @@
 {
-  "resources/assets/plugins/summernote/font/summernote.eot": {
-    "file": "assets/summernote.05ce99db.eot",
-    "src": "resources/assets/plugins/summernote/font/summernote.eot"
-  },
-  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot": {
-    "file": "assets/fa-brands-400.e4299464.eot",
-    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot"
+  "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400.79d08806.eot",
+    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.eot"
   },
   "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.eot": {
     "file": "assets/fa-brands-400.e4299464.eot",
@@ -15,9 +11,13 @@
     "file": "assets/fa-solid-900.373c04fd.eot",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.eot"
   },
-  "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.eot": {
-    "file": "assets/fa-regular-400.79d08806.eot",
-    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.eot"
+  "resources/assets/plugins/summernote/font/summernote.eot": {
+    "file": "assets/summernote.05ce99db.eot",
+    "src": "resources/assets/plugins/summernote/font/summernote.eot"
+  },
+  "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400.e42a8844.woff2",
+    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.woff2"
   },
   "resources/assets/plugins/summernote/font/summernote.woff2": {
     "file": "assets/summernote.17aff429.woff2",
@@ -39,17 +39,13 @@
     "file": "assets/fa-regular-400.cb9e9e69.woff",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.woff"
   },
-  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.woff": {
-    "file": "assets/fa-brands-400.f9217f66.woff",
-    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.woff"
-  },
-  "resources/assets/plugins/summernote/font/summernote.woff": {
-    "file": "assets/summernote.9ea36fc9.woff",
-    "src": "resources/assets/plugins/summernote/font/summernote.woff"
-  },
   "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.woff": {
     "file": "assets/fa-solid-900.3f6d3488.woff",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.woff"
+  },
+  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400.f9217f66.woff",
+    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.woff"
   },
   "resources/assets/plugins/summernote/font/summernote.ttf": {
     "file": "assets/summernote.2a5c8f9c.ttf",
@@ -58,10 +54,6 @@
   "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.ttf": {
     "file": "assets/fa-regular-400.e8711bbb.ttf",
     "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-regular-400.ttf"
-  },
-  "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.ttf": {
-    "file": "assets/fa-brands-400.cda59d6e.ttf",
-    "src": "resources/assets/plugins/fontawesome-free/webfonts/fa-brands-400.ttf"
   },
   "resources/assets/plugins/fontawesome-free/webfonts/fa-solid-900.ttf": {
     "file": "assets/fa-solid-900.af639750.ttf",
