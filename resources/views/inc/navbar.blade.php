@@ -13,31 +13,29 @@
               <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse order-2" id="navbarCollapse">
-              <!-- Left navbar links -->
-              <ul class="navbar-nav">
-                  <li class="nav-item">
-                      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                              class="fas fa-bars"></i></a>
-                  </li>
+          @if (isset(auth()->user()->id) && auth()->user()->id != null)
+              <div class="collapse navbar-collapse order-2" id="navbarCollapse">
+                  <!-- Left navbar links -->
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                  class="fas fa-bars"></i></a>
+                      </li>
 
-                </ul>
-                <ul>
-                    
-                </ul>
-            </div>
-            <div class="order-2 mr-3">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new"
-                         role="button">Blogs</a>
-                    </li>
-                </ul>
-            </div>
+                  </ul>
 
-          <!-- Right navbar links -->
-          <ul class="order-2 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                  @if (isset(auth()->user()->id) && auth()->user()->id != null)
+              </div>
+              <div class="order-2 mr-3">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new"
+                              role="button">Blogs</a>
+                      </li>
+                  </ul>
+              </div>
+
+              <!-- Right navbar links -->
+              <ul class="order-2 order-md-3 navbar-nav navbar-no-expand ml-auto">
                   <!-- Notifications Dropdown Menu -->
                   <li class="nav-item dropdown user-menu w-100">
                       <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -77,7 +75,7 @@
                               <a href="{{ url('profile') }}" class="btn btn-default btn-flat elevation-2">Profile</a>
                               <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right elevation-2"
                                   onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
+                       document.getElementById('logout-form').submit();">
                                   {{ __('Logout') }}
                               </a>
 
@@ -87,17 +85,34 @@
                           </li>
                       </ul>
                   </li>
-                  @else
+              </ul>
+          @else
+              <div class="navbar-collapse order-2">
+              </div>
+              <div class="order-2 mr-3">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a href="https://nepdoor.com/blogs/" class="btn btn-primary" target="new"
+                              role="button">Blogs</a>
+                      </li>
+                  </ul>
+              </div>
+
+              <ul class="order-2 order-md-3 navbar-nav navbar-no-expand ml-auto">
+
                   <a href="{{ route('login') }}" class="btn btn-default btn-flat float-right elevation-3"
-                  onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                  {{ __('login') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-                @endif
-            </ul>
+                      onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                      {{ __('login') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </ul>
+          @endif
+
+
+
       </div>
 
   </nav>

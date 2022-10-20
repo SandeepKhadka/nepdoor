@@ -1,6 +1,14 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | User View')
+@section('title', 'Nepdoor | User View')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">View</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -36,91 +44,92 @@
                                 </div>
                             </div>
 
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="email">Email</label>
-                                <input type="text" id="email" name="email" class="form-control"
-                                    value="{{ @$user_data->email }}" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="role">Role</label>
-                                <select type="text" class="form-control form-control-sm" id="role" name="role"
-                                    disabled>
-                                    <option {{ @$user_data->role == 'admin' ? 'selected' : '' }}>admin
-                                    </option>
-                                    <option {{ @$user_data->role == 'customer' ? 'selected' : '' }}>customer
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="address">Address</label>
-                                <input type="text" id="address" name="address" class="form-control"
-                                    value="{{ @$user_data->address }}" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label for="phone">Phone</label>
-                                <input type="number" id="phone" name="phone" class="form-control"
-                                    value="{{ @$user_data->phone }}" disabled>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3" for="photo">Profile:</label>
-                                <div class="col-md-4">
-                                    <input type="file" name="photo" id="photo"
-                                        {{ isset($user_data) ? '' : 'disabled' }}>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src={{ asset('uploads/user/Thumb-' . @$user_data->photo) }} alt=""
-                                        class="img img-fluid img-responsive" style="max-width: 10rem; margin-top: 10px;">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" name="email" class="form-control"
+                                        value="{{ @$user_data->email }}" disabled>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <label for="created_at">Created at</label>
-                                <input type="datetime-local" id="created_at" name="created_at" class="form-control" rows="5"
-                                    value="{{ @$user_data->created_at }}" disabled>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="role">Role</label>
+                                    <select type="text" class="form-control form-control-sm" id="role"
+                                        name="role" disabled>
+                                        <option {{ @$user_data->role == 'admin' ? 'selected' : '' }}>admin
+                                        </option>
+                                        <option {{ @$user_data->role == 'customer' ? 'selected' : '' }}>customer
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="updated_at">Updated at</label>
-                                <input type="datetime-local" id="updated_at" name="updated_at" class="form-control"
-                                    rows="5" value="{{ @$user_data->updated_at }}" disabled>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" name="address" class="form-control"
+                                        value="{{ @$user_data->address }}" disabled>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class=" form-group col-md-12">
-                                <label for="status ">Status</label>
-                                <select type="text" class="form-control form-control-sm" id="status" name="status"
-                                    disabled>
-                                    <option {{ @$user_data->status == 'Active' ? 'selected' : '' }}>Active
-                                    </option>
-                                    <option {{ @$user_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
-                                    </option>
-                                </select>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="phone">Phone</label>
+                                    <input type="number" id="phone" name="phone" class="form-control"
+                                        value="{{ @$user_data->phone }}" disabled>
+                                </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label class="col-md-3" for="photo">Profile:</label>
+                                    <div class="col-md-4">
+                                        <input type="file" name="photo" id="photo"
+                                            {{ isset($user_data) ? '' : 'disabled' }}>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img src={{ asset('uploads/user/Thumb-' . @$user_data->photo) }} alt=""
+                                            class="img img-fluid img-responsive"
+                                            style="max-width: 10rem; margin-top: 10px;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="created_at">Created at</label>
+                                    <input type="datetime-local" id="created_at" name="created_at" class="form-control"
+                                        rows="5" value="{{ @$user_data->created_at }}" disabled>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="updated_at">Updated at</label>
+                                    <input type="datetime-local" id="updated_at" name="updated_at" class="form-control"
+                                        rows="5" value="{{ @$user_data->updated_at }}" disabled>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class=" form-group col-md-12">
+                                    <label for="status ">Status</label>
+                                    <select type="text" class="form-control form-control-sm" id="status"
+                                        name="status" disabled>
+                                        <option {{ @$user_data->status == 'Active' ? 'selected' : '' }}>Active
+                                        </option>
+                                        <option {{ @$user_data->status == 'Inactive' ? 'selected' : '' }}>Inactive
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
+                            <a href="{{ route('user.index') }}" class="btn btn-primary float-right"
+                                style="margin-right: 10px" value="Back">Back
+                            </a>
                         </div>
-                        <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
-                        <a href="{{ route('user.index') }}" class="btn btn-primary float-right" style="margin-right: 10px"
-                            value="Back">Back
-                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

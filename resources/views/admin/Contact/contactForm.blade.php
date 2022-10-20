@@ -1,6 +1,14 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Contact Form')
+@section('title', 'Nepdoor | Contact Form')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('contact.index') }}">Contact</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -10,8 +18,8 @@
                     <div class="card">
                         <div class="card-body">
                             @if (isset($contact_data))
-                                <form action="{{ route('contact.update', @$contact_data->id) }}" method="post" class="form"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('contact.update', @$contact_data->id) }}" method="post"
+                                    class="form" enctype="multipart/form-data">
                                     @method('put')
                                     @csrf
                                 @else

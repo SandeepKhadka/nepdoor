@@ -6,18 +6,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                @if (isset($ticket_title) && $ticket_title != null)
-                    @foreach ($ticket_title as $title)
-                        @if ($title->ticket_status == 'Opened')
-                            <li class="breadcrumb-item"><a href="{{ url('createTicket') }}">Support Tickets</a></li>
-                            <li class="breadcrumb-item active" aria-current="reply">Chat</li>
-                        @elseif($title->ticket_status == 'Closed')
-                        @else
-                            <li class="breadcrumb-item"><a href="{{ url('allTicket') }}">Support Tickets</a></li>
-                            <li class="breadcrumb-item active" aria-current="allTicket">Tickets</li>
-                        @endif
-                    @endforeach
-                @endif
+                <li class="breadcrumb-item"><a href="{{ url('allTicket') }}">Support Tickets</a></li>
+                <li class="breadcrumb-item active" aria-current="reply">Chat</li>
             </ol>
         </nav>
         @include('inc.sidebar')
