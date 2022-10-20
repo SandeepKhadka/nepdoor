@@ -53,7 +53,7 @@ class User extends Authenticatable
         $rules = [
             'full_name' => 'required|string',
             'username' => 'required|string',
-            'phone' => 'nullable|string',
+            'phone' => 'required|string',
             'address' => 'required|string',
             'email' => 'required|string',
             'password' => 'required|string',

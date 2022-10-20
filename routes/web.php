@@ -10,6 +10,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Front\UserProfileController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\UserHomeController;
@@ -38,32 +39,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('subscribe');
 // });
 
-Route::get('/createTicket', function () {
-    return view('front.supportTicket.createTicket');
-});
+Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
+Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
 
-Route::get('/allTicket', function () {
-    return view('front.supportTicket.allTickets');
-});
-
-Route::get('/profile', function () {
-    return view('front.user.userDetail');
-});
-
-// Route::get('/helpCenter', function () {
-//     return view('customer.helpCenter.helpCenterView');
-// });
-
-// customer.supportTicket.createTicket
 
 
 // Route::get('/adminHome', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('adminHome');
 
 
 
-// Route::get('/subscription', function () {
-//     return view('front.subscription.subscription');
-// });
 
 
 Auth::routes();

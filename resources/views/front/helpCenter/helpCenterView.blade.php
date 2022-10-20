@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="help">Help</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -24,6 +29,7 @@
             </div>
 
             <div class="content">
+<<<<<<< HEAD
                 <form action="">
                     {{-- @csrf --}}
                     <div class="row">
@@ -56,8 +62,43 @@
                                                     </div>
                                                 </div>
                                             </div>
+=======
+                <div class="container justify-content-sm-center">
+                    <form action="">
+                        {{-- @csrf --}}
+                        <div class="row d-flex justify-content-center">
+                            <div class="form-group w-50 ">
+                                <input type="search" placeholder="Search" name="search" class="form-control"
+                                    value="{{ $search }}" />
+                            </div>
+                            <button class="btn btn-primary" style="width: 50px; height:40px;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card" style="margin-top:50px;">
+                                    <div class="card-header" style="text-align:left">
+                                        <a href="{{ url('helpCenter') }}" style="color: black;font-size:20px;">Help
+                                            Topics</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @foreach ($helpCenter_info as $helpCenter)
+                                                <div class="col-lg-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <a href="{{ $helpCenter->link }}" class="card-link"
+                                                                target="new"
+                                                                style=" font-size:17px ">{{ $helpCenter->title }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+>>>>>>> 80955518ca8f3c81ad21b42da4fb0b5aa1edeed5
 
-                                            {{-- <div class="card-body">
+                                                {{-- <div class="card-body">
                                             <div class="col-lg-6"></div>
                                             <div class="col-lg-6">
                                                 <div class="card" style="height: 50px">
@@ -67,16 +108,16 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     @include('inc.footer')

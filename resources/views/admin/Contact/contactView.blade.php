@@ -1,6 +1,14 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Contact View')
+@section('title', 'Nepdoor | Contact View')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('contact.index') }}">Contact</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">View</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">

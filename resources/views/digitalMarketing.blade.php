@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="digitalMarketing">Digital Marketing</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -28,7 +33,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form action="{{ route('storeDigitalFormData') }}" method="post"
-                                        enctype="multipart/form-data">
+                                        enctype="multipart/form-data" onsubmit="alert('Form sent successfully.')">
                                         @csrf
                                         <div class="row" style="display: none">
                                             <div class="form-group col-md-6">

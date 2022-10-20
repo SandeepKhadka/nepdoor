@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('title', 'Nepdoor | Ticket List')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('ticket.index') }}">Support Ticket</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Tickets</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -33,6 +41,9 @@
                             <tbody>
                                 @if (isset($ticket_data))
                                     @foreach ($ticket_data as $tickets => $ticket)
+                                        {{-- @if (isset($ticket_token_id) && $ticket_token_id == $ticket['token_id'])
+                                            @break
+                                        @endif --}}
                                         <tr>
                                             <td>{{ $tickets + 1 }}</td>
                                             <td>{{ $ticket->title }}</td>
@@ -62,7 +73,8 @@
 
                                                     </i>
                                                 </a>
-                                                <a href="{{ route('replyMessage', $ticket->id) }}" class="btn btn-primary">
+                                                <a href="{{ route('replyMessage', $ticket->token_id) }}"
+                                                    class="btn btn-primary">
                                                     <i class="fa fa-message">
 
                                                     </i>
@@ -77,6 +89,9 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @php
+                                            $ticket_token_id = $ticket->token_id;
+                                        @endphp
                                     @endforeach
                                 @endif
 

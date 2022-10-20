@@ -2,108 +2,152 @@
 
 <body class="hold-transition sidebar-collapse layout-top-nav">
     <div class="wrapper">
-
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('allTicket') }}">Support Tickets</a></li>
+                <li class="breadcrumb-item active" aria-current="reply">Chat</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
-
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-sm">
                     <div class="row mb-2">
                         <div class="col-sm-12">
-                            <h1 class="m-0 text-center">All Tickets</h1>
+                            <h1 class="m-0 text-center font-weight-bold">All Tickets</h1>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="content">
-                <div class="container-sm w-50">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-
-                                <div class="card-header">
-                                    <h3 class="card-title" style="font-weight: bold">
-                                        Title
-                                    </h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                            title="Collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="card h-100">
-
-
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-lg-10">
-                                                            <div class="card-body">
-                                                                <span class="badge">You</span>
-                                                                <div class="row">
-                                                                    <textarea type="text" id="message" name="message" class="form-control w-100 px-3 py-3 " rows="2"
-                                                                        style=" resize: none ;background-color:#e7e7e9; border-radius: 0px 15px 15px 12px; color: rgb(0, 0, 0); font-size:12px"
-                                                                        disabled></textarea>
-
-                                                                </div>
-                                                                @error('message')
-                                                                    <span class="invalid-feedback"
-                                                                        role="alert">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-lg-3"></div>
-                                                        <div class="col-lg-9">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <span class="badge"
-                                                                        style="margin-left:410px">Admin</span>
-                                                                    <textarea type="text" id="message" name="message" class="form-control w-100 px-3 py-3" rows="2"
-                                                                        style="resize: none ;background-color: #e7e7e9; border-radius:15px 12px 0px 15px; color: rgb(0, 0, 0); font-size:12px"
-                                                                        disabled></textarea>
-                                                                </div>
-                                                                @error('message')
-                                                                    <span class="invalid-feedback"
-                                                                        role="alert">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                <div class="container justify-content-sm-center">
+                    @if (isset($ticket_title) && $ticket_title != null)
+                        @foreach ($ticket_title as $title)
+                            @if (isset($ticket_token_id) && $title->token_id == $ticket_token_id)
+                            @break
+                        @endif
+                        <div class="row">
+                            <div class="col lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title" style="font-weight: bold">
+                                            {{ @$title->title }}
+                                        </h3>
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                                title="Collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col lg-12">
-                                            <div class="card">
-                                                <div class="card-body">
+                                    <div class="card-body" id="msgBody"
+                                        style="height: 400px; overflow-y: scroll; overflow-x: hidden">
+                                        <div class="row">
+                                            <div class="col lg-12">
+                                                <div>
                                                     <div>
-                                                        <button type="submit" value="Submit"
-                                                            class="btn btn-primary float-right">Reply</button>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div>
+                                                                    @foreach ($ticket_message as $message)
+                                                                        @if (isset($message) &&
+                                                                            $message->message != null &&
+                                                                            $title->token_id == $token_id &&
+                                                                            $message->title == $title->title)
+                                                                            @if (auth()->user()->id == $message->user_id)
+                                                                                <div style="text-align: right;">
+                                                                                    <p
+                                                                                        style="background-color:lightblue; word-wrap:break-word; display:inline-block;
+                                                                                            padding:5px; border-radius:10px; max-width:70%; margin: 5px">
+                                                                                        {{ $message->message }}
+                                                                                    </p>
+
+                                                                                </div>
+                                                                            @endif
+                                                                            @php
+                                                                                $message_token_id = $message->token_id;
+                                                                                
+                                                                            @endphp
+                                                                            @if (isset($message_token_id))
+                                                                                @if ($message->user_id == 1 && $message->token_id == $message_token_id)
+                                                                                    <div style="text-align: left;">
+                                                                                        <p
+                                                                                            style="background-color:yellow; word-wrap:break-word; display:inline-block;
+                                                                                    padding:5px; border-radius:10px; max-width:70%">
+
+                                                                                            {{ $message->message }}
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                @endif
+                                                                            @endif
+                                                                        @endif
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @if ($title->ticket_status == 'Opened')
+                                        <div class="row">
+                                            <div class="col lg-12">
+                                                <div class="card" style="margin-bottom: 1px">
+                                                    <div class="card-body ">
+                                                        <form
+                                                            action="{{ route('storeTicketReply', $title->token_id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @if ($errors->any())
+                                                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                                                            @endif
+                                                            <div class="row">
+                                                                <input type="text" name="title"
+                                                                    value="{{ $title->title }}" hidden>
+                                                                <input type="text" name="priority"
+                                                                    value="{{ $priority }}" hidden>
+                                                                <div class="col-lg-11">
+                                                                    <textarea type="text" id="message" name="message" class="form-control" rows="1" required
+                                                                        style=" resize: none ;background-color:#ffffff; border-radius: 12px 15px 15px 12px; font-size:13px; border: 1px solid black"></textarea>
+
+                                                                    @error('message')
+                                                                        <span class="invalid-feedback"
+                                                                            role="alert">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="col-lg-1">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary px-2">Reply</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <h5 class="text-center">Your ticket has been Closed.</h5>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        @php
+                            $ticket_token_id = $title->token_id;
+                        @endphp
+                    @break
+                @endforeach
+                @if (!isset($title) || $title == null)
+                    <h5 class="text-center">There is no ticket created.</h5>
+                @endif
+            @else
+                <h5 class="text-center">There is no ticket created.</h5>
+            @endif
         </div>
     </div>
-    @include('inc.footer')
+</div>
+</div>
+@include('inc.footer')

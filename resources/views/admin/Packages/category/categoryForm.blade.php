@@ -1,11 +1,21 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Category Form')
+@section('title', 'Nepdoor | Category Form')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Package</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Category</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Category {{ isset($packageCategories_data) ? 'Update' : 'Add' }}</h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">Category
+                        {{ isset($packageCategories_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
                             @if (isset($packageCategories_data))
@@ -24,7 +34,7 @@
                                     <label for="title">Title</label>
                                     <input type="text" id="title" name="title" class="form-control"
                                         value="{{ @$packageCategories_data->title }}" required>
-                                        @error('title')
+                                    @error('title')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -35,7 +45,7 @@
                                     <label for="key">Key</label>
                                     <input type="text" id="key" name="key" class="form-control"
                                         value="{{ @$packageCategories_data->key }}">
-                                        @error('key')
+                                    @error('key')
                                         <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -53,8 +63,8 @@
                                                 Inactive</option>
                                         </select>
                                         @error('status')
-                                        <span class="invalid-feedback" role="alert">{{ $message }}</span>
-                                    @enderror
+                                            <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             @endif
