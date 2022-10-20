@@ -1,14 +1,22 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Category List')
+@section('title', 'Nepdoor | Category List')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Package</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Category</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight:bold">Category</h3>
-                        <a href="{{ route('category.create') }}" class="btn btn-success float-right" style="margin-left:0px"><i
-                                class="fa fa-plus" style="font-size: 12px">Add Category</i>
+                        <a href="{{ route('category.create') }}" class="btn btn-success float-right"
+                            style="margin-left:0px"><i class="fa fa-plus" style="font-size: 12px">Add Category</i>
 
                         </a>
                         {{-- <button href="{{url('packageList')}}" class='btn btn-primary' style="margin-left: 949px">Add</button> --}}

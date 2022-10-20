@@ -1,6 +1,13 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Billing List')
+@section('title', 'Nepdoor | Billing List')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Billing</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -47,12 +54,14 @@
                                                     class="{{ @$billing->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $billing->status }}</span>
                                             </td>
                                             <td>
-                                                <a href="{{ route('billing.show', $billing->id) }}" class="btn btn-primary">
+                                                <a href="{{ route('billing.show', $billing->id) }}"
+                                                    class="btn btn-primary">
                                                     <i class="fa fa-eye">
 
                                                     </i>
                                                 </a>
-                                                <a href="{{ route('billing.edit', $billing->id) }}" class="btn btn-success">
+                                                <a href="{{ route('billing.edit', $billing->id) }}"
+                                                    class="btn btn-success">
                                                     <i class="fa fa-pen">
 
                                                     </i>

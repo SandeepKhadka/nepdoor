@@ -1,6 +1,13 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Subscription List')
+@section('title', 'Nepdoor | Subscription List')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>|
+            <li class="breadcrumb-item active" aria-current="reply">Subscription</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
