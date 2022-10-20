@@ -108,7 +108,7 @@
                     <div class="row">
                         @foreach ($package_info as $package)
                             @if ($package->name == 'Basic')
-                                <div class="col-12 col-sm-6 col-md-4">
+                                <div class="col-12 col-sm-6 col-md-6">
                                     <div class="info-box">
                                         <div class="info-box-content">
                                             <span class="info-box-text">{{ $package->cat_info['title'] }}</span>

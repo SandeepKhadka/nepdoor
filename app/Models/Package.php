@@ -15,6 +15,7 @@ class Package extends Model
         return $this->hasOne(PackageCategories::class, 'id', 'cat_id');
     }
 
+
     public function getRules(){
         return [
             'name' => 'required|string',
