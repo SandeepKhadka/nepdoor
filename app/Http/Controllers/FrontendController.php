@@ -73,6 +73,14 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
+    public function userHome()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('front.home.userHome')->with([
+            'package_info' => $package_info
+        ]);
+    }
+
     public function digitalMarketing()
     {
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
@@ -114,4 +122,12 @@ class FrontendController extends Controller
             'package_info' => $package_info
         ]);
     }
+
+    public function getIndexData()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('index')->with([
+            'package_info' => $package_info
+        ]);
+    } 
 }

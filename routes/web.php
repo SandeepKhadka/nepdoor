@@ -12,6 +12,8 @@ use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Front\UserProfileController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,13 +27,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/subscribe', function () {
-    return view('subscribe');
-});
+// Route::get('/adminHome', function () {
+//     return view('admin.Home.adminHome');
+// });
+
+// Route::get('/subscribe', function () {
+//     return view('subscribe');
+// });
 
 // Route::get('/createTicket', function () {
 //     return view('front.supportTicket.createTicket');
@@ -41,24 +47,16 @@ Route::get('/subscribe', function () {
 //     return view('front.supportTicket.allTickets');
 // });
 
-// Route::get('/createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
-// Route::get('/allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
-// Route::get('/digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
-// Route::get('/seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
-// Route::get('/training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
-// Route::get('/basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
-// Route::get('/helpCenter', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('helpCenter');
-// Route::get('/billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
-// Route::get('/activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
-// Route::get('/subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
-// Route::resource('profile', UserProfileController::class);
+
+// Route::get('/adminHome', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('adminHome');
+
 
 
 
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('home');
+Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('subscriptionDetail');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {

@@ -17,7 +17,9 @@ class Subscription extends Model
         'message',
         'status', 
         'start_date',
-        'end_date'
+        'end_date',
+        
+
     ];
 
     public function user_info(){
@@ -27,6 +29,11 @@ class Subscription extends Model
     public function package_info(){
         return $this->hasOne(Package::class, 'id', 'package_id');
     }
+
+
+
+
+   
 
     // public function billing_info(){
     //     return $this->hasOne(Billing::class, 'id', 'billing_id');
