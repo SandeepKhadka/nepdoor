@@ -4,7 +4,11 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="help">Home</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
