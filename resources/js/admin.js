@@ -26,6 +26,6 @@ import "../assets/dist/js/pages/dashboard.js";
 
  
 $(document).ready( function () {
-    $('table').DataTable();
+    $('#table').DataTable();
 } );
 
