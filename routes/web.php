@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Front\UserProfileController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,7 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/store/TicketReplyAndClose/{token_id}', [App\Http\Controllers\TicketController::class, 'replyAndClose'])->name('replyAndClose');
     // Route::get('/replyAndClose/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact', ContactController::class);
-    Route::resource('profile', UserProfileController::class);
+    Route::resource('adminProfile', AdminProfileController::class);
 
 });
 
