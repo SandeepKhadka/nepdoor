@@ -57,10 +57,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('subscriptionDetail');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
-    Route::get('/home', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('home');
+    // Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+    Route::get('/home', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('adminHome');
     Route::resource('package', PackageController::class);
     Route::resource('billing', BillingController::class);
     Route::resource('category', PackageCategoryController::class);
@@ -75,7 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::post('/store/TicketReplyAndClose/{token_id}', [App\Http\Controllers\TicketController::class, 'replyAndClose'])->name('replyAndClose');
     // Route::get('/replyAndClose/{id}', [App\Http\Controllers\ReplyController::class, 'messageReply'])->name('replyMessage');
     Route::resource('contact', ContactController::class);
-    Route::resource('profile', UserProfileController::class);
+    Route::resource('adminProfile', UserProfileController::class);
 
 });
 

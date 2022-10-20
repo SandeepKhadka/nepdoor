@@ -31,7 +31,7 @@ class UserProfileController extends Controller
         if (isset(auth()->user()->role) && auth()->user()->role == 'customer') {
             return view('front.user.userDetail');
         } 
-        else{
+        elseif(isset(auth()->user()->role) && auth()->user()->role == 'admin'){
             return view('admin.user.adminDetail');
         }
     }

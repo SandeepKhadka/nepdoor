@@ -29,7 +29,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('profile.update', auth()->user()->id) }}" method="post" class="form"
+        <form action="{{ route('adminProfile.update', auth()->user()->id) }}" method="post" class="form"
             enctype="multipart/form-data">
             @method('put')
             @csrf
@@ -219,7 +219,7 @@
                                 <div class="form-group row">
                                     <div class="offset-sm-11 ">
                                         <button type="submit" class="btn btn-success"
-                                            onclick="confirm('Do you want to update your detail.')">Update</button>
+                                            onclick="return confirm('Do you want to update your detail.')">Update</button>
                                     </div>
                                 </div>
                             </div>
