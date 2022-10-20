@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Front;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UserProfileController extends Controller
+class AdminProfileController extends Controller
 {
 
     protected $user = null;
@@ -16,7 +15,6 @@ class UserProfileController extends Controller
     {
         $this->user = $user;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +25,7 @@ class UserProfileController extends Controller
         if (!auth()->user()) {
             return redirect('/login');
         }
-            return view('front.user.userDetail');
+            return view('admin.user.adminDetail');
     }
 
     /**
@@ -76,7 +74,7 @@ class UserProfileController extends Controller
             notify()->error('This user doesnot exists');
             return redirect()->route('profile.index');
         }
-        return view('front.user.userDetail')
+        return view('front.user.adminDetail')
             ->with('user_data', $this->user);
     }
 
@@ -92,7 +90,7 @@ class UserProfileController extends Controller
         $this->user = $this->user->find($id);
         if (!$this->user) {
             notify()->error('This user doesnot exists');
-            redirect()->route('profile.index');
+            redirect()->route('adminProfile.index');
         }
 
         $rules = $this->user->getRules('update');
@@ -123,7 +121,7 @@ class UserProfileController extends Controller
                     $data['password'] = Hash::make($request->newPassword);
                 } else {
                     notify()->error("Password did not match.");
-                    return redirect()->route('profile.index');
+                    return redirect()->route('adminProfile.index');
                 }
             }
         }
@@ -136,8 +134,8 @@ class UserProfileController extends Controller
         } else {
             notify()->error('Sorry! There was problem in updating details');
         }
-        return redirect()->route('profile.index');
-        
+        return redirect()->route('adminProfile.index');
+       
     }
 
     /**

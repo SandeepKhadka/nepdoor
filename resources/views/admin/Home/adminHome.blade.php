@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 @section('title', 'Nepdoor | Dashboard')
 @section('main-content')
-
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="reply">Home</li>
+    </ol>
+</nav>
     <div class="container-fluid">
         <!-- Content Wrapper. Contains page content -->
         <div class="row">
