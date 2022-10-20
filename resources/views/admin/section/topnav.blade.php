@@ -7,9 +7,6 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route(auth()->user()->role) }}" class="nav-link">Home</a>
-        </li>
 
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('contact.index') }}" class="nav-link">Contact</a>
