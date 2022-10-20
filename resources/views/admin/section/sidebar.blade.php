@@ -19,7 +19,7 @@
                  @endif
              </div>
              <div class="info">
-                 <a href="{{route('profile.index')}}" class="d-block">{{ ucfirst(auth()->user()->full_name) }}</a>
+                 <a href="{{url('admin/profile')}}" class="d-block">{{ ucfirst(auth()->user()->full_name) }}</a>
              </div>
          </div>
 

@@ -71,7 +71,7 @@
                           </p>
                           <!-- Menu Footer-->
                           <li class="user-footer">
-                              <a href="{{ url('profile') }}" class="btn btn-default btn-flat elevation-2">Profile</a>
+                              <a href="{{ url('customer/profile') }}" class="btn btn-default btn-flat elevation-2">Profile</a>
                               <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right elevation-2"
                                   onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
