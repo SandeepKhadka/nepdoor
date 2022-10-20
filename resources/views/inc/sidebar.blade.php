@@ -9,7 +9,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('customer/home') }}" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Home
@@ -17,23 +17,31 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('digitalMarketing') }}" class="nav-link">
+            <a href="{{ url('customer/basic') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
+              <p>
+                Basic
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('customer/digitalMarketing') }}" class="nav-link">
+              <i class="nav-icon fas fa-bullhorn"></i>
               <p>
                 Digital Marketing
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('seo') }}" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{ url('customer/seo') }}" class="nav-link">
+              <i class="nav-icon fas fa-search"></i>
               <p>
                 SEO
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('training') }}" class="nav-link">
+            <a href="{{ url('customer/training') }}" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Training
@@ -42,7 +50,7 @@
           </li>
           <li class="nav-header">System</li>
           <li class="nav-item">
-            <a href="{{ url('subscription') }}" class="nav-link">
+            <a href="{{ url('customer/subscription') }}" class="nav-link">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Subscriptions
@@ -50,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('activity') }}" class="nav-link">
+            <a href="{{ url('customer/activity') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Activity
@@ -58,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('billing') }}" class="nav-link">
+            <a href="{{ url('customer/billing') }}" class="nav-link">
               <i class="nav-icon fas fa-ellipsis-h"></i>
               <p>Billings</p>
             </a>
@@ -87,7 +95,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ url('helpCenter') }}" class="nav-link">
+            <a href="{{ url('customer/helpCenter') }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Help Center

@@ -27,13 +27,13 @@
                 <form action="">
                     {{-- @csrf --}}
                     <div class="row">
-                    <div class="form-group">
-                        <input type="search" placeholder="Search" name="search" class="form-control" value="{{$search}}" 
-                            style="width: 600px; height: 50px; margin-left:450px;" />
-                    </div>
-                    <button class="btn btn-primary" style="width: 60px; height:50px;">
-                        <i class="fas fa-search"></i>
-                    </button>
+                        <div class="form-group">
+                            <input type="search" placeholder="Search" name="search" class="form-control"
+                                value="{{ $search }}" style="width: 600px; height: 50px; margin-left:450px;" />
+                        </div>
+                        <button class="btn btn-primary" style="width: 60px; height:50px;">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
                 </form>
                 <div class="container">
@@ -41,17 +41,19 @@
                         <div class="col-lg-12">
                             <div class="card" style="margin-top:50px;">
                                 <div class="card-header" style="text-align:left">
-                                    <a href="{{ url('helpCenter') }}" style="color: black;font-size:20px;">Help Topics</a>
+                                    <a href="{{ url('helpCenter') }}" style="color: black;font-size:20px;">Help
+                                        Topics</a>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         @foreach ($helpCenter_info as $helpCenter)
                                             <div class="col-lg-6">
-                                                <div class="card" >
+                                                <div class="card">
                                                     <div class="card-body">
-                                                        <a href="{{ $helpCenter->link }}" class="card-link" target="new"
-                                                         style=" font-size:17px ">{{ $helpCenter->title }}</a>
-                                                </div>
+                                                        <a href="{{ $helpCenter->link }}" class="card-link"
+                                                            target="new"
+                                                            style=" font-size:17px ">{{ $helpCenter->title }}</a>
+                                                    </div>
                                                 </div>
                                             </div>
 

@@ -23,6 +23,14 @@ class FrontendController extends Controller
         $this->subscription = $subscription;
     }
 
+    public function getSubscriptionDetail()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('index')->with([
+            'package_info' => $package_info
+        ]);
+    }
+
     public function storeDigitalFormData(Request $request)
     {
         $bills = $request->except(['_token', 'package', 'message']);
@@ -52,6 +60,14 @@ class FrontendController extends Controller
         $subscription_status = $this->subscription->save();
 
         return redirect()->back();
+    }
+
+    public function userHome()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('front.home.userHome')->with([
+            'package_info' => $package_info
+        ]);
     }
 
     public function digitalMarketing()
@@ -95,4 +111,12 @@ class FrontendController extends Controller
             'package_info' => $package_info
         ]);
     }
+
+    public function getIndexData()
+    {
+        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        return view('index')->with([
+            'package_info' => $package_info
+        ]);
+    } 
 }
