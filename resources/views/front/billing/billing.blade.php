@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="billings">Billings</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -20,7 +25,7 @@
 
             <div class="content">
                 <div class="container justify-content-sm-center">
-                    @if (isset($subscription_data))
+                    @if (isset($subscription_data) && $subscription_data != null)
                         @foreach ($subscription_data as $subscriptions => $subscription)
                             <div class="d-flex justify-content-center">
                                 <div class="col-lg-8">
@@ -57,16 +62,6 @@
                                                                     @endforeach
                                                                 @endif
                                                             </td>
-                                                            {{-- <td>
-                                                                @if (isset($billing_data))
-                                                                    @foreach ($billing_data as $billing)
-                                                                        @if ($billing->billNo == $subscription->billing_id)
-                                                                            <span
-                                                                                class="{{ @$billing->payment_status == 'Paid' ? 'badge bg-success' : 'badge bg-warning' }}">{{ $billing->payment_status }}</span>
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            </td> --}}
                                                         </tr>
 
                                                     </tbody>
@@ -77,7 +72,8 @@
                                         <div class="row">
                                             {{-- <div class="col-7"></div> --}}
                                             <div class="col-7">
-                                                <p class="m-1 ml-2 font-weight-bold">Date: {{ $subscription->created_at }}
+                                                <p class="m-1 ml-2 font-weight-bold">Date:
+                                                    {{ $subscription->created_at }}
                                                 </p>
 
                                                 <div class="table-responsive">
@@ -132,14 +128,15 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-5"></div> --}}
-
                                         </div>
                                     </section>
                                 </div>
                             </div>
                             <hr>
                         @endforeach
+                        @if (!isset($subscription) || $subscription == null)
+                            <h5 class="text-center">There are no bills to display.</h5>
+                        @endif
                     @endif
 
                 </div>

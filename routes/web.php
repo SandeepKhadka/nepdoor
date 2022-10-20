@@ -56,11 +56,6 @@ Route::get('/subscribe', function () {
 
 
 
-// Route::get('/subscription', function () {
-//     return view('front.subscription.subscription');
-// });
-
-
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('home');

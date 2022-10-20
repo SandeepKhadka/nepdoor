@@ -4,7 +4,12 @@
     <div class="wrapper">
 
         @include('inc.navbar')
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="help">Help</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
 
         <div class="content-wrapper">
@@ -30,7 +35,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="form-group w-50 ">
                                 <input type="search" placeholder="Search" name="search" class="form-control"
-                                    value="{{ $search }}"/>
+                                    value="{{ $search }}" />
                             </div>
                             <button class="btn btn-primary" style="width: 50px; height:40px;">
                                 <i class="fas fa-search"></i>

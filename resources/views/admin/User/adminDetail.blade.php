@@ -2,6 +2,13 @@
 @section('title', 'Nepdoor | User Form')
 @section('main-content')
 <div class="content">
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Profile</li>
+        </ol>
+    </nav>
     <div class="content-wrapper">
         <div class="content-header">
             <div class="container">

@@ -13,6 +13,13 @@
 @endsection
 
 @section('main-content')
+    {{-- BreadCrumb --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Activity</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -57,8 +64,8 @@
                                             <td>{{ Str::limit($activity->content, 20) }}</td>
                                             <td>
                                                 <div class="progress progress-sm" style="width: 50%">
-                                                    <div class="progress-bar bg-green" role="progressbar"
-                                                        aria-valuemin="0" aria-valuemax="100" style="width: {{$activity->progress}}%">
+                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuemin="0"
+                                                        aria-valuemax="100" style="width: {{ $activity->progress }}%">
                                                     </div>
                                                 </div>
                                             </td>
@@ -78,8 +85,8 @@
 
                                                     </i>
                                                 </a>
-                                                <form action="{{ route('activity.destroy', $activity->id) }}" method="post"
-                                                    class="d-inline">
+                                                <form action="{{ route('activity.destroy', $activity->id) }}"
+                                                    method="post" class="d-inline">
                                                     @method('delete')
                                                     @csrf
                                                     <button class="btn btn-danger"

@@ -1,6 +1,15 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Ticket Form')
+@section('title', 'Nepdoor | Ticket Form')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('ticket.index') }}">Support Ticket</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('ticket.index') }}">Tickets</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">

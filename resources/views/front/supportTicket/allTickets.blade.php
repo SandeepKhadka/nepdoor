@@ -3,6 +3,13 @@
 <body class="hold-transition sidebar-collapse layout-top-nav">
     <div class="wrapper">
         @include('inc.navbar')
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ url('allTicket') }}">Support Tickets</a></li>
+                <li class="breadcrumb-item active" aria-current="reply">Chat</li>
+            </ol>
+        </nav>
         @include('inc.sidebar')
         <div class="content-wrapper">
             <div class="content-header">
@@ -123,7 +130,7 @@
                                             </div>
                                         </div>
                                     @else
-                                        <h5 class="text-center">Your ticket has been Closed</h5>
+                                        <h5 class="text-center">Your ticket has been Closed.</h5>
                                     @endif
                                 </div>
                             </div>
@@ -134,10 +141,10 @@
                     @break
                 @endforeach
                 @if (!isset($title) || $title == null)
-                    <h5 class="text-center">There is no ticket created</h5>
+                    <h5 class="text-center">There is no ticket created.</h5>
                 @endif
             @else
-                <h5 class="text-center">There is no ticket created</h5>
+                <h5 class="text-center">There is no ticket created.</h5>
             @endif
         </div>
     </div>

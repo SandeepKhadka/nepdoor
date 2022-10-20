@@ -1,14 +1,21 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | User List')
+@section('title', 'Nepdoor | User List')
 @section('main-content')
+    {{-- BreadCrumb  --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">User</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight: bold;">Users</h3>
-                        <a href="{{ route('user.create') }}" class="btn btn-success float-right" style="margin-bottom: 0px"><i
-                                class="fa fa-plus" style="font-size: 12px">
+                        <a href="{{ route('user.create') }}" class="btn btn-success float-right"
+                            style="margin-bottom: 0px"><i class="fa fa-plus" style="font-size: 12px">
                                 Add User
                             </i>
                         </a>
@@ -37,8 +44,8 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ ucfirst($user->role) }}</td>
                                             <td>
-                                                <img src="{{ asset('uploads/user/Thumb-' . $user->photo) }}"
-                                                    alt="" class="img img-responsive">
+                                                <img src="{{ asset('uploads/user/Thumb-' . $user->photo) }}" alt=""
+                                                    class="img img-responsive">
                                             </td>
                                             <td><span
                                                     class="{{ @$user->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $user->status }}</span>

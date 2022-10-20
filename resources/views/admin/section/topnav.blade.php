@@ -48,38 +48,39 @@
         </li>
 
 
+        @if (isset(auth()->user()->id) && auth()->user()->id != null)
 
-        <li class="nav-item dropdown user-menu w-100">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+            <li class="nav-item dropdown user-menu w-100">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                <div class="image float-left">
+                    <div class="image float-left">
 
-                    @if (isset(auth()->user()->photo) &&
-                        auth()->user()->photo != null &&
-                        file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
-                        <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
-                            class="user-image img-circle elevation-1" alt="">
-                    @else
-                        <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-1"
-                            alt="User Image">
-                    @endif
-                </div>
-                <span class="d-none d-md-inline">{{ @Auth::user()->username }}</span>
-            </a>
+                        @if (isset(auth()->user()->photo) &&
+                            auth()->user()->photo != null &&
+                            file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                            <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
+                                class="user-image img-circle elevation-1" alt="">
+                        @else
+                            <img src="{{ asset('dist/img/defaultUser.png') }}" class="user-image img-circle elevation-1"
+                                alt="User Image">
+                        @endif
+                    </div>
+                    <span class="d-none d-md-inline">{{ @Auth::user()->username }}</span>
+                </a>
 
-            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <li class="user-header bg-primary d-flex justify-content-center h-50">
-                    @if (isset(auth()->user()->photo) &&
-                        auth()->user()->photo != null &&
-                        file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
-                        <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
-                            class="img-circle elevation-2" alt="">
-                    @else
-                        <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2"
-                            alt="User Image">
-                    @endif
-                </li>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <li class="user-header bg-primary d-flex justify-content-center h-50">
+                        @if (isset(auth()->user()->photo) &&
+                            auth()->user()->photo != null &&
+                            file_exists(public_path() . '/uploads/user/' . auth()->user()->photo))
+                            <img src="{{ asset('uploads/user/Thumb-' . auth()->user()->photo) }}"
+                                class="img-circle elevation-2" alt="">
+                        @else
+                            <img src="{{ asset('dist/img/defaultUser.png') }}" class="img-circle elevation-2"
+                                alt="User Image">
+                        @endif
+                    </li>
 
                 <p class="bg-primary text-center">
                     {{ @Auth::user()->full_name }}
@@ -89,15 +90,25 @@
                     <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right"
                         onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
+                            {{ __('Logout') }}
+                        </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
-            </ul>
-        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-default btn-flat float-right elevation-3"
+                onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('login') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        @endif
 
 
 

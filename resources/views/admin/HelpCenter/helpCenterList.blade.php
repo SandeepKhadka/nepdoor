@@ -1,6 +1,13 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | HelpCenter List')
+@section('title', 'Nepdoor | HelpCenter List')
 @section('main-content')
+    {{-- BreadCrumb --}}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Help Center</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -21,7 +28,7 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
-                                    <th >Title</th>
+                                    <th>Title</th>
                                     <th>Link</th>
                                     <th style="width: 90px">Order ID</th>
                                     <th style="width: 90px">Status</th>
@@ -31,13 +38,15 @@
                             <tbody>
                                 @if (isset($helpCenter_data))
                                     @foreach ($helpCenter_data as $helpCenters => $helpCenter)
-                                    {{-- {{ dd($helpCenter) }} --}}
+                                        {{-- {{ dd($helpCenter) }} --}}
                                         <tr>
                                             <td>{{ $helpCenters + 1 }}</td>
                                             <td>{{ $helpCenter->title }}</td>
                                             <td>{{ $helpCenter->link }}</td>
                                             <td>{{ $helpCenter->order_id }}</td>
-                                            <td><span class="{{@$helpCenter->status == 'Active' ? 'badge bg-success': 'badge bg-danger'}}">{{ $helpCenter->status }}</span></td>
+                                            <td><span
+                                                    class="{{ @$helpCenter->status == 'Active' ? 'badge bg-success' : 'badge bg-danger' }}">{{ $helpCenter->status }}</span>
+                                            </td>
                                             <td>
                                                 <a href="{{ route('helpCenter.show', $helpCenter->id) }}"
                                                     class="btn btn-primary">
