@@ -73,7 +73,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="link">Link</label>
                                     <input type="link" id="link" name="link" class="form-control"
-                                        value="{{ @$helpCenter_data->link }}" required>
+                                        value="{{ @$package_data->link }}" required>
                                     @error('link')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

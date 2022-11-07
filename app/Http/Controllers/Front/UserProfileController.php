@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\PackageCategories;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +28,8 @@ class UserProfileController extends Controller
         if (!auth()->user()) {
             return redirect('/login');
         }
-            return view('front.user.userDetail');
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
+        return view('front.user.userDetail')->with('category_info', $category_info);
     }
 
     /**
@@ -137,7 +139,6 @@ class UserProfileController extends Controller
             notify()->error('Sorry! There was problem in updating details');
         }
         return redirect()->route('profile.index');
-        
     }
 
     /**

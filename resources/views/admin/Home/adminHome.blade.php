@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 @section('title', 'Nepdoor | Dashboard')
 @section('main-content')
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="reply">Home</li>
-    </ol>
-</nav>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="reply">Home</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <!-- Content Wrapper. Contains page content -->
         <div class="row">
@@ -17,7 +17,7 @@
                     <div class="container-fluid">
                         <div class="row mb-3">
                             <div class="col-sm-12">
-                                <h1 class="m-0">Admin Home</h1>
+                                <h1 class="m-0">Home</h1>
                             </div><!-- /.col -->
                         </div><!-- /.row -->
                     </div><!-- /.container-fluid -->
@@ -39,27 +39,49 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        @foreach ($subscription_info as $subscription)
-                                                            @php
-                                                                $categoryPackage = $subscription
-                                                                    ->where('cat_id', $category_name)
-                                                                    ->where('Status', 'Active')
-                                                                    ->get(['cat_id', 'package_id']);
-                                                            @endphp
-                                                            @foreach ($categoryPackage as $singlePackages)
-                                                                @if ($singlePackages->package_id == $subscription->package_id)
-                                                                    @php
-                                                                        $subscriptionPackage[] = $subscription->package_info['name'];
-                                                                    @endphp
-                                                                @endif
-                                                            @endforeach
-                                                        @endforeach
                                                         @php
-                                                            if (isset($subscriptionPackage)) {
+                                                            $unique_package_id = [];
+                                                        @endphp
+                                                        @foreach ($subscription_info as $subscription)
+                                                            @if (isset($unique_package_id) && !(in_array($subscription->package_id, $unique_package_id)))
+                                                                @php
+                                                                    $categoryPackage = $subscription
+                                                                        ->where('cat_id', $category_name)
+                                                                        ->where('Status', 'Active')
+                                                                        ->get(['cat_id', 'package_id']);
+                                                                    
+                                                                @endphp
+                                                                @foreach ($categoryPackage as $singlePackages)
+                                                                    @if ($singlePackages->package_id == $subscription->package_id)
+                                                                        @php
+                                                                            // echo '<pre>';
+                                                                            // print_r($singlePackages->package_id);
+                                                                            // echo '</pre>';
+                                                                            $subscriptionPackage[] = $subscription->package_info['name'];
+                                                                        @endphp
+                                                                    @endif
+                                                                @endforeach
+                                                            @endif
+                                                            @php
+                                                                $unique_package_id[] = $subscription->package_id;
+                                                            @endphp
+                                                        @endforeach
+                                                        {{-- {{dd($categoryPackage)}} --}}
+                                                        {{-- {{ dd($subscriptionPackage) }} --}}
+                                                        @php
+                                                            if (isset($subscriptionPackage) && !empty($subscriptionPackage)) {
+                                                                // var_dump($subscriptionPackage)
+                                                                // echo '<pre>';
+                                                                // print_r($subscriptionPackage);
+                                                                // echo '</pre>';
                                                                 $unique_subscriptionPackage = array_count_values($subscriptionPackage);
+                                                                // echo '<pre>';
+                                                                // print_r($unique_subscriptionPackage);
+                                                                // echo '</pre>';
                                                                 $subscriptionPackage = [];
                                                             }
                                                         @endphp
+                                                        {{-- {{dd($subscriptionPackage)}} --}}
                                                         @if (isset($unique_subscriptionPackage))
                                                             @foreach ($unique_subscriptionPackage as $package_name => $package_number)
                                                                 <div class="col-lg-4 col-6">
@@ -82,9 +104,15 @@
                                     </div>
                                 @endif
                             @endforeach
+                            {{-- {{dd($subscription_info)}} --}}
+                            {{-- {{dd($categoryPackage)}} --}}
+
+                            {{-- {{dd($singlePackages)}} --}}
+                            {{-- {{ dd($subscriptionPackage) }} --}}
                         @endif
                     </div><!-- /.container-fluid -->
                 </section>
+                {{-- {{ dd($unique_subscriptionPackage) }} --}}
                 <!-- /.content -->
                 {{-- </div> --}}
                 <!-- /.content-wrapper -->

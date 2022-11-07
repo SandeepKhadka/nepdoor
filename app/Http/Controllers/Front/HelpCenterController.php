@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\HelpCenter;
+use App\Models\PackageCategories;
 use Illuminate\Http\Request;
 
 class HelpCenterController extends Controller
@@ -18,7 +19,8 @@ class HelpCenterController extends Controller
         }
         // dd($search);
         $data = compact('helpCenter_info','search');
-        return view('front.helpCenter.helpCenterView')->with($data);
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
+        return view('front.helpCenter.helpCenterView')->with($data)->with('category_info', $category_info);
     }
 
     public function searchHelpCenter(Request $request)
@@ -31,7 +33,8 @@ class HelpCenterController extends Controller
         }
         // dd($search);
         $data = compact('helpCenter_info','search');
-        return view('front.helpCenter.helpCenterView')->with($data);
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
+        return view('front.helpCenter.helpCenterView')->with($data)->with('category_info', $category_info);
     }
 
 }

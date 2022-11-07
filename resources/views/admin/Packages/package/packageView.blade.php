@@ -60,7 +60,7 @@
                                 <div class="form-group col-md-12">
                                     <label for="link">Link</label>
                                     <input type="link" class="form-control"
-                                        value="{{ @$helpCenter_data->link }}" disabled>
+                                        value="{{ @$package_data->link }}" disabled>
                                     @error('link')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
