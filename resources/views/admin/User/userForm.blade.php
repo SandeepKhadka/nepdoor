@@ -6,14 +6,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
-            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+            <li class="breadcrumb-item active" aria-current="reply">{{ isset($user_data) ? 'Edit' : 'Form' }}</li>
         </ol>
     </nav>
     <div class="content">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">User Add</h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">User {{ isset($user_data) ? 'Update' : 'Add' }}</h4>
                     <div class="card">
                         <div class="card-body">
                             @if ($errors->any())

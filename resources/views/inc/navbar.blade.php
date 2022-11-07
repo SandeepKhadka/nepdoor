@@ -2,7 +2,7 @@
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
 
       <div class="container">
-          <a href="{{ url('/') }}" class="navbar-brand">
+          <a href="{{ url('/customer') }}" class="navbar-brand">
               <img src="{{ asset('uploads/initial/logo.png') }}" alt="Nepdoor Logo" class="brand-image elevation-3 p-2"
                   style="height:40px;width:110px;">
           </a>

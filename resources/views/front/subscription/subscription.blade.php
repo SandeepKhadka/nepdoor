@@ -25,9 +25,9 @@
                 <div class="content">
                     <div class="container">
                         {{-- <div class="col-lg-12"> --}}
+                            <div class="row">
                         @if (isset($subscription_data) && $subscription_data != null)
                             @foreach ($subscription_data as $subscription)
-                                <div class="row">
                                     {{-- <div class="row"> --}}
                                     <div class="col-lg-4 ">
                                         <div class="card">
@@ -68,12 +68,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    @if (!isset($subscription) || $subscription == null)
+                                    <h5 class="text-center">There are no ongoing activities.</h5>
+                                    @endif
+                                    @endif
                                 </div>
-                            @endforeach
-                            @if (!isset($subscription) || $subscription == null)
-                                <h5 class="text-center">There are no ongoing activities.</h5>
-                            @endif
-                        @endif
                         {{-- </div>  --}}
                     </div>
                 </div>

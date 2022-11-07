@@ -110,7 +110,7 @@
                     <div class="row">
                         @foreach ($package_info as $package)
                             @if ($package->cat_info['title'] == 'Digital Marketing')
-                                @if (ucfirst($package->name) != 'Basic')
+                                {{-- @if (ucfirst($package->name) != 'Basic') --}}
                                     <div class="col-12 col-sm-6 col-md-4">
                                         <div class="info-box">
                                             <div class="info-box-content">
@@ -124,7 +124,7 @@
                                         </div>
                                         <!-- /.info-box -->
                                     </div>
-                                @endif
+                                {{-- @endif --}}
                             @endif
                         @endforeach
                     </div>

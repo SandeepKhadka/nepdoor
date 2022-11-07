@@ -4,9 +4,9 @@
     {{-- BreadCrumb  --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('billing.index') }}">Billings</a></li>
-            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+            <li class="breadcrumb-item active" aria-current="reply">{{ isset($billing_data) ? 'Edit' : 'Form' }}</li>
         </ol>
     </nav>
     <div class="content">
@@ -28,7 +28,7 @@
                                         @csrf
                             @endif
                             <div class="row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="amount">Amount</label>
                                     <input type="number" id="amount" name="amount" class="form-control"
                                         value="{{ @$billing_data->amount }}" required>
@@ -37,6 +37,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="billNo">Bill No</label>
+                                    <input type="text" id="billNo" name="billNo" class="form-control" value="{{ @$billing_data->billNo }}" disabled>
                                 </div>
 
                                 <div class="form-group col-md-12">

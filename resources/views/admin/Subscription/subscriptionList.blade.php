@@ -4,7 +4,7 @@
     {{-- BreadCrumb  --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>|
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>|
             <li class="breadcrumb-item active" aria-current="reply">Subscription</li>
         </ol>
     </nav>
@@ -29,10 +29,10 @@
                                     <th>User</th>
                                     <th>Category</th>
                                     <th>Package</th>
-                                    <th>Billing No</th>
+                                    <th style="width: 80px">Billing No</th>
                                     <th>Message</th>
-                                    <th style="width: 130px">End Date</th>
-                                    <th style="width: 90px">Status</th>
+                                    <th style="width: 110px">End Date</th>
+                                    <th style="width: 70px">Status</th>
                                     <th style="width: 160px">Action</th>
                                 </tr>
                             </thead>

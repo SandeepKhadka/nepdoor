@@ -13,10 +13,11 @@ class SubscriptionController extends Controller
 {
     protected $subscription = null;
 
-    public function __construct(Subscription $subscription)
+    public function __construct(Subscription $subscription, Billing $billing)
     {
         // $this->middleware('auth');
         $this->subscription = $subscription;
+        $this->billing = $billing;
     }
     /**
      * Display a listing of the resource.
@@ -26,9 +27,10 @@ class SubscriptionController extends Controller
     public function index()
     {
         $this->subscription = $this->subscription->orderBy('id', 'DESC')->get();
+        // $this->billing = $this->billing->orderBy('id', 'DESC')->get(['billNo', 'id', 'payment_status']);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
-        return view('admin.subscription.subscriptionList')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
+        return view('admin.subscription.subscriptionList')->with('subscription_data', $this->subscription)->with('billing_data', $this->billing)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -78,6 +80,10 @@ class SubscriptionController extends Controller
     public function show($id)
     {
         $this->subscription = $this->subscription->find($id); 
+        $bill_no = $this->subscription->billing_id;
+        $this->billing = $this->billing->orderBy('id', 'DESC')->firstWhere('billNo', $bill_no);
+        // dd($this->billing);
+        // $this->billing = $this->billing->find($id);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         if (!$this->subscription) {
@@ -85,7 +91,7 @@ class SubscriptionController extends Controller
             notify()->error('This subscription doesnot exists');
             return redirect()->route('subscription.index');
         }
-        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
+        return view('admin.subscription.subscriptionView')->with('subscription_data', $this->subscription)->with('billing_data', $this->billing)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -97,13 +103,15 @@ class SubscriptionController extends Controller
     public function edit($id)
     {
         $this->subscription = $this->subscription->find($id);
+        $bill_no = $this->subscription->billing_id;
+        $this->billing = $this->billing->orderBy('id', 'DESC')->firstWhere('billNo', $bill_no);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         if (!$this->subscription) {
             notify()->error('This subscription doesnot exists');
             return redirect()->route('subscription.index');
         }
-        return view('admin.subscription.subscriptionForm')->with('subscription_data', $this->subscription)->with('user_info', $user_info)->with('package_info', $package_info);
+        return view('admin.subscription.subscriptionForm')->with('subscription_data', $this->subscription)->with('billing_data', $this->billing)->with('user_info', $user_info)->with('package_info', $package_info);
     }
 
     /**
@@ -116,6 +124,8 @@ class SubscriptionController extends Controller
     public function update(Request $request, $id)
     {
         $this->subscription = $this->subscription->find($id);
+        // $bill_no = $this->subscription->billing_id;
+        // $this->billing = $this->billing->orderBy('id', 'DESC')->firstWhere('billNo', $bill_no);
         $user_info = User::orderBy('id', 'Desc')->where('role', 'customer')->pluck('full_name', 'id');
         $package_info = Package::orderBy('id', 'Desc')->pluck('name', 'id');
         if (!$this->subscription) {
@@ -137,8 +147,9 @@ class SubscriptionController extends Controller
             notify()->error('Sorry! There was problem in adding subscription');
         }
 
-        return redirect()->route('subscription.index')->with('user_info', $user_info)->with('package_info', $package_info);
+        return redirect()->route('subscription.index')->with('billing_data', $this->billing)->with('user_info', $user_info)->with('package_info', $package_info);
     }
+
 
     /**
      * Remove the specified resource from storage.

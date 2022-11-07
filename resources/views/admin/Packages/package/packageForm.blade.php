@@ -4,10 +4,10 @@
     {{-- BreadCrumb  --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('package.index') }}">Package</a></li>
             <li class="breadcrumb-item"><a href="{{ route('package.index') }}">Packages</a></li>
-            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+            <li class="breadcrumb-item active" aria-current="reply">{{ isset($package_data) ? 'Edit' : 'Form' }}</li>
         </ol>
     </nav>
     <div class="content">
@@ -69,6 +69,21 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{-- @if (isset($cat_info)) --}}
+                                        {{-- @foreach (@$cat_info as $category => $data) --}}
+                                            <a href="{{ route('category.create') }}" class="btn btn-success"
+                                                style="margin-left:0px"><i class="fa fa-plus" style="font-size: 12px">Add
+                                                    Category</i></a>
+                                        {{-- @endforeach --}}
+                                    {{-- @endif --}}
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="link">Link</label>

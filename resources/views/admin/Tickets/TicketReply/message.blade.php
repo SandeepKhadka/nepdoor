@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('title', 'Nepdoor | Ticket View')
 @section('main-content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Support Ticket</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Replys</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">Messsage</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="content-header">
             <div class="container-sm">
@@ -109,11 +117,13 @@
                                                                 @enderror
                                                             </div>
                                                             <div class="col-lg-1">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary px-3" id="reply">Reply</button>
+                                                                <button type="submit" class="btn btn-primary px-3"
+                                                                    id="reply">Reply</button>
                                                             </div>
                                                             <div class="col-lg-2">
-                                                                <button type="submit" class="btn btn-danger px-3" id="replyAndClose" formaction="{{ route('replyAndClose', $token_id) }}">Reply
+                                                                <button type="submit" class="btn btn-danger px-3"
+                                                                    id="replyAndClose"
+                                                                    formaction="{{ route('replyAndClose', $token_id) }}">Reply
                                                                     &
                                                                     Close</button>
                                                             </div>

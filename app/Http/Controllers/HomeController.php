@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Package;
+use App\Models\PackageCategories;
 
 class HomeController extends Controller
 {
@@ -41,8 +42,10 @@ class HomeController extends Controller
     public function customer()
     {
         $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+        $package_category = PackageCategories::orderBy('id','ASC')->where('status', 'Active')->get();
         return view('index')->with([
-            'package_info' => $package_info
+            'package_info' => $package_info,
+            'package_category' => $package_category
         ]);
     }
 }

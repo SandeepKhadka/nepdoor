@@ -4,7 +4,7 @@
     {{-- BreadCrumb  --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('subscription.index') }}">Subscription</a></li>
             <li class="breadcrumb-item active" aria-current="reply">View</li>
         </ol>
@@ -64,12 +64,34 @@
 
                             <div class="row">
                                 <div class="form-group col-md-6">
+                                    @if (isset($user_info))
+                                        @foreach ($user_info as $user => $data)
+                                            @if (@$subscription_data->user_id == $user)
+                                                <a href="{{ route('user.show', $user) }}" type="submit"
+                                                    class="btn btn-info elevation-2" style="margin-right: 10px"
+                                                    value="Back">User Detail</a>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
                                     <label>Billing</label>
                                     <input type="text" id="billing_id" name="billing_id" class="form-control"
                                         value="{{ @$subscription_data->billing_id }}" disabled>
                                     @error('billing_id')
                                         <span class="alert-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <a href="{{ route('billing.show', $billing_data->id) }}" type="submit"
+                                        class="btn btn-info elevation-2" style="margin-right: 10px" value="Back">Billing
+                                        Detail</a>
                                 </div>
                             </div>
 

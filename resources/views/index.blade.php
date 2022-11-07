@@ -34,123 +34,43 @@
                                     </div><!-- /.row -->
                                 </div><!-- /.container-fluid -->
                             </div>
-                            @if (isset($package_info))
-                                <div class="row">
-                                    @foreach ($package_info as $package)
-                                        @if (Str::upper($package->name) == 'BASIC')
-                                            <div class="col-12 col-sm-6 col-md-6">
-                                                <div class="info-box">
-                                                    <div class="info-box-content">
-                                                        <span
-                                                            class="info-box-text">{{ $package->cat_info['title'] }}</span>
-                                                        <span class="info-box-number">
-                                                            NRs. {{ $package->price }} Monthly
-                                                        </span>
-                                                    </div>
-                                                    <!-- /.info-box-content -->
-                                                </div>
-                                                <!-- /.info-box -->
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
 
-                                <div class="content-header">
-                                    <div class="container">
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <h1 class="m-0 text-center font-weight-bold">Digital Marketing
-                                                    Packages</small></h1>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.container-fluid -->
-                                </div>
-
-                                <div class="row">
-                                    @foreach ($package_info as $package)
-                                        @if (Str::upper(str_replace(' ', '',$package->cat_info['title'])) == 'DIGITALMARKETING')
-                                            @if (ucfirst($package->name) != 'Basic')
-                                                <div class="col-12 col-sm-6 col-md-4">
+                            @if (isset($package_category))
+                                {{-- <div class="row"> --}}
+                                @foreach ($package_category as $packageCategory)
+                                    <div class="content-header">
+                                        <div class="container">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-12">
+                                                    <h1 class="m-0 text-center font-weight-bold">
+                                                        {{ $packageCategory->title }}</small></h1>
+                                                </div><!-- /.col -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.container-fluid -->
+                                    </div>
+                                    {{-- <br> --}}
+                                    <div class="row">
+                                        @foreach ($package_info as $package)
+                                            @if ($packageCategory->id == $package->cat_id)
+                                                <div class="col-sm-4">
                                                     <div class="info-box">
                                                         <div class="info-box-content">
                                                             <span class="info-box-text">{{ $package->name }}</span>
                                                             <span class="info-box-number">
                                                                 NRs. {{ $package->price }} Monthly
                                                             </span>
+                                                            <a href="{{ $package->link }}" class="card-link"><u>Learn More</u></a>
+
                                                         </div>
                                                         <!-- /.info-box-content -->
                                                     </div>
                                                     <!-- /.info-box -->
                                                 </div>
                                             @endif
-                                        @endif
-                                    @endforeach
-                                </div>
-
-                                <div class="content-header">
-                                    <div class="container">
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <h1 class="m-0 text-center font-weight-bold">SEO Packages</small></h1>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.container-fluid -->
-                                </div>
-
-                                <div class="row">
-                                    @foreach ($package_info as $package)
-                                        @if (Str::upper($package->cat_info['title']) == 'SEO')
-                                            @if (ucfirst($package->name) != 'Basic')
-                                                <div class="col-12 col-sm-6 col-md-4">
-                                                    <div class="info-box">
-                                                        <div class="info-box-content">
-                                                            <span class="info-box-text">{{ $package->name }}</span>
-                                                            <span class="info-box-number">
-                                                                NRs. {{ $package->price }} Monthly
-                                                            </span>
-                                                        </div>
-                                                        <!-- /.info-box-content -->
-                                                    </div>
-                                                    <!-- /.info-box -->
-                                                </div>
-                                            @endif
-                                        @endif
-                                    @endforeach
-
-                                </div>
-
-                                <div class="content-header">
-                                    <div class="container">
-                                        <div class="row mb-2">
-                                            <div class="col-sm-12">
-                                                <h1 class="m-0 text-center font-weight-bold">Digital Marketing & SEO
-                                                    Training</small></h1>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
-                                    </div><!-- /.container-fluid -->
-                                </div>
-
-                                <div class="row">
-                                    @foreach ($package_info as $package)
-                                        @if (Str::upper($package->cat_info['title']) == 'TRAINING')
-                                            <div class="col-12 col-sm-6 col-md-6">
-                                                <div class="info-box">
-                                                    <div class="info-box-content">
-                                                        <span class="info-box-text">{{ $package->name }}</span>
-                                                        <span class="info-box-number">
-                                                            NRs. {{ $package->price }} (2 Months Course + 3 Months
-                                                            Internship)
-                                                        </span>
-                                                    </div>
-                                                    <!-- /.info-box-content -->
-                                                </div>
-                                                <!-- /.info-box -->
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                        @endforeach
+                                    </div>
+                                @endforeach
                             @endif
-
                         </div>
                         <!-- /.col-md-6 -->
                     </div>

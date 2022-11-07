@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">User Add</small></h4>
+                    <h4 class="m-0 text-left font-weight-bold" style="padding: 10px">User View</small></h4>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">

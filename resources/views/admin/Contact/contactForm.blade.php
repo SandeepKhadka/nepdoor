@@ -4,9 +4,9 @@
     {{-- BreadCrumb  --}}
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('contact.index') }}">Contact</a></li>
-            <li class="breadcrumb-item active" aria-current="reply">Form</li>
+            <li class="breadcrumb-item active" aria-current="reply">{{ isset($contact_data) ? 'Edit' : 'Form' }}</li>
         </ol>
     </nav>
     <div class="content">

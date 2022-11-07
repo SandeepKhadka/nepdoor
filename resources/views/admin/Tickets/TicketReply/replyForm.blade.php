@@ -1,6 +1,14 @@
 @extends('layouts.admin')
-@section('title' , 'Nepdoor | Ticket Reply Form')
+@section('title', 'Nepdoor | Ticket Reply Form')
 @section('main-content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Support Ticket</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Replys</a></li>
+            <li class="breadcrumb-item active" aria-current="reply">{{ isset($reply_data) ? 'Edit' : 'Form' }}</li>
+        </ol>
+    </nav>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -23,7 +31,8 @@
                                 <div class="form-group col-md-6">
                                     <label>Ticket</label>
                                     <div>
-                                        <select name="ticket_id" id="ticket_id" class="form-control" style="pointer-events: none">
+                                        <select name="ticket_id" id="ticket_id" class="form-control"
+                                            style="pointer-events: none">
                                             <option value="" disabled selected hidden>Select token no</option>
                                             @if (isset($ticket_info))
                                                 @foreach (@$ticket_info as $ticket => $data)

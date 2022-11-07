@@ -4,7 +4,7 @@
 {{-- BreadCrumb  --}}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('billing.index') }}">Billings</a></li>
         <li class="breadcrumb-item active" aria-current="reply">View</li>
     </ol>
@@ -17,9 +17,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <label for="amount">Amount</label>
                                     <input type="number" id="amount" name="amount" class="form-control" value="{{ @$billing_data->amount }}" disabled>
+                                </div>
+                                
+                                <div class="form-group col-md-6">
+                                    <label for="billNo">Bill No</label>
+                                    <input type="text" id="billNo" name="billNo" class="form-control" value="{{ @$billing_data->billNo }}" disabled>
                                 </div>
                             </div>
                             <div class="row">
@@ -67,7 +72,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success float-right" value="Sumbit">Submit</button>
                             <a href="{{ route('billing.index') }}" class="btn btn-primary float-right"
                                 style="margin-right: 10px" value="Back">Back
                             </a>

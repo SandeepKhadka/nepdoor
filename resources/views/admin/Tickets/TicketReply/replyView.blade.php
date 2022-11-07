@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('title' , 'Nepdoor | Ticket Reply View')
 @section('main-content')
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Support Ticket</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('reply.index') }}">Replys</a></li>
+        <li class="breadcrumb-item active" aria-current="reply">View</li>
+    </ol>
+</nav>
     <div class="content">
         <div class="container">
             <div class="row">
