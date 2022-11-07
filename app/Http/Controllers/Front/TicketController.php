@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\PackageCategories;
 use App\Models\Subscription;
 use App\Models\Ticket;
 use App\Models\TicketReply;
@@ -20,10 +21,12 @@ class TicketController extends Controller
 
     public function createTicket()
     {
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
         $subscription = Subscription::where('user_id', auth()->user()->id)->where('status', 'Active')->first();
         $ticket_status = $this->ticket->get(['ticket_status', 'user_id', 'status'])->where('user_id', auth()->user()->id)->where('status', 'Active') ?? "";
         return view('front.supportTicket.createTicket')
             ->with('ticket_status', $ticket_status)
+            ->with('category_info', $category_info)
             ->with('subscription', $subscription);
     }
 
@@ -115,12 +118,14 @@ class TicketController extends Controller
                 break;
             }
         }
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
         return view('front.supportTicket.allTickets')->with(
             [
                 'ticket_message' => $ticket_message,
                 'ticket_title' => $ticket_title,
                 'token_id' => $token_id,
-                'priority' => $priority
+                'priority' => $priority,
+                'category_info' => $category_info
             ]
         );
 

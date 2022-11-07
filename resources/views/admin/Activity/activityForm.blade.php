@@ -132,7 +132,7 @@
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="content">Content</label>
-                                    <textarea type="text" id="content" name="content" class="form-control" rows="5" required>{{ @$activity_data->content }}</textarea>
+                                    <textarea type="text" id="activityContent" name="content" class="form-control" rows="5" required>{{ @$activity_data->content }}</textarea>
                                     @error('content')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
