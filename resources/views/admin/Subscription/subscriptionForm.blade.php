@@ -32,7 +32,7 @@
                                     <label>User</label>
                                     <div>
                                         <select name="user_id" id="user_id" class="form-control">
-                                            <option value="" disabled selected hidden>Select user</option>
+                                            <option value="" disabled selected hidden></option>
                                             @if (isset($user_info))
                                                 @foreach (@$user_info as $user => $data)
                                                     <option value="{{ @$user != null ? @$user : '' }}"
