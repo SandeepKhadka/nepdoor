@@ -37,4 +37,8 @@ $('#user_id').select2({
     placeholder:'Select user'
 });
 
+$('#package_id').select2({
+    placeholder:'Select user'
+});
+
 $("#activityContent").summernote();
