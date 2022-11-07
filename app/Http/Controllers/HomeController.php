@@ -35,17 +35,16 @@ class HomeController extends Controller
 
     public function admin()
     {
-        return view('admin.Home.adminHome');
-        // return redirect()->route('home');
+        return redirect()->route('adminHome');
     }
 
     public function customer()
     {
         $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
-        $package_category = PackageCategories::orderBy('id','ASC')->where('status', 'Active')->get();
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
         return view('index')->with([
             'package_info' => $package_info,
-            'package_category' => $package_category
+            'category_info' => $category_info
         ]);
     }
 }

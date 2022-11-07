@@ -59,10 +59,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\FrontEndController::class, 'getSubscriptionDetail'])->name('subscriptionDetail');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
-    Route::get('/home', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('home');
+    // Route::get('/', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+    Route::get('/home', [App\Http\Controllers\AdminHomeController::class, 'getHomeData'])->name('adminHome');
     Route::resource('package', PackageController::class);
     Route::resource('billing', BillingController::class);
     Route::resource('category', PackageCategoryController::class);
@@ -85,20 +88,21 @@ Route::group(['prefix' => 'customer', 'middleware' => ['auth', 'customer']], fun
     Route::get('/', [App\Http\Controllers\HomeController::class, 'customer'])->name('customer');
     Route::get('createTicket', [App\Http\Controllers\Front\TicketController::class, 'createTicket'])->name('createTicket');
     Route::get('allTicket', [App\Http\Controllers\Front\TicketController::class, 'displayAllTickets'])->name('storeAllTicket');
-    Route::get('digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
-    Route::get('seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
-    Route::get('training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
-    Route::get('basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
+    Route::get('category/{package}/{id}', [App\Http\Controllers\FrontendController::class, 'package'])->name('package');
+    // Route::get('digitalMarketing', [App\Http\Controllers\FrontendController::class, 'digitalMarketing'])->name('digitalMarketing');
+    // Route::get('seo', [App\Http\Controllers\FrontendController::class, 'seo'])->name('seo');
+    // Route::get('training', [App\Http\Controllers\FrontendController::class, 'training'])->name('training');
+    // Route::get('basic', [App\Http\Controllers\FrontendController::class, 'basic'])->name('basic');
     Route::get('helpCenter', [App\Http\Controllers\Front\HelpCenterController::class, 'helpCenter'])->name('helpCenter');
     Route::get('billing', [App\Http\Controllers\front\BillingController::class, 'getBillingData'])->name('billing');
     Route::get('activity', [App\Http\Controllers\Front\ActivityController::class, 'getActivityData'])->name('activity');
     Route::get('subscription', [App\Http\Controllers\Front\SubscriptionController::class, 'getSubscriptionData'])->name('subscription');
     Route::resource('profile', UserProfileController::class);
 
-    Route::post('store/digitalMarketingdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeDigitalMarketingData');
-    Route::post('store/searchEngineOptimizationdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeSearchEngineOptimizationData');
-    Route::post('store/trainingdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeTrainingData');
-    Route::post('store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeBasicData');
+    Route::post('store/digitalMarketingdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeFormData');
+    // Route::post('store/searchEngineOptimizationdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeSearchEngineOptimizationData');
+    // Route::post('store/trainingdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeTrainingData');
+    // Route::post('store/basicdata', [App\Http\Controllers\FrontendController::class, 'storeFormData'])->name('storeBasicData');
     Route::post('store/Ticket', [App\Http\Controllers\Front\TicketController::class, 'storeTicket'])->name('storeTicket');
     Route::post('update/Ticket{id}', [App\Http\Controllers\Front\TicketController::class, 'updateTicket'])->name('updateTicket');
     Route::post('store/TicketReply/{token_id}', [App\Http\Controllers\Front\TicketController::class, 'storeTicketReply'])->name('storeTicketReply');

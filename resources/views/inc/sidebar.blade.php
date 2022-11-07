@@ -17,15 +17,17 @@
                           </p>
                       </a>
                   </li>
-                  <li class="nav-item">
-                      <a href="{{ url('customer/digitalMarketing') }}" class="nav-link">
-                          <i class="nav-icon fas fa-bullhorn"></i>
-                          <p>
-                              Digital Marketing
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
+                  @foreach ($category_info as $category)
+                      <li class="nav-item">
+                          <a href="{{ route('package', ['package' => $category->title, 'id' => $category->id]) }}" class="nav-link">
+                              <i class="nav-icon far fa-circle"></i>
+                              <p>
+                                  {{ $category->title }}
+                              </p>
+                          </a>
+                      </li>
+                  @endforeach
+                  {{-- <li class="nav-item">
                       <a href="{{ url('customer/seo') }}" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
@@ -40,7 +42,7 @@
                               Training
                           </p>
                       </a>
-                  </li>
+                  </li> --}}
                   <li class="nav-header">System</li>
                   <li class="nav-item">
                       <a href="{{ url('customer/subscription') }}" class="nav-link">

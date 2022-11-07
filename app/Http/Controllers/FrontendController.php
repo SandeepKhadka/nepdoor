@@ -25,9 +25,11 @@ class FrontendController extends Controller
 
     public function getSubscriptionDetail()
     {
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
         $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
         return view('index')->with([
-            'package_info' => $package_info
+            'package_info' => $package_info,
+            'category_info' => $category_info
         ]);
     }
 
@@ -42,6 +44,8 @@ class FrontendController extends Controller
                 $file_name = uploadImage($voucher, 'billing', '125x125');
                 if ($file_name) {
                     $bills['voucher'] = $file_name;
+                } else {
+                    notify()->error('Sorry! there was problem in sending voucher image.');
                 }
             }
             $bills['billNo'] = 'bil-' . rand(0, 99) . '-' . auth()->user()->id;
@@ -73,47 +77,67 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-    public function userHome()
-    {
-        $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
-        return view('front.home.userHome')->with([
-            'package_info' => $package_info
-        ]);
-    }
+    // public function userHome()
+    // {
+    //     $package_info = Package::orderBy('id', 'ASC')->where('status', 'Active')->get();
+    //     $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
+    //     return view('front.home.userHome')->with([
+    //         'package_info' => $package_info,
+    //         'category_info' => $category_info
+    //     ]);
+    // }
 
-    public function digitalMarketing()
+    public function package($categories, $id)
     {
+        // dd($package);
+        $category_check = PackageCategories::find($id);
+        // dd($category_check);
+        if (!$category_check) {
+            notify()->error('This category doesnot exists');
+            return redirect()->back();
+        }
+        $category_info = PackageCategories::orderBy('id', 'DESC')->where('status', 'Active')->get();
         $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
-        return view('digitalMarketing')->with([
-            'package_info' => $package_info
-        ]);
-    }
-
-    public function seo()
-    {
-        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
-        return view('seo')->with([
-            'package_info' => $package_info
-        ]);
-    }
-
-    public function training()
-    {
-        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
-        return view('training')->with([
-            'package_info' => $package_info
-        ]);
-    }
-
-    public function basic()
-    {
-        $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
-        $billing_info = Billing::orderBy('id', 'Desc')->where('status', 'Active')->get();
-        return view('basic')->with([
+        return view('package_form')->with([
             'package_info' => $package_info,
-            'billing_info' => $billing_info
+            'category_info' => $category_info,
+            'category_title' => $categories
         ]);
     }
+
+    // public function digitalMarketing()
+    // {
+    //     $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+    //     return view('digitalMarketing')->with([
+    //         'package_info' => $package_info
+    //     ]);
+    // }
+
+    // public function seo()
+    // {
+    //     $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+    //     return view('seo')->with([
+    //         'package_info' => $package_info
+    //     ]);
+    // }
+
+    // public function training()
+    // {
+    //     $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+    //     return view('training')->with([
+    //         'package_info' => $package_info
+    //     ]);
+    // }
+
+    // public function basic()
+    // {
+    //     $package_info = Package::orderBy('id', 'Desc')->with('cat_info')->where('status', 'Active')->get();
+    //     $billing_info = Billing::orderBy('id', 'Desc')->where('status', 'Active')->get();
+    //     return view('basic')->with([
+    //         'package_info' => $package_info,
+    //         'billing_info' => $billing_info
+    //     ]);
+    // }
 
     public function billing()
     {
@@ -129,5 +153,5 @@ class FrontendController extends Controller
         return view('index')->with([
             'package_info' => $package_info
         ]);
-    } 
+    }
 }

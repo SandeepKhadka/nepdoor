@@ -30,28 +30,26 @@
                                         <div class="col-sm-12">
                                             <h1 class="m-0 text-center font-weight-bold"> Subscribe our basic package
                                                 instantly !</small></h1>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.container-fluid -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
-                            @if (isset($package_category))
-                                {{-- <div class="row"> --}}
-                                @foreach ($package_category as $packageCategory)
+                            @if (isset($category_info))
+                                @foreach ($category_info as $category)
                                     <div class="content-header">
                                         <div class="container">
                                             <div class="row mb-2">
                                                 <div class="col-sm-12">
                                                     <h1 class="m-0 text-center font-weight-bold">
-                                                        {{ $packageCategory->title }}</small></h1>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.row -->
-                                        </div><!-- /.container-fluid -->
+                                                        {{ $category->title }}</small></h1>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    {{-- <br> --}}
                                     <div class="row">
                                         @foreach ($package_info as $package)
-                                            @if ($packageCategory->id == $package->cat_id)
+                                            @if ($category->id == $package->cat_id)
                                                 <div class="col-sm-4">
                                                     <div class="info-box">
                                                         <div class="info-box-content">
@@ -59,12 +57,11 @@
                                                             <span class="info-box-number">
                                                                 NRs. {{ $package->price }} Monthly
                                                             </span>
-                                                            <a href="{{ $package->link }}" class="card-link"><u>Learn More</u></a>
+                                                            <a href="{{ $package->link }}" class="card-link"><u>Learn
+                                                                    More</u></a>
 
                                                         </div>
-                                                        <!-- /.info-box-content -->
                                                     </div>
-                                                    <!-- /.info-box -->
                                                 </div>
                                             @endif
                                         @endforeach
@@ -72,12 +69,9 @@
                                 @endforeach
                             @endif
                         </div>
-                        <!-- /.col-md-6 -->
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </div>
             </div>
-            <!-- /.content -->
         </div>
 
         @include('inc.footer')
