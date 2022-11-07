@@ -22,27 +22,27 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="content-header">
-                                <div class="container">
-                                    <div class="row mb-2">
-                                        <div class="col-sm-12">
-                                            <h1 class="m-0 text-center font-weight-bold"> Subscribe our basic package
-                                                instantly !</small></h1>
-                                        </div><!-- /.col -->
-                                    </div><!-- /.row -->
-                                </div><!-- /.container-fluid -->
-                            </div>
-                            @if (isset($package_info))
-                                <div class="row">
-                                    @foreach ($package_info as $package)
-                                        @if (Str::upper($package->name) == 'BASIC')
-                                            <div class="col-12 col-sm-6 col-md-6">
+                    @if (isset($package_info))
+                        <div class="row">
+                            @foreach ($package_info as $package)
+                                <div class="col-lg-12">
+                                    <div class="content-header">
+                                        <div class="container">
+                                            <div class="row mb-2">
+                                                <div class="col-sm-12">
+                                                    {{-- @if(count($package->cat_info['title'])==0) --}}
+                                                    <h1 class="m-0 text-center font-weight-bold">{{ $package->cat_info['title'] }}</small></h1>
+                                                    {{-- @endif --}}
+                                                </div><!-- /.col -->
+                                            </div><!-- /.row -->
+                                        </div><!-- /.container-fluid -->
+                                    </div>
+                                    <div class="row">
+                                        @foreach ($package_info as $package)
+                                            <div class="col-12 col-sm-6 col-md-4">
                                                 <div class="info-box">
                                                     <div class="info-box-content">
-                                                        <span
-                                                            class="info-box-text">{{ $package->cat_info['title'] }}</span>
+                                                        <span class="info-box-text">{{ $package->name }}</span>
                                                         <span class="info-box-number">
                                                             NRs. {{ $package->price }} Monthly
                                                         </span>
@@ -51,11 +51,10 @@
                                                 </div>
                                                 <!-- /.info-box -->
                                             </div>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                        @endforeach
+                                    </div>
 
-                                <div class="content-header">
+                                    {{-- <div class="content-header">
                                     <div class="container">
                                         <div class="row mb-2">
                                             <div class="col-sm-12">
@@ -64,11 +63,11 @@
                                             </div><!-- /.col -->
                                         </div><!-- /.row -->
                                     </div><!-- /.container-fluid -->
-                                </div>
+                                </div> --}}
 
-                                <div class="row">
+                                    {{-- <div class="row">
                                     @foreach ($package_info as $package)
-                                        @if (Str::upper(str_replace(' ', '',$package->cat_info['title'])) == 'DIGITALMARKETING')
+                                        @if (Str::upper(str_replace(' ', '', $package->cat_info['title'])) == 'DIGITALMARKETING')
                                             @if (ucfirst($package->name) != 'Basic')
                                                 <div class="col-12 col-sm-6 col-md-4">
                                                     <div class="info-box">
@@ -85,9 +84,9 @@
                                             @endif
                                         @endif
                                     @endforeach
-                                </div>
+                                </div> --}}
 
-                                <div class="content-header">
+                                    {{-- <div class="content-header">
                                     <div class="container">
                                         <div class="row mb-2">
                                             <div class="col-sm-12">
@@ -95,9 +94,9 @@
                                             </div><!-- /.col -->
                                         </div><!-- /.row -->
                                     </div><!-- /.container-fluid -->
-                                </div>
+                                </div> --}}
 
-                                <div class="row">
+                                    {{-- <div class="row">
                                     @foreach ($package_info as $package)
                                         @if (Str::upper($package->cat_info['title']) == 'SEO')
                                             @if (ucfirst($package->name) != 'Basic')
@@ -117,9 +116,9 @@
                                         @endif
                                     @endforeach
 
-                                </div>
+                                </div> --}}
 
-                                <div class="content-header">
+                                    {{-- <div class="content-header">
                                     <div class="container">
                                         <div class="row mb-2">
                                             <div class="col-sm-12">
@@ -128,9 +127,9 @@
                                             </div><!-- /.col -->
                                         </div><!-- /.row -->
                                     </div><!-- /.container-fluid -->
-                                </div>
+                                </div> --}}
 
-                                <div class="row">
+                                    {{-- <div class="row">
                                     @foreach ($package_info as $package)
                                         @if (Str::upper($package->cat_info['title']) == 'TRAINING')
                                             <div class="col-12 col-sm-6 col-md-6">
@@ -148,13 +147,15 @@
                                             </div>
                                         @endif
                                     @endforeach
-                                </div>
-                            @endif
+                                </div> --}}
 
+
+                                </div>
+                                <!-- /.col-md-6 -->
+                            @endforeach
                         </div>
-                        <!-- /.col-md-6 -->
-                    </div>
-                    <!-- /.row -->
+                        <!-- /.row -->
+                    @endif
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->

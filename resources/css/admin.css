@@ -9,6 +9,8 @@
 @import "../assets/plugins/summernote/summernote-bs4.min.css";
 @import "../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css";
 
+@import "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css";
+
 .dropdown-item:hover {
     background-color: gray;
     /* color: gray; */

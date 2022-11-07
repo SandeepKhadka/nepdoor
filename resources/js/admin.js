@@ -24,10 +24,17 @@ import "../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js";
 
 import "../assets/dist/js/pages/dashboard.js";
 
+import "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js";
+
+import "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js";
+
  
 $(document).ready( function () {
     $('#table').DataTable();
 } );
 
+$('#user_id').select2({
+    placeholder:'Select user'
+});
 
 $("#activityContent").summernote();
